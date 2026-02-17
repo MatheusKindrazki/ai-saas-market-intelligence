@@ -152,7 +152,7 @@ for idea, _ in top_ideas:
 orchestrator = MarketIntelligenceOrchestrator()
 
 # Get overview report
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 
 # Get detailed trend analysis
 trend_report = orchestrator._generate_trend_report(

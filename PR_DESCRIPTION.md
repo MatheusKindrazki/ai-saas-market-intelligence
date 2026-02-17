@@ -71,7 +71,7 @@ from ai_saas_intelligence import MarketIntelligenceOrchestrator
 
 orchestrator = MarketIntelligenceOrchestrator()
 recommendations = orchestrator.get_quick_recommendations(5)
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 ```
 
 ## Top Opportunities Identified
@@ -106,8 +106,14 @@ overview = orchestrator._generate_overview_report()
 
 - main.py - CLI interface (358 lines)
 - ai_saas_intelligence/ - Core platform modules
+  - ai_saas_intelligence/tests/ - Test suite
+    - test_orchestrator.py - Orchestrator tests
+    - test_trend_analyzer.py - Trend analyzer tests
+    - test_pain_point_analyzer.py - Pain point analyzer tests
+    - test_product_idea_generator.py - Product idea generator tests
 - README.md - Comprehensive documentation
 - USAGE_EXAMPLES.md - Detailed usage examples
 - demo.py - Quick demonstration script
+- run_tests.sh - Test runner script
 
 Total: 24 files, ~3,600 lines of code

@@ -35,7 +35,7 @@ try:
     
     from ai_saas_intelligence.core.orchestrator import MarketIntelligenceOrchestrator
     mo = MarketIntelligenceOrchestrator()
-    report = mo._generate_overview_report()
+    report = mo.generate_overview_report()
     print('✓ MarketIntelligenceOrchestrator generates reports')
     
     print('\\n✅ All basic tests passed!')

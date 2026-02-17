@@ -26,7 +26,7 @@ class MarketIntelligenceOrchestrator:
             return self._generate_trend_report(trend_name)
         else:
             # Generate overview report with top opportunities
-            return self._generate_overview_report()
+            return self.generate_overview_report()
     
     def _generate_trend_report(self, trend_name: str) -> Dict:
         """Generate detailed report for a specific trend"""
@@ -102,7 +102,7 @@ class MarketIntelligenceOrchestrator:
             ]
         }
     
-    def _generate_overview_report(self) -> Dict:
+    def generate_overview_report(self) -> Dict:
         """Generate overview report with top opportunities"""
         # Get top trends
         top_trends = self.trend_analyzer.get_top_opportunities(5)

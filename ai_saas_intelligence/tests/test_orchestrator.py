@@ -20,7 +20,7 @@ class TestMarketIntelligenceOrchestrator:
     
     def test_generate_overview_report(self):
         """Test overview report generation"""
-        report = self.orchestrator._generate_overview_report()
+        report = self.orchestrator.generate_overview_report()
         
         assert 'executive_summary' in report
         assert 'top_market_opportunities' in report

@@ -240,7 +240,7 @@ for i, (idea, score) in enumerate(top_ideas, 1):
 # Market Insights
 print("\n📊 MARKET INSIGHTS")
 print("-" * 70)
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 print(f"Total Trends Analyzed: {overview['executive_summary']['total_trends_analyzed']}")
 print(f"High-Severity Pain Points: {overview['executive_summary']['high_severity_pain_points']}")
 print(f"Product Opportunities: {overview['executive_summary']['product_opportunities']}")
@@ -347,7 +347,7 @@ from ai_saas_intelligence import MarketIntelligenceOrchestrator
 orchestrator = MarketIntelligenceOrchestrator()
 
 # Get market size and growth data
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 
 print("MARKET OPPORTUNITY")
 print("="*50)
