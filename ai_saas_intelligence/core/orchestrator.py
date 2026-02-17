@@ -26,7 +26,7 @@ class MarketIntelligenceOrchestrator:
             return self._generate_trend_report(trend_name)
         else:
             # Generate overview report with top opportunities
-            return self._generate_overview_report()
+            return self.generate_overview_report()
     
     def _generate_trend_report(self, trend_name: str) -> Dict:
         """Generate detailed report for a specific trend"""
@@ -102,7 +102,7 @@ class MarketIntelligenceOrchestrator:
             ]
         }
     
-    def _generate_overview_report(self) -> Dict:
+    def generate_overview_report(self) -> Dict:
         """Generate overview report with top opportunities"""
         # Get top trends
         top_trends = self.trend_analyzer.get_top_opportunities(5)
@@ -117,7 +117,7 @@ class MarketIntelligenceOrchestrator:
             "executive_summary": {
                 "total_trends_analyzed": len(self.trend_analyzer.get_all_trends()),
                 "high_severity_pain_points": len(high_severity_pain),
-                "product_opportunities": len(self.idea_generator.generate_all_ideas())
+                "product_opportunities": self.idea_generator.count_all_ideas()
             },
             "top_market_opportunities": [
                 {
@@ -134,7 +134,7 @@ class MarketIntelligenceOrchestrator:
                     "industry": p.industry.value,
                     "problem": p.problem,
                     "severity": f"{p.severity:.0%}",
-                    "opportunity_rating": self.pain_point_analyzer._rate_opportunity(p)
+                    "opportunity_rating": self.pain_point_analyzer.rate_opportunity(p)
                 }
                 for p in high_severity_pain[:8]
             ],

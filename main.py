@@ -36,7 +36,7 @@ def print_section(title: str, content: str = ""):
 def print_overview_report():
     """Generate and display overview report"""
     orchestrator = MarketIntelligenceOrchestrator()
-    report = orchestrator._generate_overview_report()
+    report = orchestrator.generate_overview_report()
     
     print_section("AI SaaS MARKET INTELLIGENCE REPORT")
     print(f"\nGenerated comprehensive analysis of {report['executive_summary']['total_trends_analyzed']} market trends, "
@@ -44,7 +44,7 @@ def print_overview_report():
           f"and {report['executive_summary']['product_opportunities']} product opportunities.\n")
     
     # Top Opportunities
-    print_section("TOP MARKET OPPORTUNITITIES")
+    print_section("TOP MARKET OPPORTUNITIES")
     for i, opp in enumerate(report['top_market_opportunities'], 1):
         print(f"\n{i}. {opp['trend']}")
         print(f"   Growth Potential: {opp['growth_potential']}")
@@ -76,7 +76,7 @@ def print_overview_report():
 def print_trend_report(trend_name: str):
     """Generate and display detailed trend report"""
     orchestrator = MarketIntelligenceOrchestrator()
-    report = orchestrator._generate_trend_report(trend_name)
+    report = orchestrator.generate_comprehensive_report(trend_name)
     
     print_section(f"DETAILED ANALYSIS: {trend_name.upper()}")
     
@@ -85,7 +85,7 @@ def print_trend_report(trend_name: str):
     print(f"\n{ta['name']}")
     print(f"Growth Score: {ta['growth_score']:.0%} ({ta['growth_rating']})")
     print(f"Market Size: {ta['market_size']}")
-    print(f"Adoption Stage: {ta['adopion_stage']}")
+    print(f"Adoption Stage: {ta['adoption_stage']}")
     print(f"Opportunity Level: {ta['opportunity_level']}")
     print(f"Key Differentiators: {', '.join(ta['key_differentiators'])}")
     
@@ -199,17 +199,17 @@ def list_ideas():
         print(f"   MVP: {idea.estimated_mvp_months} months")
 
 
-def export_report(output_file: str, format: str = "overview"):
+def export_report(output_file: str, report_format: str = "overview"):
     """Export report to file"""
     orchestrator = MarketIntelligenceOrchestrator()
-    
-    if format == "overview":
-        report = orchestrator._generate_overview_report()
-    elif format == "recommendations":
+
+    if report_format == "overview":
+        report = orchestrator.generate_overview_report()
+    elif report_format == "recommendations":
         report = {"recommendations": orchestrator.get_quick_recommendations(10)}
     else:
         # Default to overview
-        report = orchestrator._generate_overview_report()
+        report = orchestrator.generate_overview_report()
     
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
@@ -266,7 +266,7 @@ Examples:
     if args.command is None or args.command == 'overview':
         if args.json:
             orchestrator = MarketIntelligenceOrchestrator()
-            print(format_json_output(orchestrator._generate_overview_report()))
+            print(format_json_output(orchestrator.generate_overview_report()))
         else:
             print_overview_report()
     
@@ -340,7 +340,7 @@ Examples:
         
         if args.json:
             orchestrator = MarketIntelligenceOrchestrator()
-            print(format_json_output(orchestrator._generate_trend_report(args.argument)))
+            print(format_json_output(orchestrator.generate_comprehensive_report(args.argument)))
         else:
             print_trend_report(args.argument)
     

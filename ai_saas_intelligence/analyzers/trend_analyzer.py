@@ -110,10 +110,10 @@ class TrendAnalyzer:
     
     def get_trends_by_technology(self, technology: str) -> List[MarketTrend]:
         """Find trends that use specific technology"""
-        technology_lower = technology.lower()
+        technology_lower = technology.lower().strip()
         return [
-            t for t in self.trends_db 
-            if any(tech.lower() in technology_lower for tech in t.key_technologies)
+            t for t in self.trends_db
+            if any(technology_lower in tech.lower().strip() for tech in t.key_technologies)
         ]
     
     def get_top_opportunities(self, count: int = 5) -> List[MarketTrend]:
@@ -132,7 +132,7 @@ class TrendAnalyzer:
             "growth_score": trend.growth_potential,
             "growth_rating": self._get_growth_rating(trend.growth_potential),
             "market_size": trend.market_size_estimate,
-            "adopion_stage": trend.adoption_stage,
+            "adoption_stage": trend.adoption_stage,
             "opportunity_level": self._assess_opportunity_level(trend),
             "key_differentiators": trend.key_technologies[:3]
         }

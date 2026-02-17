@@ -100,7 +100,7 @@ python main.py analyze "Generative AI for Content Creation"
 python main.py export report.json
 
 # Export recommendations only
-python main.js export recommendations.json --format recommendations
+python main.py export recommendations.json --format recommendations
 
 # Output as JSON
 python main.py --json
@@ -152,10 +152,10 @@ for idea, _ in top_ideas:
 orchestrator = MarketIntelligenceOrchestrator()
 
 # Get overview report
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 
 # Get detailed trend analysis
-trend_report = orchestrator._generate_trend_report(
+trend_report = orchestrator.generate_comprehensive_report(
     "AI-Powered Customer Intelligence"
 )
 

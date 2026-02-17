@@ -52,7 +52,7 @@ Output includes:
 python main.py export market_intelligence.json
 
 # Export recommendations only
-python main.js export recommendations.json --format recommendations
+python main.py export recommendations.json --format recommendations
 
 # Get JSON output directly
 python main.py trends --json > trends.json
@@ -240,7 +240,7 @@ for i, (idea, score) in enumerate(top_ideas, 1):
 # Market Insights
 print("\n📊 MARKET INSIGHTS")
 print("-" * 70)
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 print(f"Total Trends Analyzed: {overview['executive_summary']['total_trends_analyzed']}")
 print(f"High-Severity Pain Points: {overview['executive_summary']['high_severity_pain_points']}")
 print(f"Product Opportunities: {overview['executive_summary']['product_opportunities']}")
@@ -333,7 +333,7 @@ concentration = comp_analyzer.get_market_concentration(trend_name)
 print(f"\nMarket Concentration: {concentration}")
 
 # Get full report
-report = orchestrator._generate_trend_report(trend_name)
+report = orchestrator.generate_comprehensive_report(trend_name)
 print(f"\nProduct Opportunities: {len(report['product_ideas'])}")
 ```
 
@@ -347,7 +347,7 @@ from ai_saas_intelligence import MarketIntelligenceOrchestrator
 orchestrator = MarketIntelligenceOrchestrator()
 
 # Get market size and growth data
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 
 print("MARKET OPPORTUNITY")
 print("="*50)
@@ -450,5 +450,5 @@ async def get_trends():
 @app.get("/api/analyze/{trend}")
 async def analyze_trend(trend: str):
     """Analyze specific trend"""
-    return orchestrator._generate_trend_report(trend)
+    return orchestrator.generate_comprehensive_report(trend)
 ```
