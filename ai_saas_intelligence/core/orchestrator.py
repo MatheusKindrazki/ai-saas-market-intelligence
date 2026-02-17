@@ -102,7 +102,7 @@ class MarketIntelligenceOrchestrator:
             ]
         }
     
-    def _generate_overview_report(self) -> Dict:
+    def generate_overview_report(self) -> Dict:
         """Generate overview report with top opportunities"""
         # Get top trends
         top_trends = self.trend_analyzer.get_top_opportunities(5)

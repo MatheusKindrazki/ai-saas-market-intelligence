@@ -45,7 +45,7 @@ The platform analyzes:
 
 ## Implementation
 
-### CLI Interface
+### CLI
 ```bash
 # Generate overview report
 python main.py
@@ -71,7 +71,7 @@ from ai_saas_intelligence import MarketIntelligenceOrchestrator
 
 orchestrator = MarketIntelligenceOrchestrator()
 recommendations = orchestrator.get_quick_recommendations(5)
-overview = orchestrator._generate_overview_report()
+overview = orchestrator.generate_overview_report()
 ```
 
 ## Top Opportunities Identified
@@ -104,8 +104,9 @@ overview = orchestrator._generate_overview_report()
 
 ## Files Added
 
-- main.py - CLI interface (358 lines)
+- main.py - CLI (358 lines)
 - ai_saas_intelligence/ - Core platform modules
+- ai_saas_intelligence/tests/ - Test suite for all components
 - README.md - Comprehensive documentation
 - USAGE_EXAMPLES.md - Detailed usage examples
 - demo.py - Quick demonstration script

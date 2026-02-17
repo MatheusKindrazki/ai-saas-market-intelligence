@@ -36,7 +36,7 @@ def print_section(title: str, content: str = ""):
 def print_overview_report():
     """Generate and display overview report"""
     orchestrator = MarketIntelligenceOrchestrator()
-    report = orchestrator._generate_overview_report()
+    report = orchestrator.generate_overview_report()
     
     print_section("AI SaaS MARKET INTELLIGENCE REPORT")
     print(f"\nGenerated comprehensive analysis of {report['executive_summary']['total_trends_analyzed']} market trends, "
@@ -204,12 +204,12 @@ def export_report(output_file: str, format: str = "overview"):
     orchestrator = MarketIntelligenceOrchestrator()
     
     if format == "overview":
-        report = orchestrator._generate_overview_report()
+        report = orchestrator.generate_overview_report()
     elif format == "recommendations":
         report = {"recommendations": orchestrator.get_quick_recommendations(10)}
     else:
         # Default to overview
-        report = orchestrator._generate_overview_report()
+        report = orchestrator.generate_overview_report()
     
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
@@ -266,7 +266,7 @@ Examples:
     if args.command is None or args.command == 'overview':
         if args.json:
             orchestrator = MarketIntelligenceOrchestrator()
-            print(format_json_output(orchestrator._generate_overview_report()))
+            print(format_json_output(orchestrator.generate_overview_report()))
         else:
             print_overview_report()
     
