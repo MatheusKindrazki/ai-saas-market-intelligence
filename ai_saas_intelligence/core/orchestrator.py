@@ -117,7 +117,7 @@ class MarketIntelligenceOrchestrator:
             "executive_summary": {
                 "total_trends_analyzed": len(self.trend_analyzer.get_all_trends()),
                 "high_severity_pain_points": len(high_severity_pain),
-                "product_opportunities": len(self.idea_generator.generate_all_ideas())
+                "product_opportunities": self.idea_generator.count_all_ideas()
             },
             "top_market_opportunities": [
                 {

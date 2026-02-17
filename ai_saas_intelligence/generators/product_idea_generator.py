@@ -283,7 +283,7 @@ class ProductIdeaGenerator:
     def generate_all_ideas(self) -> List[ProductIdea]:
         """Generate all product ideas from templates"""
         all_ideas = []
-        
+
         # Generate ideas from all templates
         for template in self.idea_templates:
             # Create a generic pain point for each template
@@ -294,7 +294,7 @@ class ProductIdeaGenerator:
                 current_solutions=[],
                 why_insufficient="Market gap identified"
             )
-            
+
             idea = ProductIdea(
                 name=template["product_name"],
                 description=template["description"],
@@ -308,8 +308,12 @@ class ProductIdeaGenerator:
                 estimated_mvp_months=template["estimated_mvp_months"]
             )
             all_ideas.append(idea)
-        
+
         return all_ideas
+
+    def count_all_ideas(self) -> int:
+        """Count all product ideas without generating the full list"""
+        return len(self.idea_templates)
     
     def get_ideas_by_monetization_model(self, model: MonetizationModel) -> List[ProductIdea]:
         """Filter ideas by monetization model"""

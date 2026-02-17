@@ -76,7 +76,7 @@ def print_overview_report():
 def print_trend_report(trend_name: str):
     """Generate and display detailed trend report"""
     orchestrator = MarketIntelligenceOrchestrator()
-    report = orchestrator._generate_trend_report(trend_name)
+    report = orchestrator.generate_comprehensive_report(trend_name)
     
     print_section(f"DETAILED ANALYSIS: {trend_name.upper()}")
     
@@ -199,13 +199,13 @@ def list_ideas():
         print(f"   MVP: {idea.estimated_mvp_months} months")
 
 
-def export_report(output_file: str, format: str = "overview"):
+def export_report(output_file: str, report_format: str = "overview"):
     """Export report to file"""
     orchestrator = MarketIntelligenceOrchestrator()
-    
-    if format == "overview":
+
+    if report_format == "overview":
         report = orchestrator.generate_overview_report()
-    elif format == "recommendations":
+    elif report_format == "recommendations":
         report = {"recommendations": orchestrator.get_quick_recommendations(10)}
     else:
         # Default to overview
@@ -340,7 +340,7 @@ Examples:
         
         if args.json:
             orchestrator = MarketIntelligenceOrchestrator()
-            print(format_json_output(orchestrator._generate_trend_report(args.argument)))
+            print(format_json_output(orchestrator.generate_comprehensive_report(args.argument)))
         else:
             print_trend_report(args.argument)
     
