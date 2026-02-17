@@ -52,7 +52,7 @@ Output includes:
 python main.py export market_intelligence.json
 
 # Export recommendations only
-python main.js export recommendations.json --format recommendations
+python main.py export recommendations.json --format recommendations
 
 # Get JSON output directly
 python main.py trends --json > trends.json
@@ -333,7 +333,7 @@ concentration = comp_analyzer.get_market_concentration(trend_name)
 print(f"\nMarket Concentration: {concentration}")
 
 # Get full report
-report = orchestrator._generate_trend_report(trend_name)
+report = orchestrator.generate_comprehensive_report(trend_name)
 print(f"\nProduct Opportunities: {len(report['product_ideas'])}")
 ```
 
@@ -450,5 +450,5 @@ async def get_trends():
 @app.get("/api/analyze/{trend}")
 async def analyze_trend(trend: str):
     """Analyze specific trend"""
-    return orchestrator._generate_trend_report(trend)
+    return orchestrator.generate_comprehensive_report(trend)
 ```

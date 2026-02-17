@@ -44,7 +44,7 @@ def print_overview_report():
           f"and {report['executive_summary']['product_opportunities']} product opportunities.\n")
     
     # Top Opportunities
-    print_section("TOP MARKET OPPORTUNITITIES")
+    print_section("TOP MARKET OPPORTUNITIES")
     for i, opp in enumerate(report['top_market_opportunities'], 1):
         print(f"\n{i}. {opp['trend']}")
         print(f"   Growth Potential: {opp['growth_potential']}")
@@ -85,7 +85,7 @@ def print_trend_report(trend_name: str):
     print(f"\n{ta['name']}")
     print(f"Growth Score: {ta['growth_score']:.0%} ({ta['growth_rating']})")
     print(f"Market Size: {ta['market_size']}")
-    print(f"Adoption Stage: {ta['adopion_stage']}")
+    print(f"Adoption Stage: {ta['adoption_stage']}")
     print(f"Opportunity Level: {ta['opportunity_level']}")
     print(f"Key Differentiators: {', '.join(ta['key_differentiators'])}")
     

@@ -36,8 +36,8 @@ class TestMarketIntelligenceOrchestrator:
         # Get a valid trend name
         trends = self.orchestrator.trend_analyzer.get_all_trends()
         if trends:
-            report = self.orchestrator._generate_trend_report(trends[0].name)
-            
+            report = self.orchestrator.generate_comprehensive_report(trends[0].name)
+
             assert 'trend_analysis' in report
             assert 'pain_points' in report
             assert 'product_ideas' in report

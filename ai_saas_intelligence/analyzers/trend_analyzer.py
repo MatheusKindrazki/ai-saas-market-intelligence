@@ -132,7 +132,7 @@ class TrendAnalyzer:
             "growth_score": trend.growth_potential,
             "growth_rating": self._get_growth_rating(trend.growth_potential),
             "market_size": trend.market_size_estimate,
-            "adopion_stage": trend.adoption_stage,
+            "adoption_stage": trend.adoption_stage,
             "opportunity_level": self._assess_opportunity_level(trend),
             "key_differentiators": trend.key_technologies[:3]
         }

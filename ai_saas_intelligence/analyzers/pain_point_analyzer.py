@@ -195,7 +195,11 @@ class PainPointAnalyzer:
                     "opportunity_rating": self._rate_opportunity(pain_point)
                 })
         return sorted(gaps, key=lambda x: x["severity_score"], reverse=True)
-    
+
+    def rate_opportunity(self, pain_point: PainPoint) -> str:
+        """Rate the opportunity level based on severity and solution gaps (public API)"""
+        return self._rate_opportunity(pain_point)
+
     def _rate_opportunity(self, pain_point: PainPoint) -> str:
         """Rate the opportunity level based on severity and solution gaps"""
         if pain_point.severity >= 0.88:
