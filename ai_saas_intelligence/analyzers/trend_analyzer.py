@@ -18,7 +18,7 @@ class TrendAnalyzer:
                 description="AI-powered tools that generate text, images, video, and audio content at scale",
                 growth_potential=0.92,
                 market_size_estimate="$40B by 2027",
-                key_technologies=["LLMs", "Diffusion Models", "Transformers", "Multimodal AI"],
+                key_technologies=["LLM", "Diffusion Models", "Transformers", "Multimodal AI"],
                 adoption_stage="growing"
             ),
             MarketTrend(
