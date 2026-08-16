@@ -11,8 +11,10 @@ def test_defaults_are_safe_and_identifiable():
     assert len(cfg.pain_queries) >= 10
     assert cfg.feeds["reddit_subreddit"].endswith("/.rss")
     assert cfg.feeds["wordpress_support"].endswith("{slug}/")
-    assert cfg.feeds["product_hunt"] == "https://www.producthunt.com/feed"
+    assert "dev.to/api/articles" in cfg.feeds["devto_articles"]
     assert "indie_hackers" in cfg.coverage_gaps
+    assert "reddit" in cfg.coverage_gaps
+    assert "web_search" in cfg.coverage_gaps
 
 
 def test_env_overrides_db_and_runtime_paths(monkeypatch):

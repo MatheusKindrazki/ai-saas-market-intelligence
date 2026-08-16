@@ -30,23 +30,34 @@ def collect(db: Database, *, families: list[str]|None=None, since: str|None=None
     run_id=start(db,"collect"); summary={}
     for family in families or list(SOURCES):
         now=datetime.now(timezone.utc).isoformat()
-        errors: list[str]=[]
-        attempted=len(cfg.pain_queries) if family in {"hackernews", "stackexchange", "github", "web_search"} else 1
+        errors: list[str]=[]; notes=""
+        attempted=(len(cfg.pain_queries) if family in {"hackernews", "stackexchange", "github", "web_search"}
+                   else cfg.reddit_subreddits_per_run if family == "reddit"
+                   else 2 if family == "reviews" else 1)
         inserted=0
         try:
             source=SOURCES[family](limit=20, cfg=cfg)
             # Query-aware sources aggregate all configured pain phrases themselves. Feed-only
             # sources still receive context for signal provenance without refetching the same feed.
             query=cfg.pain_queries if family in {"hackernews", "stackexchange", "github", "web_search"} else cfg.pain_queries[0]
-            signals=source.collect(query,since=since); inserted=sum(db.upsert_signal(s) for s in signals)
+            signals=source.collect(query,since=since)
+            inserted=len(signals)
+            for signal in signals:
+                db.upsert_signal(signal)
             attempted=len(getattr(source, "attempted_subreddits", [])) or attempted
             for subreddit, error in getattr(source, "errors", []):
                 errors.append(f"{subreddit}: {error}")
                 db.add_error(SignalError(f"{family}/{subreddit}",run_id,error,now))
+        except SourceError as exc:
+            message=str(exc)
+            if message.startswith("coverage gap:"):
+                notes=message
+            else:
+                errors.append(message); db.add_error(SignalError(family,run_id,message,now))
         except Exception as exc:
             errors.append(str(exc)); db.add_error(SignalError(family,run_id,str(exc),now))
-        entry={"family":family,"attempted":attempted,"collected":inserted,"errors":len(errors),"error_details":errors,"window":since,"ts":now}
-        db.add_coverage(CoverageEntry(run_id,family,family,attempted,inserted,len(errors),since or "",now,json.dumps(errors),now,tuple(errors)))
+        entry={"family":family,"attempted":attempted,"collected":inserted,"errors":len(errors),"error_details":errors,"notes":notes,"window":since,"ts":now}
+        db.add_coverage(CoverageEntry(run_id,family,family,attempted,inserted,len(errors),since or "",now,notes or json.dumps(errors),now,tuple(errors)))
         summary[family]=entry
     finish(db,run_id,True,summary); return summary
 def score_pains(db: Database) -> int:

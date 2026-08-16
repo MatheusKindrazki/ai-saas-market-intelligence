@@ -32,7 +32,7 @@ class Config:
     )
     feeds: dict[str, str] = field(default_factory=lambda: {
         "reddit_subreddit": "https://www.reddit.com/r/{subreddit}/.rss",
-        "product_hunt": "https://www.producthunt.com/feed",
+        "devto_articles": "https://dev.to/api/articles?per_page={limit}&tag={tag}",
         "wordpress_support": "https://wordpress.org/support/rss/plugin/{slug}/",
         "bing_rss": "https://www.bing.com/search?q={query}&format=rss",
         "duckduckgo_html": "https://html.duckduckgo.com/html/?q={query}",
@@ -41,6 +41,8 @@ class Config:
         "indie_hackers": "feed.rss is Cloudflare-blocked (403); no live feed is shipped.",
         "atlassian_community": "The documented community RSS endpoint returns 404.",
         "reddit_search": "search.rss is rate-limited (429); per-subreddit Atom RSS is used instead.",
+        "reddit": "reddit robots.txt denies all crawlers (Public Content Policy).",
+        "web_search": "all public search engines are blocked or robots-disallowed.",
     })
 
     @classmethod

@@ -16,7 +16,10 @@ class BaseSource:
     family: str
     _robots: dict[tuple[str, str], tuple[float, robotparser.RobotFileParser | None, bool]] = {}
     _robots_ttl = 3600
-    _robot_whitelist = {"hn.algolia.com", "api.github.com", "api.stackexchange.com", "api.z.ai"}
+    # These documented public APIs were manually verified as crawler-permitted.
+    # Keeping them here avoids turning a transient robots.txt lookup failure into
+    # a false source outage before the API request is even attempted.
+    _robot_whitelist = {"hn.algolia.com", "api.github.com", "api.stackexchange.com", "api.z.ai", "dev.to", "wordpress.org", "addons.mozilla.org", "gitlab.com"}
 
     def __init__(self, limit: int = 20, min_interval: float = 1.5, cfg: Config | None = None) -> None:
         self.cfg = cfg or Config.from_env()
