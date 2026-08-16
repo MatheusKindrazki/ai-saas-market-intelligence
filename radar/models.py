@@ -48,7 +48,7 @@ class Thesis:
 @dataclass(frozen=True)
 class CoverageEntry:
     run_id: str; source: str; family: str; attempted: int; collected: int; errors: int
-    window_start: str; window_end: str; notes: str; ts: str
+    window_start: str; window_end: str; notes: str; ts: str; error_details: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)

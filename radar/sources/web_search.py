@@ -15,7 +15,11 @@ class _Results(HTMLParser):
   if tag=="a" and self._href: self.links.append((self._href," ".join(self._text).strip()));self._href=None
 class WebSearchSource(BaseSource):
  family="web_search"
- def collect(self,q:str,since: str|None=None):
+ def collect(self,q:str | tuple[str, ...] | list[str],since: str|None=None):
+  out=[]
+  for phrase in self.queries(q): out.extend(self._collect_one(phrase))
+  return self.keep_since(out,since)
+ def _collect_one(self,q: str):
   try:
    html=self.fetch_text(f"https://html.duckduckgo.com/html/?q={quote_plus(q)}")
    if "anomaly" in html.lower() or "captcha" in html.lower(): raise SourceError("blocked/anti-bot")

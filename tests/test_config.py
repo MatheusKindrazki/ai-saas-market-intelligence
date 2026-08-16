@@ -6,7 +6,9 @@ from radar.config import Config, USER_AGENT
 def test_defaults_are_safe_and_identifiable():
     cfg = Config()
     assert cfg.ua == USER_AGENT
-    assert cfg.rate_limits["reddit"] == 2.0
+    assert cfg.rate_limits["reddit"] == 10.0
+    assert cfg.reddit_subreddits_per_run == 6
+    assert len(cfg.pain_queries) >= 10
     assert cfg.feeds["reddit_subreddit"].endswith("/.rss")
     assert cfg.feeds["wordpress_support"].endswith("{slug}/")
     assert cfg.feeds["product_hunt"] == "https://www.producthunt.com/feed"

@@ -7,7 +7,11 @@ from ..textproc import detect_language
 from .base import raw_signal
 class HackerNewsSource(BaseSource):
     family="hackernews"
-    def collect(self, query_context: str, since: str|None=None): return self.keep_since(self.parse(self.fetch_json(f"https://hn.algolia.com/api/v1/search_by_date?query={quote_plus(query_context)}&tags=(story,comment)&hitsPerPage={self.limit}"),query_context),since)
+    def collect(self, query_context: str | tuple[str, ...] | list[str], since: str|None=None):
+        out=[]
+        for query in self.queries(query_context):
+            out.extend(self.parse(self.fetch_json(f"https://hn.algolia.com/api/v1/search_by_date?query={quote_plus(query)}&tags=(story,comment)&hitsPerPage={self.limit}"),query))
+        return self.keep_since(out,since)
     def parse(self,data:dict,query:str):
         result=[]
         for d in data.get("hits",[])[:self.limit]:

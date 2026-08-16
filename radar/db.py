@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS pains(id TEXT PRIMARY KEY,signal_id TEXT,pain TEXT,ic
 CREATE TABLE IF NOT EXISTS clusters(id TEXT PRIMARY KEY,key_terms TEXT,member_pain_ids_json TEXT,created_at TEXT);
 CREATE TABLE IF NOT EXISTS scores(pain_id TEXT PRIMARY KEY,dimensions_json TEXT,total REAL,verdict TEXT,reasons_json TEXT,scored_at TEXT);
 CREATE TABLE IF NOT EXISTS theses(id TEXT PRIMARY KEY,cycle_id TEXT,recommendation TEXT,icp TEXT,offer TEXT,price TEXT,mvp_48h TEXT,concierge TEXT,outreach_msgs_json TEXT,kill_criteria_json TEXT,evidence_ids_json TEXT,confidence TEXT,created_at TEXT,cycle_date TEXT);
-CREATE TABLE IF NOT EXISTS coverage(run_id TEXT,source TEXT,family TEXT,attempted INTEGER,collected INTEGER,errors INTEGER,window_start TEXT,window_end TEXT,notes TEXT,ts TEXT);
+CREATE TABLE IF NOT EXISTS coverage(run_id TEXT,source TEXT,family TEXT,attempted INTEGER,collected INTEGER,errors INTEGER,window_start TEXT,window_end TEXT,notes TEXT,ts TEXT,error_details TEXT);
 CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,kind TEXT,started_at TEXT,ended_at TEXT,status TEXT,detail_json TEXT);
 """
 
@@ -22,6 +22,9 @@ class Database:
         self.connection.row_factory = sqlite3.Row
         self.connection.execute("PRAGMA journal_mode=WAL")
         self.connection.executescript(SCHEMA)
+        columns={row[1] for row in self.connection.execute("PRAGMA table_info(coverage)")}
+        if "error_details" not in columns:
+            self.connection.execute("ALTER TABLE coverage ADD COLUMN error_details TEXT")
         self.connection.execute("PRAGMA user_version=1")
         self.connection.commit()
     def close(self) -> None: self.connection.close()
@@ -33,12 +36,16 @@ class Database:
         self.connection.commit(); return inserted
     def signals(self) -> list[RawSignal]:
         return [RawSignal(**dict(r)) for r in self.connection.execute("SELECT * FROM signals ORDER BY id")]
+    def classified_signal_ids(self) -> set[str]:
+        return {r[0] for r in self.connection.execute("SELECT signal_id FROM pains")}
     def add_pain(self, p: Pain) -> None:
         self.connection.execute("INSERT OR REPLACE INTO pains VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (*[getattr(p,k) for k in list(Pain.__dataclass_fields__)[:12]],json.dumps(p.quotes),json.dumps(p.observed),json.dumps(p.inference),p.confidence,p.lang,p.classified_at,p.model)); self.connection.commit()
     def add_cluster(self, x: Cluster) -> None: self.connection.execute("INSERT OR REPLACE INTO clusters VALUES (?,?,?,?)",(x.id,x.key_terms,json.dumps(x.member_pain_ids),x.created_at));self.connection.commit()
     def add_score(self, x: Score) -> None: self.connection.execute("INSERT OR REPLACE INTO scores VALUES (?,?,?,?,?,?)",(x.pain_id,json.dumps(x.dimensions),x.total,x.verdict,json.dumps(x.reasons),x.scored_at));self.connection.commit()
     def add_thesis(self, x: Thesis) -> None: self.connection.execute("INSERT OR REPLACE INTO theses VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",(*list(x.__dict__.values())[:8],json.dumps(x.outreach_msgs),json.dumps(x.kill_criteria),json.dumps(x.evidence_ids),x.confidence,x.created_at,x.cycle_date));self.connection.commit()
-    def add_coverage(self, x: CoverageEntry) -> None: self.connection.execute("INSERT INTO coverage VALUES (?,?,?,?,?,?,?,?,?,?)",tuple(x.__dict__.values()));self.connection.commit()
+    def add_coverage(self, x: CoverageEntry) -> None:
+        self.connection.execute("INSERT INTO coverage (run_id,source,family,attempted,collected,errors,window_start,window_end,notes,ts,error_details) VALUES (?,?,?,?,?,?,?,?,?,?,?)", (*tuple(x.__dict__.values())[:10],json.dumps(x.error_details)))
+        self.connection.commit()
     def add_error(self, error: SignalError) -> None:
         self.connection.execute("INSERT INTO signal_errors VALUES (?,?,?,?)", (error.source,error.run_id,error.error,error.ts)); self.connection.commit()
     def pains(self) -> list[Pain]:

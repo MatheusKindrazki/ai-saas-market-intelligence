@@ -1,6 +1,7 @@
 """Fail-closed complaint mining with a hard verbatim evidence gate."""
 from __future__ import annotations
 import hashlib
+import re
 from datetime import datetime, timezone
 from typing import Any, Protocol
 from .db import Database
@@ -33,4 +34,16 @@ def mine_signal(db: Database, signal: RawSignal, llm: LLM, run_id: str|None=None
         db.connection.execute("UPDATE signals SET fetch_status='unclassified' WHERE id=?",(signal.id,));db.connection.commit()
         return None
 def mine(db: Database, llm: LLM, run_id: str|None=None) -> list[Pain]:
-    return [pain for signal in db.signals() if (pain:=mine_signal(db,signal,llm,run_id)) is not None]
+    classified=db.classified_signal_ids()
+    def normalize(text: str) -> str: return re.sub(r"[^\w]+", " ", text.casefold()).strip()
+    signals=db.signals()
+    seen={normalize(signal.body) for signal in signals if signal.id in classified}
+    pains=[]
+    for signal in signals:
+        # The persisted content hash catches exact repeats; this catches cheap formatting-only repeats
+        # before spending another model request in the same batch.
+        normalized=normalize(signal.body)
+        if signal.id in classified or normalized in seen: continue
+        seen.add(normalized)
+        if pain:=mine_signal(db,signal,llm,run_id): pains.append(pain)
+    return pains

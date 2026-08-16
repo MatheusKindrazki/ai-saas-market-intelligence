@@ -16,14 +16,19 @@ class Config:
     salt_path: Path = Path("radar_runtime/secretsalt")
     ua: str = USER_AGENT
     rate_limits: dict[str, float] = field(default_factory=lambda: {
-        "reddit": 2.0, "hackernews": 2.0, "github": 2.0,
+        "reddit": 10.0, "hackernews": 2.0, "github": 2.0,
         "stackexchange": 2.0, "forums": 2.0, "websearch": 2.0, "reviews": 2.0,
     })
     llm_endpoint: str = LLM_ENDPOINT
     llm_model: str = "glm-5.3"
-    subreddits: tuple[str, ...] = ("SaaS", "smallbusiness", "sysadmin", "webdev")
+    subreddits: tuple[str, ...] = ("founders", "smallbusiness", "SaaS", "sysadmin", "msp", "accounting", "ecommerce", "agencies", "dentistry", "veterinary", "construction")
+    reddit_subreddits_per_run: int = 6
+    use_cache: bool = True
     pain_queries: tuple[str, ...] = (
-        "manual spreadsheet", "too expensive", "looking for alternative", "takes hours",
+        "manual spreadsheet", "takes hours every week", "looking for alternative to",
+        "too expensive for what it does", "wish there was a tool", "how do you handle",
+        "is there a tool that", "paying someone to do", "cancelled my subscription because",
+        "spreadsheet between systems",
     )
     feeds: dict[str, str] = field(default_factory=lambda: {
         "reddit_subreddit": "https://www.reddit.com/r/{subreddit}/.rss",
