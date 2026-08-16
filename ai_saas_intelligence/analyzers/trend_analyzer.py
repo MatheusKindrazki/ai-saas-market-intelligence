@@ -113,7 +113,7 @@ class TrendAnalyzer:
         technology_lower = technology.lower()
         return [
             t for t in self.trends_db 
-            if any(tech.lower() in technology_lower for tech in t.key_technologies)
+            if any(technology_lower in tech.lower() for tech in t.key_technologies)
         ]
     
     def get_top_opportunities(self, count: int = 5) -> List[MarketTrend]:

@@ -1,9 +1,3 @@
-# AI SaaS Market Intelligence Platform
-# This project uses Python standard library only
-# No external dependencies required
-
-# Optional: For testing
+# Runtime uses Python's standard library only.
+# Development test dependency:
 pytest>=7.0.0
-
-# Optional: For data export and analysis
-pandas>=1.5.0
