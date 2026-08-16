@@ -1,6 +1,7 @@
 """Fail-closed complaint mining with a hard verbatim evidence gate."""
 from __future__ import annotations
 import hashlib
+import html
 import re
 from datetime import datetime, timezone
 from typing import Any, Protocol
@@ -22,9 +23,11 @@ def _value(data: dict[str,Any], field: str) -> str: return str(data.get(field) o
 def mine_signal(db: Database, signal: RawSignal, llm: LLM, run_id: str|None=None) -> Pain | None:
     if not is_candidate(signal.title, signal.body): return None
     try:
-        result=llm.classify("TITLE:\n"+signal.title+"\nBODY:\n"+signal.body,SCHEMA)
+        body=html.unescape(signal.body)
+        content="TITLE:\n"+signal.title+"\nBODY:\n"+body+"\nOutput ONLY a JSON object matching this schema. Quote observed evidence VERBATIM, character-for-character, from the BODY text only."
+        result=llm.classify(content,SCHEMA)
         observed=list(result.get("observed") or [])
-        if not result.get("is_complaint") or not validate_observed(signal.body,observed):
+        if not result.get("is_complaint") or not validate_observed(body,observed):
             raise ValueError("unclassified: missing or non-verbatim observed quote")
         quotes=tuple({"quote":quote,"url":signal.url,"verified":True} for quote in observed)
         pain=Pain(hashlib.sha256((signal.id+"|"+_value(result,"pain")).encode()).hexdigest(),signal.id,*[_value(result,x) for x in FIELDS],quotes,tuple(observed),tuple(map(str,result.get("inference") or [])),"A",str(result.get("lang") or signal.lang),datetime.now(timezone.utc).isoformat(),"glm-5.3")

@@ -14,6 +14,30 @@ def test_glm_skips_thinking_and_mine_rejects_bad_quotes(tmp_path):
     assert db.connection.execute("SELECT COUNT(*) FROM signal_errors").fetchone()[0] == 1
 
 
+def test_glm_parses_fenced_json_response_and_mines_verbatim_quote(tmp_path):
+    db=Database(tmp_path/"radar.db")
+    signal=RawSignal("fenced","reddit","reddit","1","https://example.test","manual spreadsheet","This manual spreadsheet takes hours.",None,None,"2026-01-01","q","en","hash")
+    db.upsert_signal(signal)
+    client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda *_: {"content":[{"type":"text","text":"```json\n{\"is_complaint\":true,\"pain\":\"manual work\",\"observed\":[\"manual spreadsheet takes hours\"],\"inference\":[]}\n```"}]})
+    assert mine_signal(db,signal,client) is not None
+
+
+def test_mine_unescapes_html_entities_before_prompt_and_verbatim_gate(tmp_path):
+    db=Database(tmp_path/"radar.db")
+    signal=RawSignal("entities","github","github","1","https://example.test","manual spreadsheet","I&#x27;m using a manual spreadsheet &amp; it takes hours &gt; every week.",None,None,"2026-01-01","q","en","hash")
+    db.upsert_signal(signal)
+    client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda *_: {"content":[{"type":"text","text":"{\"is_complaint\":true,\"pain\":\"manual work\",\"observed\":[\"I'm using a manual spreadsheet & it takes hours > every week.\"],\"inference\":[]}"}]})
+    assert mine_signal(db,signal,client) is not None
+    assert db.connection.execute("SELECT body FROM signals WHERE id='entities'").fetchone()[0] == signal.body
+
+
+def test_glm_payload_allows_text_after_thinking_budget():
+    payloads=[]
+    client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda _,__,payload: (payloads.append(payload) or {"content":[{"type":"text","text":"{}"}]}))
+    assert client.classify("BODY:\\nexample") == {}
+    assert payloads[0]["max_tokens"] >= 4000
+
+
 def test_mine_skips_classified_and_normalized_duplicate_bodies(tmp_path):
     db=Database(tmp_path/"radar.db")
     first=RawSignal("first","reddit","reddit","1","https://example.test/1","manual spreadsheet","Manual spreadsheet takes hours!",None,None,"2026-01-01","q","en","one")
