@@ -34,15 +34,17 @@ def test_forums_maps_devto_json(monkeypatch):
     assert signal.published_at == "2026-08-16T00:00:00Z"
 
 
-def test_reviews_maps_amo_json_and_rotates_plugins(monkeypatch):
+def test_reviews_maps_amo_page_state_and_rotates_plugins(monkeypatch):
     source = ReviewsSource(limit=5)
+    amo_html = ('<html><head></head><body>'
+                '<script type="application/json">'
+                '{"reviews": {"byId": {"99": {"id": 99, "body": "This update makes my workflow much harder.", '
+                '"created": "2026-08-15T00:00:00Z", "score": 2, "userName": "reviewer"}}, '
+                '"byAddon": {"ublock-origin": {"data": {"reviews": [99]}}}}}'
+                '</script></body></html>')
     monkeypatch.setattr(source, "selected_wordpress_plugin", lambda: "jetpack")
     monkeypatch.setattr(source, "selected_amo_addon", lambda: "ublock-origin")
-    monkeypatch.setattr(source, "fetch_text", lambda url: '<rss><channel><item><guid>wp-1</guid><title>Broken</title><description>Too much manual work</description><link>https://wordpress.org/x</link></item></channel></rss>')
-    monkeypatch.setattr(source, "fetch_json", lambda url: {"results": [{
-        "id": 99, "body": "This update makes my workflow much harder.", "created": "2026-08-15T00:00:00Z",
-        "user": {"username": "reviewer"}, "url": "https://addons.mozilla.org/review/99",
-    }]})
+    monkeypatch.setattr(source, "fetch_text", lambda url: amo_html if "addons.mozilla" in url else '<rss><channel><item><guid>wp-1</guid><title>Broken</title><description>Too much manual work</description><link>https://wordpress.org/x</link></item></channel></rss>')
 
     signals = source.collect("manual work")
 
@@ -50,4 +52,5 @@ def test_reviews_maps_amo_json_and_rotates_plugins(monkeypatch):
     assert amo.external_id == "99"
     assert amo.author_pseudonym is not None
     assert amo.body == "This update makes my workflow much harder."
+    assert amo.published_at == "2026-08-15T00:00:00Z"
     assert source._rotated_slug(("a", "b", "c")) == ("a", "b", "c")[date.today().toordinal() % 3]
