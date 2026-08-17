@@ -105,6 +105,50 @@ def test_keep_since_keeps_unparseable_dates_instead_of_raising():
     assert len(source.keep_since([_Signal("2026-08-01T00:00:00Z")], "garbage")) == 1
 
 
+class _Response:
+    def __init__(self, body: bytes) -> None: self._body = body
+    def read(self) -> bytes: return self._body
+    def getcode(self) -> int: return 200
+
+
+class _Opener:
+    """Captures the Request objects handed to urllib instead of hitting the network."""
+    def __init__(self, requests: list) -> None: self.requests = requests
+    def open(self, request, timeout=None): self.requests.append(request); return _Response(b"{}")
+
+
+@pytest.fixture
+def capture(monkeypatch):
+    requests: list = []
+    monkeypatch.setattr(base, "build_opener", lambda: _Opener(requests))
+    return requests
+
+
+def test_github_token_is_sent_only_to_the_github_api(cfg, capture):
+    source = BaseSource(min_interval=0, cfg=replace(cfg, github_token="ghp-secret", use_cache=False))
+
+    source.fetch_text("https://api.github.com/search/issues?q=x")
+    source.fetch_text("https://hn.algolia.com/api/v1/search?query=x")
+
+    assert capture[0].get_header("Authorization") == "Bearer ghp-secret"
+    assert capture[1].get_header("Authorization") is None
+    assert [r.get_header("User-agent") for r in capture] == [base.USER_AGENT] * 2
+
+
+def test_no_authorization_header_without_a_configured_token(cfg, capture):
+    BaseSource(min_interval=0, cfg=replace(cfg, use_cache=False)).fetch_text("https://api.github.com/search/issues?q=x")
+
+    assert capture[0].get_header("Authorization") is None
+
+
+def test_config_reads_the_github_token_from_the_environment(monkeypatch):
+    monkeypatch.setenv("GITHUB_TOKEN", "ghp-from-env")
+    assert Config.from_env().github_token == "ghp-from-env"
+
+    monkeypatch.delenv("GITHUB_TOKEN")
+    assert Config.from_env().github_token is None
+
+
 def test_keep_since_mixes_iso_and_rfc2822_against_naive_cutoff():
     source = BaseSource()
     signals = [_Signal("2026-08-16T10:00:00Z"), _Signal("Fri, 01 Aug 2026 10:00:00 -0300")]

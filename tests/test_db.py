@@ -12,3 +12,12 @@ def test_signal_insert_is_idempotent_and_updates_content(tmp_path):
     assert db.upsert_signal(signal("takes hours")) is False
     assert db.signals()[0].body == "takes hours"
     assert db.connection.execute("PRAGMA journal_mode").fetchone()[0].lower() == "wal"
+
+def test_opens_a_db_whose_parent_directories_are_missing(tmp_path):
+    """A clean checkout has no radar_runtime/; sqlite3.connect used to fail on it."""
+    path = tmp_path / "radar_runtime" / "nested" / "radar.db"
+
+    db = Database(path)
+
+    assert path.exists()
+    assert db.upsert_signal(signal()) is True

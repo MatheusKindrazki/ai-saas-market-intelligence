@@ -1,4 +1,5 @@
 import json
+from dataclasses import replace
 
 from radar.db import Database
 from radar.models import CoverageEntry, Pain, Thesis
@@ -70,6 +71,19 @@ def test_emit_cycle_with_no_data_in_window_is_empty_but_valid(tmp_path):
 
     assert (report["coverage"],report["theses"],report["evidence"]) == ([],[],[])
     assert "No thesis clears the bar this cycle." in (path.parent/"thesis.md").read_text()
+
+
+def test_emit_cycle_keeps_only_the_latest_thesis_of_a_retried_cycle(tmp_path):
+    """Deep retried on the same date used to publish every attempt; the contract is one per cycle."""
+    db=Database(tmp_path/"radar.db")
+    db.add_thesis(replace(_thesis("first","2026-08-16"),recommendation="First attempt",created_at="2026-08-16T10:00:00+00:00"))
+    db.add_thesis(replace(_thesis("second","2026-08-16"),recommendation="Second attempt",created_at="2026-08-16T18:00:00+00:00"))
+
+    path=emit_cycle(tmp_path/"reports",db,"2026-08-16")
+    report=json.loads(path.read_text())
+
+    assert [thesis["recommendation"] for thesis in report["theses"]] == ["Second attempt"]
+    assert "Second attempt" in (path.parent/"thesis.md").read_text()
 
 
 def test_emit_cycle_window_days_widens_the_lookback(tmp_path):

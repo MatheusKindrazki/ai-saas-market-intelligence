@@ -64,6 +64,12 @@ class BaseSource:
             allowed=False
         self._robots[key]=(time.monotonic(), parser if allowed else None, allowed)
         return allowed
+    def _headers(self, url: str) -> dict[str, str]:
+        """The token is scoped to api.github.com so no other host ever receives our credential."""
+        headers={"User-Agent": USER_AGENT}; token=getattr(self.cfg, "github_token", None)
+        if token and urlparse(url).netloc.casefold().split(":", 1)[0] == "api.github.com":
+            headers["Authorization"]=f"Bearer {token}"
+        return headers
     def fetch_json(self, url: str) -> Any:
         return json.loads(self.fetch_text(url))
     def fetch_text(self, url: str) -> str:
@@ -74,7 +80,7 @@ class BaseSource:
         if delay>0: time.sleep(delay)
         for attempt in range(3):
             try:
-                self._last=time.monotonic(); response=build_opener().open(Request(url,headers={"User-Agent":USER_AGENT}),timeout=15)
+                self._last=time.monotonic(); response=build_opener().open(Request(url,headers=self._headers(url)),timeout=15)
                 body=response.read().decode("utf-8", "replace"); self._write_cache(url, response.getcode(), body)
                 return body
             except HTTPError as exc:

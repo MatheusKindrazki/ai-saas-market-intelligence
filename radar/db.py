@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,kind TEXT,started_at TEXT,en
 
 class Database:
     def __init__(self, path: Path | str) -> None:
+        # A clean checkout has no radar_runtime/, and sqlite3.connect will not create it.
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
         self.connection = sqlite3.connect(path)
         self.connection.row_factory = sqlite3.Row
         self.connection.execute("PRAGMA journal_mode=WAL")

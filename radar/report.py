@@ -30,7 +30,10 @@ def emit_cycle(root: Path, db, cycle_date: str|None=None, window_days: int=1) ->
     directory=root/f"cycle-{cycle_date}"; directory.mkdir(parents=True,exist_ok=True)
     latest=db.connection.execute("SELECT run_id FROM coverage WHERE substr(ts,1,10) BETWEEN ? AND ? ORDER BY ts DESC LIMIT 1",window).fetchone()
     coverage=[dict(row) for row in db.connection.execute("SELECT * FROM coverage WHERE run_id IS ? ORDER BY ts",(latest[0],))] if latest else []
-    pains=db.pains(*window); theses=[dict(row) for row in db.connection.execute("SELECT * FROM theses WHERE cycle_date BETWEEN ? AND ? ORDER BY created_at DESC",window)]
+    pains=db.pains(*window); latest_thesis: dict[str, dict]={}
+    # A retried deep run writes a second thesis for the same cycle_date; the contract is one per cycle.
+    for row in db.connection.execute("SELECT * FROM theses WHERE cycle_date BETWEEN ? AND ? ORDER BY created_at DESC, rowid DESC",window): latest_thesis.setdefault(row["cycle_date"],dict(row))
+    theses=list(latest_thesis.values())
     evidence=[{"pain_id":p.id,"pain":p.pain,"icp":p.icp,"quotes":list(p.quotes),"confidence":p.confidence} for p in pains]
     report={"schema_version":"1","coverage":coverage,"theses":theses,"evidence":evidence}
     validate(report,SCHEMA); (directory/"report.json").write_text(json.dumps(report,indent=2,sort_keys=True))

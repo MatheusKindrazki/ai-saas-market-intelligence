@@ -21,6 +21,7 @@ class Config:
     })
     llm_endpoint: str = LLM_ENDPOINT
     llm_model: str = "glm-5.3"
+    github_token: str | None = None  # optional; raises the api.github.com quota from 10 to 30 req/min
     subreddits: tuple[str, ...] = ("founders", "smallbusiness", "SaaS", "sysadmin", "msp", "accounting", "ecommerce", "agencies", "dentistry", "veterinary", "construction")
     reddit_subreddits_per_run: int = 6
     use_cache: bool = True
@@ -48,4 +49,5 @@ class Config:
     @classmethod
     def from_env(cls) -> "Config":
         db_path = Path(os.environ.get("RADAR_DB", "radar_runtime/radar.db"))
-        return cls(db_path=db_path, cache_dir=db_path.parent / "cache", salt_path=db_path.parent / "secretsalt")
+        return cls(db_path=db_path, cache_dir=db_path.parent / "cache", salt_path=db_path.parent / "secretsalt",
+                   github_token=os.environ.get("GITHUB_TOKEN") or None)
