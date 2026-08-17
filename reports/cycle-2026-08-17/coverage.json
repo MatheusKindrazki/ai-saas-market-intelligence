@@ -1,0 +1,15 @@
+[
+  {
+    "attempted": 10,
+    "collected": 200,
+    "error_details": "[]",
+    "errors": 0,
+    "family": "hackernews",
+    "notes": "[]",
+    "run_id": "482f8893-107a-447b-b8cc-71633b8ceaa3",
+    "source": "hackernews",
+    "ts": "2026-08-17T00:33:04.393084+00:00",
+    "window_end": "2026-08-17T00:33:04.393084+00:00",
+    "window_start": ""
+  }
+]

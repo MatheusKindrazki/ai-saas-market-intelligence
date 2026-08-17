@@ -1,0 +1,37 @@
+{
+  "coverage": [
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "hackernews",
+      "notes": "[]",
+      "run_id": "482f8893-107a-447b-b8cc-71633b8ceaa3",
+      "source": "hackernews",
+      "ts": "2026-08-17T00:33:04.393084+00:00",
+      "window_end": "2026-08-17T00:33:04.393084+00:00",
+      "window_start": ""
+    }
+  ],
+  "evidence": [],
+  "schema_version": "1",
+  "theses": [
+    {
+      "concierge": "Do it by hand first: run the pre-warm for the beat-the-streak maintainer's next three game days and deliver the frames, or open a PR adding the API-backed cache behind the existing cache interface with before/after timing screenshots, anchored to the open issue (https://github.com/ncarsner/beat-the-streak/issues/50; tracked in the maintainer's outstanding-issues index https://github.com/ncarsner/beat-the-streak/issues/59).",
+      "confidence": "A",
+      "created_at": "2026-08-17T00:27:47.624141+00:00",
+      "cycle_date": "2026-08-17",
+      "cycle_id": "9f7cd5a7-560c-4128-8173-fc678cfa021d",
+      "evidence_ids_json": "[\"fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb\", \"https://github.com/cbwinslow/retrosheet/pull/138\", \"https://github.com/cskerritt/MLB_ML/pull/1\", \"https://github.com/kenxw10/HOMERUN/pull/16\", \"https://github.com/msantoria/mlb-prediction-app/issues/1316\", \"https://github.com/ncarsner/beat-the-streak/issues/50\", \"https://github.com/ncarsner/beat-the-streak/issues/59\"]",
+      "icp": "Solo maintainers/developers of scheduled MLB Statcast-based ranking or prediction tools (CLI or app) that compute a per-hitter model column on a 15-minute cron and currently disable the model on scheduled runs because of cold Statcast pulls; e.g., the beat-the-streak maintainer (pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb).",
+      "id": "85025cc5611dfc9b",
+      "kill_criteria_json": "[\"Maintainer solves it in-repo cheaply (e.g., per-season instead of per-day frame caching, or moving the model to a separate daily job) \\u2014 it is only one open item in their tracker (https://github.com/ncarsner/beat-the-streak/issues/59).\", \"Fewer than 3 of 10 contacted MLB-tool maintainers reply or accept the free trial within 2 weeks.\", \"No willingness to pay >= $20/month after 5 concierge demos \\u2014 hobbyist OSS maintainers treat this as a $0 fix.\", \"Upstream Statcast rate-limits or blocks the pre-warm volume, making the hosted cache uneconomical.\", \"Remote API latency or data staleness fails the 15-minute cron cadence in MVP testing.\"]",
+      "mvp_48h": "Day 1: FastAPI service wrapping Statcast queries (pybaseball), a 03:00 pre-warm job for all hitters and probable starters on the day's slate, and GET /frame?player_id&season&as_of. Day 2: a Python client shim matching the existing on-disk cache interface described in the pain (per-player/per-season/per-day frames, 15-minute cron, --model/--scheduled flags; pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb), run the calculator pipeline against it, and record before/after timing for the first daily tick.",
+      "offer": "StatcastFrame: a hosted, pre-warmed frame cache. Each morning before the first cron tick we pre-pull and cache the day's slate \u2014 every hitter's season frame plus each opposing starter's season frame \u2014 and serve them via a REST API keyed by player/season/as-of date, with a drop-in Python client shim that mirrors the existing on-disk per-player/per-season/per-day cache interface so the Model column can be enabled on scheduled runs without the roughly 80 cold pulls and 1+ hour first-tick stall (pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb; https://github.com/ncarsner/beat-the-streak/issues/50).",
+      "outreach_msgs_json": "[\"Hi \\u2014 saw issue #50 (https://github.com/ncarsner/beat-the-streak/issues/50): the Model column has to stay off scheduled runs because per-day Statcast caching means ~80 cold pulls and 1+ hour on the first daily tick against your 15-minute cron. I run a nightly pre-warmed frame cache (hitter season + opposing starter frames for the day's slate, REST lookup). Want me to run it free for your next 3 game days so the Model column can ship on schedule?\", \"Hi \\u2014 your issue re-wiring probable-pitcher and lineup refresh into fast homepage snapshots (https://github.com/msantoria/mlb-prediction-app/issues/1316) is the same refresh-cost wall we solve: pre-warmed frames behind a fast API so scheduled refreshes don't pay cold-pull costs. Interested in a free trial week?\", \"Hi \\u2014 HOMERUN's move to make the MLB Stats API the primary ingestion source (https://github.com/kenxw10/HOMERUN/pull/16) still leaves cold-pull costs on your side for scheduled runs. We pre-warm per-day frames (hitter + opposing pitcher) and serve them over REST; happy to run a free 3-day pilot against your slate.\"]",
+      "price": "$49/month per project for the hosted frame API with daily slate pre-warm; $150 one-time concierge integration; free 7-day trial during validation.",
+      "recommendation": "Pursue a micro-SaaS: a pre-warmed Statcast frame cache API. The validated pain is precise and costly: the Model column needs two Statcast frames per hitter (hitter's season + opposing starter's season), and per-day frame caching forces roughly 80 cold pulls taking over an hour on the first tick of each day against a 15-minute cron cadence, so the model must be disabled on scheduled runs (pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb; https://github.com/ncarsner/beat-the-streak/issues/50). The same data-refresh cost surface appears in adjacent MLB tools \u2014 a prediction app re-wiring probable-pitcher and lineup refresh into fast homepage snapshots (https://github.com/msantoria/mlb-prediction-app/issues/1316) and a prediction repo making MLB Stats API the primary ingestion source for schedules/probables (https://github.com/kenxw10/HOMERUN/pull/16) \u2014 so sell the nightly pre-warm + fast frame lookup to the beat-the-streak maintainer first, then to those adjacent builders."
+    }
+  ]
+}
