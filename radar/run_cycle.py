@@ -49,9 +49,13 @@ class _CapturingSearch:
     def collect(self, query: str):
         self.items=list(self.source.collect(query)); return self.items
 
+STOPWORDS=frozenset("""the a an is are was were am be been being to of for on in into at by from with without and or but not no nor so than too very this that these those it its they their them we our us you your i me my he she his her can cannot could will would shall should must do does did done have has had here there when where which who whom whose what how why if then else about after before during over under up down out off again more most some any all just only own same such as also
+""".split())
+
 def _cluster_terms(pains: list[object]) -> str:
-    words=Counter(word for pain in pains for word in re.findall(r"\w+",f"{pain.pain} {pain.icp}".casefold()))
-    return " ".join(word for word,_ in words.most_common(5))
+    """Unfiltered counts let stopwords win, so a cluster searched for 'the model column is too'."""
+    words=Counter(word for pain in pains for word in re.findall(r"\w+",f"{pain.pain} {pain.icp}".casefold()) if len(word)>2 and word not in STOPWORDS)
+    return " ".join(word for word,_ in words.most_common(6))
 
 def _evidence_item(item: object) -> dict[str,object]:
     if isinstance(item,dict): return {"url":item.get("url",""),"title":item.get("title",""),"body":item.get("body",item.get("quote",""))}

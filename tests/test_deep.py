@@ -6,7 +6,7 @@ import pytest
 
 from radar.db import Database
 from radar.models import Pain, Score
-from radar.run_cycle import deep_validate
+from radar.run_cycle import _cluster_terms, deep_validate
 from radar.validate import validate_cluster
 
 
@@ -46,6 +46,20 @@ def seed_pain(db, total=18):
     )
     db.add_pain(pain)
     db.add_score(Score(pain.id, {"severity": 5}, total, "include", ("test",), now))
+
+
+def test_cluster_terms_keep_content_words_only():
+    """A live run searched 'The Model column is too' and got 60 irrelevant items back."""
+    pain = SimpleNamespace(
+        pain="The Model column is too computationally expensive to run on the scheduled cron path",
+        icp="Data engineers maintaining cron pipelines",
+    )
+
+    terms = _cluster_terms([pain]).split()
+
+    assert "model" in terms and "cron" in terms
+    assert not {"the", "is", "to", "on"} & set(terms)
+    assert all(len(term) >= 3 for term in terms)
 
 
 def test_deep_persists_verified_thesis_and_cluster(tmp_path):
