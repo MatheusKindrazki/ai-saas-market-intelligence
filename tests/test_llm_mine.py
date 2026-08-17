@@ -55,6 +55,32 @@ def test_glm_reports_empty_text_and_honours_max_tokens_argument():
     assert len(payloads) == 3 and payloads[0]["max_tokens"] == 12000
 
 
+def test_glm_per_call_max_tokens_overrides_only_that_request():
+    """The thesis call needs a bigger budget than the client default; the default must survive it."""
+    payloads=[]
+    client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda _,__,payload: (payloads.append(payload) or {"content":[{"type":"text","text":"{}"}]}))
+    assert client.classify("BODY",max_tokens=16000) == {}
+    assert client.classify("BODY") == {}
+    assert [payload["max_tokens"] for payload in payloads] == [16000,4000]
+
+
+def test_glm_raises_on_max_tokens_stop_reason_instead_of_truncated_json():
+    """A JSON object cut mid-string parses as 'Unterminated string': fail loudly, not cryptically."""
+    client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda *_: {"stop_reason":"max_tokens","content":[{"type":"text","text":"{\"recommendation\":\"half a sen"}]})
+    with pytest.raises(ClassificationError,match="truncated at max_tokens"): client.classify("BODY")
+
+
+def test_glm_truncation_counts_toward_the_three_attempts():
+    calls=[]
+    responses=[{"stop_reason":"max_tokens","content":[{"type":"text","text":"{\"a\":\"cut"}]},{"stop_reason":"max_tokens","content":[{"type":"text","text":"{\"a\":\"cut"}]},{"stop_reason":"end_turn","content":[{"type":"text","text":"{\"ok\":true}"}]}]
+    client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda *_: (calls.append(1) or responses[len(calls)-1]))
+    assert client.classify("BODY") == {"ok":True}
+    assert len(calls) == 3
+    always=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda *_: (calls.append(1) or responses[0]))
+    with pytest.raises(ClassificationError,match="after 3 attempts"): always.classify("BODY")
+    assert len(calls) == 6
+
+
 def test_mine_skips_classified_and_normalized_duplicate_bodies(tmp_path):
     db=Database(tmp_path/"radar.db")
     first=RawSignal("first","reddit","reddit","1","https://example.test/1","manual spreadsheet","Manual spreadsheet takes hours!",None,None,"2026-01-01","q","en","one")

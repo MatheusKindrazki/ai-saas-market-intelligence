@@ -20,14 +20,17 @@ class GLMClient:
     def __init__(self, api_key: str | None=None, transport: Callable[[str,dict[str,str],dict[str,Any]],dict[str,Any]]|None=None, sleep: Callable[[float],None]=time.sleep, max_tokens: int=4000):
         self.api_key=api_key if api_key is not None else os.getenv("GLM_API_KEY")
         self.transport=transport or _default_transport; self.sleep=sleep; self.max_tokens=max_tokens
-    def classify(self, content: str, schema: dict[str,Any] | None=None) -> dict[str,Any]:
+    def classify(self, content: str, schema: dict[str,Any] | None=None, max_tokens: int | None=None) -> dict[str,Any]:
+        """max_tokens overrides the client default for this request only (large JSON answers need more room)."""
         if not self.api_key: raise ClassificationError("GLM_API_KEY is required for classification")
-        payload={"model":"glm-5.3","max_tokens":self.max_tokens,"system":SYSTEM,"messages":[{"role":"user","content":content}]}
+        payload={"model":"glm-5.3","max_tokens":max_tokens or self.max_tokens,"system":SYSTEM,"messages":[{"role":"user","content":content}]}
         if schema: payload["messages"][0]["content"] += "\nJSON schema: "+json.dumps(schema)
         error=None
         for attempt in range(3):
             try:
                 response=self.transport(ENDPOINT,{"x-api-key":self.api_key,"anthropic-version":"2023-06-01","content-type":"application/json"},payload)
+                # Truncated output parses as "Unterminated string" three lines down: name the real cause.
+                if response.get("stop_reason")=="max_tokens": raise ClassificationError("output truncated at max_tokens (raise budget)")
                 text="".join(block.get("text","") for block in response.get("content",[]) if block.get("type")=="text")
                 # Long thinking can consume the budget and leave no text: retryable, not a parse crash.
                 if not text.strip(): raise ClassificationError("empty text block (blocks: "+(",".join(str(block.get("type")) for block in response.get("content",[])) or "none")+")")

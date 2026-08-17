@@ -22,7 +22,7 @@ class FakeLLM:
     def __init__(self, recommendation):
         self.recommendation = recommendation
 
-    def classify(self, content, schema=None):
+    def classify(self, content, schema=None, max_tokens=None):
         if "Research evidence" in content:
             return {"competitors": [], "negative_patterns": [], "diy_alternatives": [], "acquisition_channels": [], "buyers": []}
         return {
@@ -121,7 +121,7 @@ def test_deep_thesis_prompt_is_bounded_and_json_serialisable(tmp_path):
     prompts = []
 
     class RecordingLLM(FakeLLM):
-        def classify(self, content, schema=None):
+        def classify(self, content, schema=None, max_tokens=None):
             prompts.append(content)
             return super().classify(content, schema)
 
@@ -132,3 +132,19 @@ def test_deep_thesis_prompt_is_bounded_and_json_serialisable(tmp_path):
     assert len(payload["evidence"]) <= 20
     assert all(len(item["body"]) <= 200 for item in payload["evidence"])
     assert len(prompts[-1]) < 12000
+
+
+def test_deep_thesis_call_asks_for_a_bigger_output_budget_than_validation(tmp_path):
+    """The thesis JSON is large; at the 4k client default it came back cut mid-string."""
+    db = Database(tmp_path / "radar.db")
+    seed_pain(db)
+    budgets = []
+
+    class RecordingLLM(FakeLLM):
+        def classify(self, content, schema=None, max_tokens=None):
+            budgets.append(max_tokens)
+            return super().classify(content, schema)
+
+    assert deep_validate(db, None, RecordingLLM("Build this for pain-1 using https://evidence.test/one."), FakeSearch()) is not None
+    assert budgets[-1] == 16000
+    assert budgets[:-1] == [None] * (len(budgets) - 1)
