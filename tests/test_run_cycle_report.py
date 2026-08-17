@@ -4,8 +4,13 @@ import json
 from datetime import datetime, timedelta, timezone
 
 from radar.db import Database
-from radar.models import Pain
+from radar.models import Pain, RawSignal
 from radar.run_cycle import main
+
+
+def _signal(suffix: str, text: str) -> RawSignal:
+    return RawSignal(f"signal-{suffix}","reddit","reddit",suffix,f"https://evidence.test/{suffix}","t",
+                     f"Honestly, {text} and nobody owns it.",None,None,"2026-08-16","q","en","c"*64)
 
 
 def _pain(suffix: str, text: str, classified_at: str) -> Pain:
@@ -17,8 +22,9 @@ def _week_db(tmp_path) -> tuple[Database, str]:
     """Two pains inside the weekly window: today's and one six days back."""
     today=datetime.now(timezone.utc).date()
     db=Database(tmp_path/"radar.db")
-    db.add_pain(_pain("today","Today manual spreadsheet pain",f"{today.isoformat()}T09:00:00+00:00"))
-    db.add_pain(_pain("older","Six days back manual spreadsheet pain",f"{(today-timedelta(days=6)).isoformat()}T09:00:00+00:00"))
+    for suffix,text,classified_at in (("today","Today manual spreadsheet pain",today),
+                                      ("older","Six days back manual spreadsheet pain",today-timedelta(days=6))):
+        db.upsert_signal(_signal(suffix,text)); db.add_pain(_pain(suffix,text,f"{classified_at.isoformat()}T09:00:00+00:00"))
     return db, today.isoformat()
 
 
