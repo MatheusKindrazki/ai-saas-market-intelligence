@@ -18,7 +18,7 @@ class TrendAnalyzer:
                 description="AI-powered tools that generate text, images, video, and audio content at scale",
                 growth_potential=0.92,
                 market_size_estimate="$40B by 2027",
-                key_technologies=["LLMs", "Diffusion Models", "Transformers", "Multimodal AI"],
+                key_technologies=["LLM", "Diffusion Models", "Transformers", "Multimodal AI"],
                 adoption_stage="growing"
             ),
             MarketTrend(
@@ -113,7 +113,7 @@ class TrendAnalyzer:
         technology_lower = technology.lower()
         return [
             t for t in self.trends_db 
-            if any(tech.lower() in technology_lower for tech in t.key_technologies)
+            if any(technology_lower in tech.lower() for tech in t.key_technologies)
         ]
     
     def get_top_opportunities(self, count: int = 5) -> List[MarketTrend]:

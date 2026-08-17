@@ -1,0 +1,1 @@
+{"type":"object","required":["schema_version","coverage","theses"],"properties":{"schema_version":{"enum":["1"]},"coverage":{"type":"array"},"theses":{"type":"array"},"evidence":{"type":"array"}}}

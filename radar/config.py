@@ -1,0 +1,53 @@
+"""Runtime configuration and the deliberately small public-source registry."""
+from __future__ import annotations
+
+import os
+from dataclasses import dataclass, field
+from pathlib import Path
+
+USER_AGENT = "DeepOpportunityRadar/1.0 (+https://github.com/MatheusKindrazki/ai-saas-market-intelligence)"
+LLM_ENDPOINT = "https://api.z.ai/api/anthropic/v1/messages"
+
+
+@dataclass(frozen=True)
+class Config:
+    db_path: Path = Path("radar_runtime/radar.db")
+    cache_dir: Path = Path("radar_runtime/cache")
+    salt_path: Path = Path("radar_runtime/secretsalt")
+    ua: str = USER_AGENT
+    rate_limits: dict[str, float] = field(default_factory=lambda: {
+        "reddit": 10.0, "hackernews": 2.0, "github": 2.0,
+        "stackexchange": 2.0, "forums": 2.0, "websearch": 2.0, "reviews": 2.0,
+    })
+    llm_endpoint: str = LLM_ENDPOINT
+    llm_model: str = "glm-5.3"
+    github_token: str | None = None  # optional; raises the api.github.com quota from 10 to 30 req/min
+    subreddits: tuple[str, ...] = ("founders", "smallbusiness", "SaaS", "sysadmin", "msp", "accounting", "ecommerce", "agencies", "dentistry", "veterinary", "construction")
+    reddit_subreddits_per_run: int = 6
+    use_cache: bool = True
+    pain_queries: tuple[str, ...] = (
+        "manual spreadsheet", "takes hours every week", "looking for alternative to",
+        "too expensive for what it does", "wish there was a tool", "how do you handle",
+        "is there a tool that", "paying someone to do", "cancelled my subscription because",
+        "spreadsheet between systems",
+    )
+    feeds: dict[str, str] = field(default_factory=lambda: {
+        "reddit_subreddit": "https://www.reddit.com/r/{subreddit}/.rss",
+        "devto_articles": "https://dev.to/api/articles?per_page={limit}&tag={tag}",
+        "wordpress_support": "https://wordpress.org/support/rss/plugin/{slug}/",
+        "bing_rss": "https://www.bing.com/search?q={query}&format=rss",
+        "duckduckgo_html": "https://html.duckduckgo.com/html/?q={query}",
+    })
+    coverage_gaps: dict[str, str] = field(default_factory=lambda: {
+        "indie_hackers": "feed.rss is Cloudflare-blocked (403); no live feed is shipped.",
+        "atlassian_community": "The documented community RSS endpoint returns 404.",
+        "reddit_search": "search.rss is rate-limited (429); per-subreddit Atom RSS is used instead.",
+        "reddit": "reddit robots.txt denies all crawlers (Public Content Policy).",
+        "web_search": "all public search engines are blocked or robots-disallowed.",
+    })
+
+    @classmethod
+    def from_env(cls) -> "Config":
+        db_path = Path(os.environ.get("RADAR_DB", "radar_runtime/radar.db"))
+        return cls(db_path=db_path, cache_dir=db_path.parent / "cache", salt_path=db_path.parent / "secretsalt",
+                   github_token=os.environ.get("GITHUB_TOKEN") or None)

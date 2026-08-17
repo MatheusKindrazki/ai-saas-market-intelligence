@@ -1,0 +1,878 @@
+{
+  "coverage": [
+    {
+      "attempted": 6,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "reddit",
+      "notes": "coverage gap: reddit robots.txt denies all crawlers (Public Content Policy)",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "reddit",
+      "ts": "2026-08-16T22:17:53.624385+00:00",
+      "window_end": "2026-08-16T22:17:53.624385+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "hackernews",
+      "notes": "[]",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "hackernews",
+      "ts": "2026-08-16T22:17:53.624479+00:00",
+      "window_end": "2026-08-16T22:17:53.624479+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "github",
+      "notes": "[]",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "github",
+      "ts": "2026-08-16T22:17:53.644486+00:00",
+      "window_end": "2026-08-16T22:17:53.644486+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "stackexchange",
+      "notes": "[]",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "stackexchange",
+      "ts": "2026-08-16T22:17:53.671216+00:00",
+      "window_end": "2026-08-16T22:17:53.671216+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 1,
+      "collected": 20,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "forums",
+      "notes": "[]",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "forums",
+      "ts": "2026-08-16T22:17:53.696671+00:00",
+      "window_end": "2026-08-16T22:17:53.696671+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 2,
+      "collected": 25,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "reviews",
+      "notes": "[]",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "reviews",
+      "ts": "2026-08-16T22:17:53.698112+00:00",
+      "window_end": "2026-08-16T22:17:53.698112+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "web_search",
+      "notes": "coverage gap: all public search engines blocked or robots-disallowed",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "web_search",
+      "ts": "2026-08-16T22:17:53.700845+00:00",
+      "window_end": "2026-08-16T22:17:53.700845+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 1,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "x_curated",
+      "notes": "coverage gap: X access not configured",
+      "run_id": "48aff752-de9a-4478-94e0-bf74bb2cc7fe",
+      "source": "x_curated",
+      "ts": "2026-08-16T22:17:53.700913+00:00",
+      "window_end": "2026-08-16T22:17:53.700913+00:00",
+      "window_start": ""
+    }
+  ],
+  "evidence": [
+    {
+      "confidence": "A",
+      "icp": "Vulnerability management and security operations professionals (especially those working with or inside US government entities) and vulnerability management tool vendors.",
+      "pain": "Risk-based vulnerability prioritization is fragmented: government directives and tool vendors rely on the KEV list, proprietary severity scores, and manual spreadsheets instead of a unified severity model like CVSS 4.0, leading to upsells, lock-in, and stalled modernization.",
+      "pain_id": "0301749a12e444fb5cebc51a2c1ef4d8446c7f3cd45db65e690d5a2ddfeee376",
+      "quotes": [
+        {
+          "quote": "It's the wrong strategy.",
+          "url": "https://news.ycombinator.com/item?id=48529894",
+          "verified": true
+        },
+        {
+          "quote": "What what they should do instead is push both US gov entities and vulnerability management tool vendors to properly embrace CVSS 4.0.",
+          "url": "https://news.ycombinator.com/item?id=48529894",
+          "verified": true
+        },
+        {
+          "quote": "The environmental, threat, and supplemental metrics[0] should be sufficient to express all of this (even the KEV status).",
+          "url": "https://news.ycombinator.com/item?id=48529894",
+          "verified": true
+        },
+        {
+          "quote": "In fact, the KEV list should really just be a CVSS 4.0 overlay on top of the base score.",
+          "url": "https://news.ycombinator.com/item?id=48529894",
+          "verified": true
+        },
+        {
+          "quote": "Instead, we have vulnerability management tool vendors upselling CISA KEV add-ons and pushing customers to use various proprietary severity scores.",
+          "url": "https://news.ycombinator.com/item?id=48529894",
+          "verified": true
+        },
+        {
+          "quote": "The US gov is stuck \"managing\" vulnerabilities with manual spreadsheets today and it will stay that way until <i>they</i> make a real effort to evolve severity scoring.",
+          "url": "https://news.ycombinator.com/item?id=48529894",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "A developer or product data/catalog manager at an e-commerce retailer or marketplace selling hardware/ironmongery sourced from multiple suppliers, who relies on faceted search for discovery.",
+      "pain": "Multi-supplier ironmongery product data has wildly varying attribute structures (e.g., equivalent finishes labeled differently by different suppliers), which breaks faceted search; multi-function products create overlapping-category ambiguity the poster has not solved.",
+      "pain_id": "03d862c87e95a75a362986aa70a1b6d4558c6d2948d73777b5e6221f90b3c9ea",
+      "quotes": [
+        {
+          "quote": "Working on normalizing ironmongery product data across multiple suppliers.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Door handles, hinges, and latches come with wildly varying attribute structures.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "One supplier lists 'finish: satin nickel', another says 'finish: brushed nickel'.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Functionally the same, but breaks faceted search.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Implemented a mapping layer that standardizes finishes, materials, and dimensions while preserving original values for display.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Also added a 'compatible_with' field for latch kits and handles that need to match.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Still figuring out how to handle products that serve multiple functions - like a gate latch that also works as a cabinet lock.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Currently storing primary and secondary categories separately.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Anyone else dealing with multi-supplier hardware catalogs? How do you handle overlapping product categories?",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Software developers/integrators building e-invoicing or POS integrations against government tax authority systems (KRA/OSCU) in Kenya.",
+      "pain": "The gavaConnect endpoint throws an error when a fractional percentage discount (e.g., 1.54%) is submitted, apparently because KRA rounds it to a whole percentage (2%), blocking the discount feature implementation.",
+      "pain_id": "0b3bdab95d63aad28f60f0b3caecd5d2bde9fc115e915843ff5b39a83b623f3d",
+      "quotes": [
+        {
+          "quote": "I'm implementing a similar feature for OSCU integration that accepts either percentage based or value based discount through the gavaConnect endpoint.",
+          "url": "https://github.com/Linkd-TaxID/kra-etims-sdk/issues/31",
+          "verified": true
+        },
+        {
+          "quote": "for a scenario like in the screenshot, the endpoint throws the following error which I'm assuming KRA is rounding the 1.54 to 2%.",
+          "url": "https://github.com/Linkd-TaxID/kra-etims-sdk/issues/31",
+          "verified": true
+        },
+        {
+          "quote": "Have you faced such cases before?",
+          "url": "https://github.com/Linkd-TaxID/kra-etims-sdk/issues/31",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Developer/DevOps engineer running event-triggered serverless workloads on Google Cloud (Cloud Functions Gen 2 / Cloud Run) that use Puppeteer and Handlebars for server-side PDF generation",
+      "pain": "After migrating to Gen 2 Google Cloud Functions, CPU is throttled outside of active request handling, causing a synchronous Handlebars template render to take over a minute (vs 0.5s in Gen 1) and making Puppeteer PDF generation fail entirely",
+      "pain_id": "302adb41a7f0a5e34e2c16de941916cb6419b1d5a91b5a4781df4d8497260f9d",
+      "quotes": [
+        {
+          "quote": "I've migrated an event triggered Google Cloud Function to gen 2 and I'm facing a lot of problems.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "The function takes care to print a PDF using Puppeteer.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "Even so I reach a point where the call to a function to render an Handlebars template takes more than 1 minute vs 0.5s in 1gen version. It's a sync operation.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "Subsequent call to Puppeteer for PDF printing miserably fails.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "Now I've found a solution by turning on \"CPU always allocated\" flag in Cloud Run but I'm afraid that it might be too expensive and can't see why it can't work as 1gen functions.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "I've configured each instance to receive no more than 1 request. What should I expect when more requests are received? Would each one cold-start a new instance? How long would each instance last? Are instances automatically terminated if no traffic is received? If so what does \"CPU always allocated\" mean?",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Observers/evaluators of non-thesis M.S. program quality, including returning students who finished undergraduate 5-15 years ago",
+      "pain": "Perceived low quality of non-thesis M.S. programs: revenue-driven, lacking ABET accreditation, and with large class sizes",
+      "pain_id": "674dd84fae371b7442556ea540dfb2928bf0d221473640fc7ea8a81f6ede965d",
+      "quotes": [
+        {
+          "quote": "M.S. Programs, non-thesis options, are cash cows for every university.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "Most of them are not ABET accredited.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "Class sizes are large.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "In defense of this practice, how do you handle students that finished undergraduate 5, 10, 15 years ago?",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "If you do much gating, there are not enough students.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Linux (Debian) power user who reads and annotates very large PDFs (700 pages), previously hit crashes with Xournal++, technically capable and willing to build the app from the GitHub repo rather than use Flatpak.",
+      "pain": "Navigation polish gaps in an otherwise satisfying app: scrolling feels jagged compared to other PDF viewers, no horizontal continuous scrolling mode, pan tool lacks auto-scroll, and the in-app cursor is a regular cursor instead of a dot.",
+      "pain_id": "72a15e98c4107d7fe331c2498f4c4f43286e73cb0142d9f18a6d68580d319a6b",
+      "quotes": [
+        {
+          "quote": "First of all thanks for this amazing tool, I had issue with xournal++ big pdf and zoom in would crash my laptop",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "this works near perfect imported and loaded my 700 pages pdf easily, have tabs to open side by side",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "I built it using github repo and not flatpak or flathub",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "for some reason scrolling on my device feels jagges not laggy but not butter smooth",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "like if I use touchpad to scroll up and down it will move a little bit not like other pdf viewers, this goes for canvas and empty page in app",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "wish there was a horizontal continuous ribbon like pdf scrolling like there's in firefox",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "The pan tool doesn't scroll like auto scroll in other softwares",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "this one's silly but The cursor shows as cursor not some dot XD",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "thanks for this app, if possible and time permits please consider these things",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Likely a developer, data scientist, or robotics/mapping engineer working with waypoint datasets (e.g., autonomous navigation, drones, GIS, or trajectory data)",
+      "pain": "Inconsistent scales in waypoints data",
+      "pain_id": "b75b83b5b15c770293d4bb09c0c14f8b9660d5860a6d760457e3125d927aed01",
+      "quotes": [
+        {
+          "quote": "Thank you in advance for your reply",
+          "url": "https://github.com/QwenLM/Qwen-RobotNav/issues/3",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Flutter Web developers shipping performance-critical apps compiled with `dart2wasm`, particularly those profiling and optimizing framework layout loops on Wasm engines.",
+      "pain": "Performance: `.runtimeType` lookups compiled by dart2wasm into `_getMasqueradedRuntimeType` produce O(N) linear if-else branch chains in Wasm, becoming a top CPU hotspot during heavy Flutter layout.",
+      "pain_id": "cf609db1682e9c24ed1df0d28f2334c8b8bd9ce8fb0439effbb7b07d72314f51",
+      "quotes": [
+        {
+          "quote": "While profiling a Flutter Web app compiled with `dart2wasm`, we noticed that `_getMasqueradedRuntimeType` is an abnormally hot function, consuming a significant portion of exclusive trace execution time.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "In a 5-second trace of a heavy Flutter layout, `_getMasqueradedRuntimeType` consistently appeared as a Top 5 exclusive CPU hotspot (with roughly the same sample count as core Flutter lifecycle methods like `performLayout`).",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "this function converts an `Object` to its masqueraded `_Type`.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "When reviewing the generated WebAssembly Text (WAT), this function compiles to a long, linear sequence of `i32.eq`, `i32.lt_u`, and `if-else` branches:",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "In Flutter, `.runtimeType` is queried frequently for diagnostics (`toDiagnosticsNode()`), debug assertions, and caching keys.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "Because Wasm engines evaluate this linear chain of `if-else` branches sequentially, resolving a simple `.runtimeType` lookup becomes an O(N) operation based on where the class ID falls in the `_getMasqueradedRuntimeType` switch block.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "In heavy framework loops, the cumulative overhead is immense.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "Because `ClassID` values are known at compile time and represent a contiguous (or near-contiguous) range of integers, `dart2wasm` should ideally peephole-optimize or compile `_getMasqueradedRuntimeType` into a jump table using Wasm's `br_table` instruction.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Developers or designers producing Windows .ico icon files from an SVG master who need multiple sizes and multiple color depths (16 colors, 256 colors, 4/8/24 bpp)",
+      "pain": "svg_to_ico lacks a color depth option; the user cannot generate .ico variants in different color depths/bpp alongside the supported size variants",
+      "pain_id": "dd9b843e11edd695a164ef5b4d88605a4883c7860e9f43d06fddc1d5e5b6b42b",
+      "quotes": [
+        {
+          "quote": "I need to create .ico files from a .svg master in various sizes (which svg_to_ico supports), but also in various _color depths_.",
+          "url": "https://github.com/Ortham/svg_to_ico/issues/1",
+          "verified": true
+        },
+        {
+          "quote": "For example 16x16 16 colors, 16x16 256 colors, and then for 32x32 and 48x48, 4 bpp (bits per pixel), 8-bpp, 24-bpp, and for 128x128 and 256x256, 24-bpp.",
+          "url": "https://github.com/Ortham/svg_to_ico/issues/1",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Developers/engineers building or operating AI coding agents or MCP tool servers",
+      "pain": "Tool outputs (binary file contents from getObject) blow up the LLM context window",
+      "pain_id": "e595a7fbb7bc2cb6a469bdc33ce04a5f6da4073ad4877c4a5e03420221064d91",
+      "quotes": [
+        {
+          "quote": "Suppose a getObject tool gets a file in binary which blows up the context, how do you handle it ?",
+          "url": "https://github.com/samuraikun/aws-s3-mcp/issues/34",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Backend/platform engineering teams running high-traffic Node.js services with self-hosted Redis Sentinel (Bitnami Helm chart) on AWS EKS/Kubernetes, owning their own Redis HA failover strategy.",
+      "pain": "Default Bitnami preStop CLIENT PAUSE hook froze the app for ~20s with massive TimeoutErrors; after a workaround, the remaining pain is fear that longer failovers (10-15s) at scale will explode ioredis's in-memory buffer, causing app-side OOM crashes or massive latency spikes on queue flush.",
+      "pain_id": "ee42891521debc5bf3e5c59d31fdfaa044e4ef25b26b4eb41d5067ee8256c46c",
+      "quotes": [
+        {
+          "quote": "We found that the default Bitnami preStop hook uses CLIENT PAUSE during pod termination, which freezes our app for ~20s and causes massive TimeoutErrors.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "We overwrote the preStop script to remove CLIENT PAUSE and instead trigger a SENTINEL FAILOVER immediately, followed by cleanly severing the TCP connections.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "The failover usually takes about 2 to 5 seconds.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "While this works perfectly in testing, I know we can't guarantee a strict 2-second failover in production.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "Sentinel elections and DNS propagation could easily push this delay to 5-10 or 15 seconds or more.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "If the delay extends to 10 seconds under massive traffic, our Node.js ioredis in-memory buffer will explode in size, potentially causing OOM crashes on the application side, or massive latency spikes when it finally flushes thousands of queued commands to the new master at once.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "Do you just accept the 5-10 second latency spike during a failover?",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "Is migrating to a managed service like AWS ElastiCache the only way to avoid this completely?",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "End-game thief-class players in a hex-based PvP/PvM MUD who rely on backstab as their signature special attack",
+      "pain": "Backstab's total mana cost (12 mana plus required upkeep buffs: hide 3, Stalker in the shadows 26, Speed 20) is unsustainable given the thief's smaller mana pool, making the end-game signature ability ineffective and unfun compared to cheaper, harder-hitting abilities of other classes.",
+      "pain_id": "f61fa4aa01334a66e582c158333e8ec2298458083cf071fe711c51e7d63eabed",
+      "quotes": [
+        {
+          "quote": "Backstab currently cost too much mana to use effectively.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "You are required to maintain hide (3 mana), Stalker in the shadows (26 mana) and Speed (20 mana) in order to backstab which uses 12 mana in itself.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "The thief has a smaller casting pool than other casters",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "it's nearly impossible to use it and still be able to maintain your other spell casting abilities (shadow step, venom, recalls, dark, speed, etc) without a sack of mrp.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "Backstab is an end-game ability and should be quite powerful.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "It uses 12 mana (32 mana if you venom both daggers) and does significantly less damage than other abilities available to the other casters for a similar cost.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "An average backstab attack without venom is about 70 damage for 12 mana, compared to a level 16 Ice spear which does over 200, or death that does at least 160.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "the MA jumpkick ability which does over 100 damage for 1 stamina point, and backstab can't be used 1 hex away.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "Make Backstab (and any future thief special attacks) cost stamina instead of mana.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "If the above isn't possible, it needs to be cheaper to use or have its damage increased significantly.. i.e. maybe 100% crit chance?",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "when the spell was broken initially and had no mana cost it was an absolute blast to play with.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "I was able to quickly move and dispatch ranged and archers before they caused harm to the party.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "if it's going to have its current damage output it needs to have very low mana/stam requirements in order to be fun/useful.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "Currently a backstab won't kill any (appropriate level) mob in 1 shot, so typically follow on attacks are required.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "A .NET/C# developer (likely solo or small team) building internal developer tooling \u2014 specifically a source-code analyzer feeding automated QA test generation \u2014 who needs cross-language structural extraction without external dependencies.",
+      "pain": "No existing single-runtime .NET solution lets the author structurally analyze multi-language source code (C#, TypeScript, Python) without external runtimes, per-language parsers, or fragile/cheap-but-unreliable approaches; every evaluated option violates at least one hard constraint.",
+      "pain_id": "f8f85ddf7b7ddb2ebeee57c78ad094f0f8de6d3eb2e0dc067878a724879a2b72",
+      "quotes": [
+        {
+          "quote": "I\u2019m building a code analyzer in .NET (C#) that extracts structural information (classes, methods, attributes, routes, DTOs) from source files across multiple languages: C#, TypeScript, and Python (more later).",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "The goal is to generate structured JSON representing the API surface (routes, parameters, DTOs) for automated QA test generation.",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Pure .NET / C# (prefer System.* only)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "No external runtimes (no Node.js for TypeScript, no Python runtime for .py)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Source-level analysis only (not compiled code)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Same approach across all languages (no mixing Roslyn with regex, etc.)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Minimal or no AI usage (cost doesn\u2019t scale for large projects)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Roslyn \u2013 works only for C#",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Tree-sitter bindings \u2013 not very stable in .NET",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "LSPs (OmniSharp, tsserver, pyright) \u2013 require subprocess per language",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "ANTLR \u2013 too much effort per language",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Regex or line parsing \u2013 too fragile",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "LLM parsing \u2013 too expensive",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "I\u2019m considering building a character-by-character state machine scanner.",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Same core logic for all languages",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Is a state-machine scanner viable long-term, or does it become too complex with edge cases?",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Are there any open-source projects that do lightweight cross-language structural analysis (not full parsing)?",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "For extracting things like classes, methods, and attributes, how accurate does parsing need to be to stay reliable?",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Looking for architectural guidance from anyone who has built something similar.",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Platform/infrastructure engineers at mid-to-large organizations who need to serve many services across deep subdomain trees (e.g., service.dev.company.tld, whatever.project.company.tld) and want to delegate subtree management to individual teams.",
+      "pain": "No publicly-trusted certificate solution supports arbitrarily deep multi-level subdomains with delegated per-team issuance; wildcard/SAN certs are limited to one wildcard layer and require paid reissuance on every change, while a name-constrained private intermediate CA lacks public trust.",
+      "pain_id": "facefc1a1a89c648fc5ffde103c21a4400936ef47d6b55c8c4212434a8d5eaab",
+      "quotes": [
+        {
+          "quote": "I am looking to expose different services at different subdomains, while also encoding several stages in the host name.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "This is particularly nice, because I might even delegate management of these trees via NS/SOA records.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "I've done some research and found some solutions, however none really seems to fully capture what I want.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "allows max. 1 deep layer. That severly hampers how teams can work with it downstream.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "needs to be regenerated/re-requested whenever anything changes.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "is private, so I would need to ask everyone to trust said Root CA.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "this cannot be expected of everybody, in particular not external parties I deal with",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "does not (?) allow me to stick additional info on the cert/ go for OV level certificates",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "Unfortunately I cannot seem to find a Root CA that is willing to dole out intermediates with the given permissions, specifically the combination of name constraints and CA=true (why is that, actually?).",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "I already implemented that solution for internal systems.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "I somehow consider Let's Encrypt to be more of a \"a real certificate would be too expensive\" option.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "If I demonstrate ownership of the second level domain and pay once, I would expect to be able to (re)request said certificate as often as I like.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "However, I cannot pay a hundred bucks every single time I need to add a new SAN.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Maintainer/developer of a baseball (MLB Statcast-based) hitter ranking tool that runs on a cron schedule and delivers rankings to subscribers via SMS; a technical solo or small-team dev responsible for both the data pipeline and the notification path.",
+      "pain": "The Model column is too computationally expensive to run on the scheduled cron path because Statcast frames are cached per-day, forcing roughly 80 cold pulls (over an hour) on the first tick of each day against a 15-minute cron cadence, so the model has to be disabled on scheduled runs and is lost from the subscriber-facing SMS output.",
+      "pain_id": "fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb",
+      "quotes": [
+        {
+          "quote": "The `Model` column runs the full calculator pipeline per hitter, and that needs two Statcast frames: the hitter's season and the opposing starter's.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Full 108-key evaluation, both frames already cached | **1.9s**",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Same evaluation, cold | **~78s**",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "The frames are cached on disk per player, per season, **per day**, so the cost recurs every calendar day rather than once per season.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "A full slate is up to 50 hitters (`MAX_PLAYERS`) plus up to 30 distinct starters. On the first tick of a day that is roughly **80 cold pulls, over an hour**, against a 15-minute cron cadence in `sms-notify.yml`.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "`--model` / `--no-model` defaults to **on for a manual run and off with `--scheduled`**, so the cron is not silently regressed. That makes the model unavailable to the SMS path, which is the path a subscriber actually reads.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Widen the cache key from day to season.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "The frame is refetched daily only to pick up yesterday's games. An incremental pull of the missing dates would be far cheaper than a whole-season refetch, and `statcast_batter` takes a date range.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Rank on the cheap column, model the top N.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "The table already shows only the top `n*2` and bottom `n`. Evaluating the model for 15 hitters rather than 50 cuts it by two thirds without changing what is displayed.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Option 2 looks like the best value: it attacks the actual cause, and a one-day incremental pull is seconds rather than a minute.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Roughly 8 of the 27 `p_hit`-scale keys need no Statcast.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Not applicable as a customer profile; author is a politically engaged, fact-checking forum commenter (critical of Trump yet defending accurate attribution) following US energy policy and the CARES Act debate.",
+      "pain": "Frustration over a misattributed quote: a prior commenter claimed the Trump administration loudly championed the oil reserve purchase as a 'bailout for big oil', but the author's research found no such direct quote from Trump, only from Chuck Schumer and Senate Democrats. Secondary pain: belief that refilling the strategic oil reserve was blocked by politicians for partisan advantage, harming US citizens.",
+      "pain_id": "fe00f96498422ec644a7646d7e41d6d9e09547885e261855d82be7849ab369bc",
+      "quotes": [
+        {
+          "quote": "For all I hate about him and his admin, the trump admin didn't call it a \"bailout\" once that I can find (even with the help of AI). The only quotes I can find are Chuck Schumer / Democrats calling it that and no direct quote of Trump saying it.",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "On March 13, 2020, Trump described it as purchasing crude oil \u201cat a very good price.\u201d He said filling the reserve would save taxpayers money while also \u201chelping our oil industry.\u201d",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "On April 3, a reporter directly asked Trump whether oil executives had requested a bailout. Trump answered: \u201cNo, they didn\u2019t ask for a bailout. No.\u201d",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "The \u201cbailout for big oil\u201d wording came from Chuck Schumer and Senate Democrats, not Trump. Schumer\u2019s official March 25 press release claimed that the final CARES Act had: \u201cEliminated $3 billion bailout for big oil.\u201d",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "Would love to be proven wrong here.",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "Either way it's filling the reserve for instances exactly like this, and was blocked by politicians to try and \"win\" for their party at the expense of every US citizen.",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Handwritten note-takers using Rnote on Linux with multi-button styluses like the HP Slim Rechargeable Pen",
+      "pain": "Rnote only supports fixed pre-set pen/stylus button actions with no way to add custom bindings (e.g., map a button to 'z' for undo) or mouse clicks; both buttons on the HP Slim Rechargeable Pen appear to erase",
+      "pain_id": "ffa7a0fcbca92cccde8a1893c927ea120265b872be5c40b7eb79f71dc17be27d",
+      "quotes": [
+        {
+          "quote": "There are only pre-set keys and actions that Rnote understands, eg: primary and secondary stylus button actions, mouse secondary button action, or two finger long press action.",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        },
+        {
+          "quote": "These pre-set keys are nice, but i wish there was the ability to add custom ones and rebind by pressing the button in the menu, like using the \"z\" key to undo, ect, and making it understand mouse clicks too so i can use my pen.",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        },
+        {
+          "quote": "Krita. super good, but significantly overkill. Krita has those re-bindable buttons i was talking about, but its quite slow and takes up so much space for unfinished drawings, and overall isn't meant for notes like Rnote is.",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        },
+        {
+          "quote": "both buttons on the pen erase?",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "schema_version": "1",
+  "theses": []
+}

@@ -1,0 +1,1448 @@
+{
+  "coverage": [
+    {
+      "attempted": 6,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "reddit",
+      "notes": "coverage gap: reddit robots.txt denies all crawlers (Public Content Policy)",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "reddit",
+      "ts": "2026-08-17T05:12:51.658743+00:00",
+      "window_end": "2026-08-17T05:12:51.658743+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "hackernews",
+      "notes": "[]",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "hackernews",
+      "ts": "2026-08-17T05:12:51.658824+00:00",
+      "window_end": "2026-08-17T05:12:51.658824+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "github",
+      "notes": "[]",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "github",
+      "ts": "2026-08-17T05:13:06.936871+00:00",
+      "window_end": "2026-08-17T05:13:06.936871+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "stackexchange",
+      "notes": "[]",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "stackexchange",
+      "ts": "2026-08-17T05:13:22.550015+00:00",
+      "window_end": "2026-08-17T05:13:22.550015+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 1,
+      "collected": 20,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "forums",
+      "notes": "[]",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "forums",
+      "ts": "2026-08-17T05:13:37.629042+00:00",
+      "window_end": "2026-08-17T05:13:37.629042+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 2,
+      "collected": 28,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "reviews",
+      "notes": "[]",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "reviews",
+      "ts": "2026-08-17T05:13:37.709932+00:00",
+      "window_end": "2026-08-17T05:13:37.709932+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "web_search",
+      "notes": "coverage gap: all public search engines blocked or robots-disallowed",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "web_search",
+      "ts": "2026-08-17T05:13:48.105057+00:00",
+      "window_end": "2026-08-17T05:13:48.105057+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 1,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "x_curated",
+      "notes": "coverage gap: X access not configured",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
+      "source": "x_curated",
+      "ts": "2026-08-17T05:13:48.105146+00:00",
+      "window_end": "2026-08-17T05:13:48.105146+00:00",
+      "window_start": ""
+    }
+  ],
+  "evidence": [
+    {
+      "confidence": "A",
+      "icp": "A developer or product data/catalog manager at an e-commerce retailer or marketplace selling hardware/ironmongery sourced from multiple suppliers, who relies on faceted search for discovery.",
+      "pain": "Multi-supplier ironmongery product data has wildly varying attribute structures (e.g., equivalent finishes labeled differently by different suppliers), which breaks faceted search; multi-function products create overlapping-category ambiguity the poster has not solved.",
+      "pain_id": "03d862c87e95a75a362986aa70a1b6d4558c6d2948d73777b5e6221f90b3c9ea",
+      "quotes": [
+        {
+          "quote": "Working on normalizing ironmongery product data across multiple suppliers.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Door handles, hinges, and latches come with wildly varying attribute structures.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "One supplier lists 'finish: satin nickel', another says 'finish: brushed nickel'.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Functionally the same, but breaks faceted search.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Implemented a mapping layer that standardizes finishes, materials, and dimensions while preserving original values for display.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Also added a 'compatible_with' field for latch kits and handles that need to match.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Still figuring out how to handle products that serve multiple functions - like a gate latch that also works as a cabinet lock.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Currently storing primary and secondary categories separately.",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        },
+        {
+          "quote": "Anyone else dealing with multi-supplier hardware catalogs? How do you handle overlapping product categories?",
+          "url": "https://github.com/bobdenotter/seo/issues/144",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Software developers/integrators building e-invoicing or POS integrations against government tax authority systems (KRA/OSCU) in Kenya.",
+      "pain": "The gavaConnect endpoint throws an error when a fractional percentage discount (e.g., 1.54%) is submitted, apparently because KRA rounds it to a whole percentage (2%), blocking the discount feature implementation.",
+      "pain_id": "0b3bdab95d63aad28f60f0b3caecd5d2bde9fc115e915843ff5b39a83b623f3d",
+      "quotes": [
+        {
+          "quote": "I'm implementing a similar feature for OSCU integration that accepts either percentage based or value based discount through the gavaConnect endpoint.",
+          "url": "https://github.com/Linkd-TaxID/kra-etims-sdk/issues/31",
+          "verified": true
+        },
+        {
+          "quote": "for a scenario like in the screenshot, the endpoint throws the following error which I'm assuming KRA is rounding the 1.54 to 2%.",
+          "url": "https://github.com/Linkd-TaxID/kra-etims-sdk/issues/31",
+          "verified": true
+        },
+        {
+          "quote": "Have you faced such cases before?",
+          "url": "https://github.com/Linkd-TaxID/kra-etims-sdk/issues/31",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "E-commerce/catalog data engineer or product data manager at a cabinet furniture (handles, knobs, pulls, catches) retailer/distributor",
+      "pain": "Supplier finish naming is inconsistent for the same finish ('Brushed Satin', 'Satin Chrome', 'Chrome Satin'), and products with mixed finishes don't fit a single-value finish attribute",
+      "pain_id": "166f442058427cb8062d6b2f0eaa167915095c0e2494fd5b5732fa3d14fcfcb3",
+      "quotes": [
+        {
+          "quote": "The main issue is finish consistency: suppliers use 'Brushed Satin', 'Satin Chrome', and 'Chrome Satin' for the same thing.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "Built a normalization script that uses a reference table of known finishes and applies fuzzy matching to map incoming data.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "This improved our Schema.org Product.material and Product.color attributes significantly.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "Challenge: products with mixed finishes (e.g., a handle with a brass body and chrome accents).",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "We store the dominant finish and list secondary finishes in a separate attribute.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "Anyone dealing with multi-finish products in their taxonomy?",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Do-it-yourself (Bogleheads-style) investors who rebalance portfolios across multiple account types (brokerage, IRA, 401K, HSA) and previously relied on manual spreadsheets",
+      "pain": "I got tired of fiddling with a manual spreadsheets",
+      "pain_id": "2ba66314cf4e1ea5ae0388b218009abff8c1887a77500682114f9b765e8a2fc1",
+      "quotes": [
+        {
+          "quote": "Whenever I do Bogleheads-style investment rebalancing across multiple accounts (brokerage, IRA, 401K, HSA)",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "I got tired of fiddling with a manual spreadsheets",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "There is maybe a paid product out there that does this but I couldn\u2019t find a DIY solver that met all my needs.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "I wanted to enable the most generic scenarios (e.g. expressing limited fund options in 401Ks; supporting blended funds like VT or target date funds; allowing user-specified fund preferences within accounts) but a naive greedy algorithms can\u2019t always find a possible solution.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "my old spreadsheet workflow sometimes led to dead ends where I\u2019d have to backtrack try different fund placement choices before it all worked.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "This tool is free, open-source, and requires no signup or registration to use.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Developer/DevOps engineer running event-triggered serverless workloads on Google Cloud (Cloud Functions Gen 2 / Cloud Run) that use Puppeteer and Handlebars for server-side PDF generation",
+      "pain": "After migrating to Gen 2 Google Cloud Functions, CPU is throttled outside of active request handling, causing a synchronous Handlebars template render to take over a minute (vs 0.5s in Gen 1) and making Puppeteer PDF generation fail entirely",
+      "pain_id": "302adb41a7f0a5e34e2c16de941916cb6419b1d5a91b5a4781df4d8497260f9d",
+      "quotes": [
+        {
+          "quote": "I've migrated an event triggered Google Cloud Function to gen 2 and I'm facing a lot of problems.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "The function takes care to print a PDF using Puppeteer.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "Even so I reach a point where the call to a function to render an Handlebars template takes more than 1 minute vs 0.5s in 1gen version. It's a sync operation.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "Subsequent call to Puppeteer for PDF printing miserably fails.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "Now I've found a solution by turning on \"CPU always allocated\" flag in Cloud Run but I'm afraid that it might be too expensive and can't see why it can't work as 1gen functions.",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        },
+        {
+          "quote": "I've configured each instance to receive no more than 1 request. What should I expect when more requests are received? Would each one cold-start a new instance? How long would each instance last? Are instances automatically terminated if no traffic is received? If so what does \"CPU always allocated\" mean?",
+          "url": "https://stackoverflow.com/questions/78210378/2gen-google-cloud-functions-cpu-allocation",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "React Native mobile developers (solo or team) building production apps with map-based live tracking or location features, targeting both iOS and Android, who need custom animated markers with high performance (50+ markers at 60fps).",
+      "pain": "react-native-maps custom markers are unreliable: image-based markers render inconsistently across formats and sources, the Animated API has no effect inside markers, and react-native-reanimated causes markers to disappear entirely, blocking animated marker features like pulsing, bouncing, scaling, and smooth point-to-point movement.",
+      "pain_id": "3e1a98d9ec393c539e98e78c0595fd9999c1ca04e5cb277a933b647e330d8ab5",
+      "quotes": [
+        {
+          "quote": "I'm building a React Native app with react-native-maps and facing issues with custom markers.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Custom marker images (PNG, SVG) display inconsistently  - sometimes they render, sometimes they don't.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "I've tried local images with  require() , remote images with  {uri: '...'} , and different image formats.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Can't animate custom markers",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Animated  API does nothing,  react-native-reanimated  makes markers disappear entirely.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Images show up randomly or not at all",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Animations either do nothing or break marker rendering entirely",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Smooth marker movement (point A to B like live tracking)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Pulsing rings, bouncing, and scaling effects",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Custom animated marker components (SVG/View with gradient)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Smooth press interactions with transitions",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Support for 50+ markers with 60fps performance",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Are these reliable alternatives? Any others I should consider?",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-leaflet-kit  - Has built-in pulse animation and custom icons",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-nitro-location-tracking  - Has LocationSmoother for smooth marker movement and bearing calculation",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-map-supercluster  - Handles clustering with animations enabled by default",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Local images with  require()",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Remote images with  {uri: '...'}",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Different image formats (PNG, JPG, SVG)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Animated  API with View wrapper",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-reanimated with shared values",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Different marker positioning approaches",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Platform: iOS and Android (both tested)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Device: Physical and Emulator",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "React Native: 0.83.4",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-maps: 1.29.0",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "If anyone has a working example or GitHub repository, please share!",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Cost-conscious driving-automation enthusiasts / DIY advanced driver-assistance users who want lane-keeping autonomy at a fraction of incumbent pricing, and who value hardware durability in hot climates.",
+      "pain": "Hardware reliability failure in hot weather due to a cheap non-automotive-grade fuse, plus a product that has stagnated at SAE Level 2 lane keeping while costing $1,000+, making it feel overpriced for its limitations.",
+      "pain_id": "4e5c9438db520ee6b743d18287824de7bf056c1a5e273826cc9c952dc093134d",
+      "quotes": [
+        {
+          "quote": "they have a cheap fuse (cents on the dollar) that\u2019s not automotive-grade so your windshield mounted device fails in hot weather and doesn\u2019t last past the hardware warranty.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "Known issue, doubt they ever fixed it.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "1B parameter model to stay between two lines. Why. Waste of time.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "Their product hasn\u2019t actually changed in several years because they will never advance past lane keeping SAE Level 2.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "I suspect for what they\u2019re selling for $1,000+ these days, could you find a way to do for half? Less than that?",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "it still runs off a Snapdragon 845.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "Nice tech, disappointing limitations and too expensive.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "The world moved on, Tesla is bad but a Waymo competitor would be more serious than this.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Data analyst / developer working with PostgreSQL who needs to automate creation of derived tables and views from existing database tables",
+      "pain": "Manually writing scripts to create tables/views in PostgreSQL is time-consuming when columns have many unique values, while a Python extract-transform-load approach feels too costly in time and resources as the source table grows",
+      "pain_id": "5fb4534b040393bfcd15076fde8fef3c7707ec7d7621dc5051d9ded5a47abe8b",
+      "quotes": [
+        {
+          "quote": "Is it \u201cappropriate\u201d to use Python to automate the creation of certain tables/views in PostgreSQL?",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "The thing is, some columns have too many unique values, and writing the script becomes time-consuming compared to the value it provides.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Besides, Excel could do it faster and more simply.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Since Python is more \u201cefficient\u201d\u2014particularly thanks to loops, for example\u2014it would save time and easily cover all possible scenarios.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "However, the task involves creating a table or view from an existing table in the database.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Which, in the case of using a Python script, would amount to \u201cextracting\u201d the source table from the database, transforming it, and writing the result back to the database.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "So, this solution seems unnecessarily \u201ccostly\u201d to me\u2014especially in terms of time and resources\u2014as the source table grows, doesn\u2019t it?",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Is it acceptable in terms of \u201cbest practices,\u201d \u201cmaintainability,\u201d and performance?",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Polish-conscious Apple-platform developer (iOS/macOS) using SwiftUI and custom SF Symbols in a shipped app, who cares about pixel-perfect toolbar icon alignment across Dynamic Type sizes.",
+      "pain": "When switching a SwiftUI toolbar SF Symbol between its unbadged and badged variants (e.g., 'tray' to 'tray.badge' or a custom symbol pair), the taller bounding box of the badged variant causes the underlying symbol to pop/jump up and down because toolbar labels ignore the symbol's text guides and lay out by bounding box.",
+      "pain_id": "605e4405e7488059351c9c6b9bd799abd60b24e36d2443edbe0adb65e5c60676",
+      "quotes": [
+        {
+          "quote": "But apparently .toolbar labels ignore your symbol's text guides?",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "they look perfect when I export, but when I switch symbols, they pop up and down",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "the badge makes the symbol taller, so the underlying symbol pops down when it's badged",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I've disabled the .contentTransition because that 1. just makes it fade in and out up and down rather than pop, and 2. leads to other hilarity as all the other attributes change at random intervals.",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "Every AI tool suggests that I wrap it in a frame, but that only prevents my icon changing size from bothering the other parts of the toolbar",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I want my symbol to be laid out according to its text guides, not it's bounding box, and the frame doesn't fix that at all",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "If there is no \"correct\" answer, I can make it mostly work with custom .offset(y: activeFilterCount > 0 ? -3.5 : 0) And eyeballing an offset at every text size, but that seems deeply stupid.",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I wish there was a way to use .alignmentGuide() and/or .firstTextBaseline to actually lock it down, but I don't think those work in toolbars",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I'm also pushing along trying to make it work with .badge() but that's not going to be the ideal appearance.",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Observers/evaluators of non-thesis M.S. program quality, including returning students who finished undergraduate 5-15 years ago",
+      "pain": "Perceived low quality of non-thesis M.S. programs: revenue-driven, lacking ABET accreditation, and with large class sizes",
+      "pain_id": "674dd84fae371b7442556ea540dfb2928bf0d221473640fc7ea8a81f6ede965d",
+      "quotes": [
+        {
+          "quote": "M.S. Programs, non-thesis options, are cash cows for every university.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "Most of them are not ABET accredited.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "Class sizes are large.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "In defense of this practice, how do you handle students that finished undergraduate 5, 10, 15 years ago?",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        },
+        {
+          "quote": "If you do much gating, there are not enough students.",
+          "url": "https://news.ycombinator.com/item?id=49311377",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Linux (Debian) power user who reads and annotates very large PDFs (700 pages), previously hit crashes with Xournal++, technically capable and willing to build the app from the GitHub repo rather than use Flatpak.",
+      "pain": "Navigation polish gaps in an otherwise satisfying app: scrolling feels jagged compared to other PDF viewers, no horizontal continuous scrolling mode, pan tool lacks auto-scroll, and the in-app cursor is a regular cursor instead of a dot.",
+      "pain_id": "72a15e98c4107d7fe331c2498f4c4f43286e73cb0142d9f18a6d68580d319a6b",
+      "quotes": [
+        {
+          "quote": "First of all thanks for this amazing tool, I had issue with xournal++ big pdf and zoom in would crash my laptop",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "this works near perfect imported and loaded my 700 pages pdf easily, have tabs to open side by side",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "I built it using github repo and not flatpak or flathub",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "for some reason scrolling on my device feels jagges not laggy but not butter smooth",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "like if I use touchpad to scroll up and down it will move a little bit not like other pdf viewers, this goes for canvas and empty page in app",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "wish there was a horizontal continuous ribbon like pdf scrolling like there's in firefox",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "The pan tool doesn't scroll like auto scroll in other softwares",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "this one's silly but The cursor shows as cursor not some dot XD",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        },
+        {
+          "quote": "thanks for this app, if possible and time permits please consider these things",
+          "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Senior, high-ownership engineers/professionals at large tech companies (FAANG-scale) who act beyond their role scope and feel structurally unrewarded for it.",
+      "pain": "Misalignment between intrinsic, high-ownership motivation (doing what is strategically right for the business) and corporate reward structures at large companies that only recognize work fitting the formal role profile.",
+      "pain_id": "782008987954d360d970f8c9d341d3bbbcffe1dc900167c57acaf7d9c4f20b3f",
+      "quotes": [
+        {
+          "quote": "First I completely agree with the author that you have to \"bring your own incentives\" instead of trying to discern them from the environment.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "I bring a high-ownership perspective to my job - which basically means I try to do what's actually most existential or strategic for the business.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "I just wrapped up 4 years in a FAANG where the incentives were aligned very much  away  from that, to the point where a VP had to tell me that she could only reward me for things that aligned specifically to my role profile, not for reaching out beyond the role to actually move the needle",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "(btw totally understandable why big companies have to operate that way - but an example where \"good\" and \"incentive\" were not aligned.)",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "So I was faced with a choice - \"die on the hill\" for what I know is right, or follow the incentive structure.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "Bail for a smaller company where I routinely work with the CEO and senior leadership directly and there's no gap between \"what's right for the business\" and \"what I should be doing\"",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "you (a) want to be in a place whose incentives reflect what you think is right already and (b) create such an environment for the kind of people you want to be and work with.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "",
+      "pain": "Cannot get their Google Apps Script calendar-event automation to fire automatically and reliably; the final blocker is that the script must be manually run, and available installable triggers either create duplicate events or constrain the workflow.",
+      "pain_id": "a9821bb4718547d8ec5e642fbcc73e57a81f3ea54fc69f2d15238878a933396e",
+      "quotes": [
+        {
+          "quote": "Formatting inconsistencies, typos, lack of necessary information, and even straight up wrong details make my job (creating a program around, and then organizing the talent for each booking) nearly impossible.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "Due to things well beyond my current knowledge, I am unable to create a dummy proof way for the event to \"Trigger\".",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "the thing blocking me in the end is that I have to actively go to my Script and hit \"Run\" for it to properly function.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "The first is a \"Create\" script which takes all the information, creates an event, and then pulls the EventID # which it pastes in a safe cell on a different tab. The second is an \"Edit\" script which searches for the previously created event by ID, and then makes the changes as needed.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "It is a frequent need for our Reps to go in and edit the gig (people get sick, availabilities change, or mistakes were made the first time, etc.)",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I can do it by \"Edit\" or by \"Change\", but again this just creates a whole new Event every time.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I wish they could do onEdit of specific Cell, because THAT would be useful.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I could create a macro that notifies ME whenever changes are made, and then I could go in and manually hit the button. But..... Is that REALLY the best solution?",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I'm more looking for creative coding ways to solve a general problem, rather than a specific fix to a single string.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "we also use Monday.com and have a Zappier account. But I'd rather avoid either of those if possible",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I'd rather not have this whole thing come crashing down because one minor part of it depended on Zappier, which our next ED cut from the budget",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "Anything that could make what I want happen, without making me do annoying extra steps, or without requiring me to trust others with a keyboard, I am open to suggestions!",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Likely a developer, data scientist, or robotics/mapping engineer working with waypoint datasets (e.g., autonomous navigation, drones, GIS, or trajectory data)",
+      "pain": "Inconsistent scales in waypoints data",
+      "pain_id": "b75b83b5b15c770293d4bb09c0c14f8b9660d5860a6d760457e3125d927aed01",
+      "quotes": [
+        {
+          "quote": "Thank you in advance for your reply",
+          "url": "https://github.com/QwenLM/Qwen-RobotNav/issues/3",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Self-hosted / open-weight LLM users and developers (e.g., people running Qwen-class models locally) who care about inference efficiency, compute cost, and model reasoning behavior.",
+      "pain": "The model performs massive amounts of hidden 'thinking' computation for every single output token, which the user perceives as wasted compute that cannot be seen, controlled, or optimized away under the current architecture.",
+      "pain_id": "ca9ef0a13149cb1b1cc87940660fd857e2ad6185ee5d1b4ba893bec6fdc4503b",
+      "quotes": [
+        {
+          "quote": "I hated it at first too...",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "all the hidden \"thinking\" in the models layers that happens for  each token output",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "It is a wild amount of waste!",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "We just can't see it.",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "This kind of stupid excessive computation is fundamentally how these models are so good.",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "someone smart or a foundation model will come up with a more efficient architecture",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Flutter Web developers shipping performance-critical apps compiled with `dart2wasm`, particularly those profiling and optimizing framework layout loops on Wasm engines.",
+      "pain": "Performance: `.runtimeType` lookups compiled by dart2wasm into `_getMasqueradedRuntimeType` produce O(N) linear if-else branch chains in Wasm, becoming a top CPU hotspot during heavy Flutter layout.",
+      "pain_id": "cf609db1682e9c24ed1df0d28f2334c8b8bd9ce8fb0439effbb7b07d72314f51",
+      "quotes": [
+        {
+          "quote": "While profiling a Flutter Web app compiled with `dart2wasm`, we noticed that `_getMasqueradedRuntimeType` is an abnormally hot function, consuming a significant portion of exclusive trace execution time.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "In a 5-second trace of a heavy Flutter layout, `_getMasqueradedRuntimeType` consistently appeared as a Top 5 exclusive CPU hotspot (with roughly the same sample count as core Flutter lifecycle methods like `performLayout`).",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "this function converts an `Object` to its masqueraded `_Type`.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "When reviewing the generated WebAssembly Text (WAT), this function compiles to a long, linear sequence of `i32.eq`, `i32.lt_u`, and `if-else` branches:",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "In Flutter, `.runtimeType` is queried frequently for diagnostics (`toDiagnosticsNode()`), debug assertions, and caching keys.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "Because Wasm engines evaluate this linear chain of `if-else` branches sequentially, resolving a simple `.runtimeType` lookup becomes an O(N) operation based on where the class ID falls in the `_getMasqueradedRuntimeType` switch block.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "In heavy framework loops, the cumulative overhead is immense.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        },
+        {
+          "quote": "Because `ClassID` values are known at compile time and represent a contiguous (or near-contiguous) range of integers, `dart2wasm` should ideally peephole-optimize or compile `_getMasqueradedRuntimeType` into a jump table using Wasm's `br_table` instruction.",
+          "url": "https://github.com/dart-lang/sdk/issues/63320",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Developers or designers producing Windows .ico icon files from an SVG master who need multiple sizes and multiple color depths (16 colors, 256 colors, 4/8/24 bpp)",
+      "pain": "svg_to_ico lacks a color depth option; the user cannot generate .ico variants in different color depths/bpp alongside the supported size variants",
+      "pain_id": "dd9b843e11edd695a164ef5b4d88605a4883c7860e9f43d06fddc1d5e5b6b42b",
+      "quotes": [
+        {
+          "quote": "I need to create .ico files from a .svg master in various sizes (which svg_to_ico supports), but also in various _color depths_.",
+          "url": "https://github.com/Ortham/svg_to_ico/issues/1",
+          "verified": true
+        },
+        {
+          "quote": "For example 16x16 16 colors, 16x16 256 colors, and then for 32x32 and 48x48, 4 bpp (bits per pixel), 8-bpp, 24-bpp, and for 128x128 and 256x256, 24-bpp.",
+          "url": "https://github.com/Ortham/svg_to_ico/issues/1",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Price-sensitive consumers of staple foods (e.g., hard bread in Newfoundland) facing supply shortages",
+      "pain": "During a shortage of an essential staple, price increases make the item unaffordable for most people, leaving them without food regardless of whether shelves are stocked.",
+      "pain_id": "e3b84a6c4ac2996ffcc985bf486d0f78c375fe1048fc57b1c1acb59dc4d68b9e",
+      "quotes": [
+        {
+          "quote": "it slows down how fast the supply sells out",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "This is not the goal.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "The only mitigation that could make sense is to impose limits per person or household to avoid someone hugging all the supply.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "By the very few who can afford it, by definition of raising the prices until the products barely sell.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "If you have 100 items and 1000 people you guarantee that at least 90% of people won't get an item.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "It doesn't matter if it's because there is none left, or because it's too expensive.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "If you're hungry because the shelf is empty, or the shelf is full but you can't afford it, what's the practical difference for your stomach?",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Developers/engineers building or operating AI coding agents or MCP tool servers",
+      "pain": "Tool outputs (binary file contents from getObject) blow up the LLM context window",
+      "pain_id": "e595a7fbb7bc2cb6a469bdc33ce04a5f6da4073ad4877c4a5e03420221064d91",
+      "quotes": [
+        {
+          "quote": "Suppose a getObject tool gets a file in binary which blows up the context, how do you handle it ?",
+          "url": "https://github.com/samuraikun/aws-s3-mcp/issues/34",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Backend/platform engineering teams running high-traffic Node.js services with self-hosted Redis Sentinel (Bitnami Helm chart) on AWS EKS/Kubernetes, owning their own Redis HA failover strategy.",
+      "pain": "Default Bitnami preStop CLIENT PAUSE hook froze the app for ~20s with massive TimeoutErrors; after a workaround, the remaining pain is fear that longer failovers (10-15s) at scale will explode ioredis's in-memory buffer, causing app-side OOM crashes or massive latency spikes on queue flush.",
+      "pain_id": "ee42891521debc5bf3e5c59d31fdfaa044e4ef25b26b4eb41d5067ee8256c46c",
+      "quotes": [
+        {
+          "quote": "We found that the default Bitnami preStop hook uses CLIENT PAUSE during pod termination, which freezes our app for ~20s and causes massive TimeoutErrors.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "We overwrote the preStop script to remove CLIENT PAUSE and instead trigger a SENTINEL FAILOVER immediately, followed by cleanly severing the TCP connections.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "The failover usually takes about 2 to 5 seconds.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "While this works perfectly in testing, I know we can't guarantee a strict 2-second failover in production.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "Sentinel elections and DNS propagation could easily push this delay to 5-10 or 15 seconds or more.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "If the delay extends to 10 seconds under massive traffic, our Node.js ioredis in-memory buffer will explode in size, potentially causing OOM crashes on the application side, or massive latency spikes when it finally flushes thousands of queued commands to the new master at once.",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "Do you just accept the 5-10 second latency spike during a failover?",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        },
+        {
+          "quote": "Is migrating to a managed service like AWS ElastiCache the only way to avoid this completely?",
+          "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Small-to-mid independent operators of holiday parks, vacation rentals, and campgrounds (e.g., a ~50-unit holiday park), specifically the receptionist or park manager, primarily in the Netherlands/Europe.",
+      "pain": "Legacy park management software is too expensive and too complex for small independent holiday parks, campgrounds, and vacation rentals; operators must stitch together many tools (PMS, channel manager, payments, owner portal, guest app, accounting) plus manual labor, costing \u20ac15K-70K/year for a 50-unit park. Secondary pains: Dutch tourist tax rules are municipality-level, change frequently, and are inconsistently explained; municipality night-register compliance is required.",
+      "pain_id": "efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656",
+      "quotes": [
+        {
+          "quote": "Most park management software was built 10+ years ago, designed for enterprise procurement, not for the receptionist or park manager who might not need all the bells and whistles.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "A 50-unit holiday park ends up paying \u20ac15K-70K/year across their PMS, channel manager, payment processing, owner portal, guest app, accounting integrations, and the manual labor of making it all work together.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Small parks just eat the cost or cobble together spreadsheets.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "The result is that no PMS wants to help the little guys, and you end up with a package that is too expensive for them.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "It's a headless-first tool that's built specifically for the small-to-mid independent operators that legacy PMS vendors ignore.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Tourist tax rules are municipality-level, change frequently, and nobody can explain them consistently.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Night register export for Dutch municipality compliance",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Currently that wall is a lack of testers :)",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "End-game thief-class players in a hex-based PvP/PvM MUD who rely on backstab as their signature special attack",
+      "pain": "Backstab's total mana cost (12 mana plus required upkeep buffs: hide 3, Stalker in the shadows 26, Speed 20) is unsustainable given the thief's smaller mana pool, making the end-game signature ability ineffective and unfun compared to cheaper, harder-hitting abilities of other classes.",
+      "pain_id": "f61fa4aa01334a66e582c158333e8ec2298458083cf071fe711c51e7d63eabed",
+      "quotes": [
+        {
+          "quote": "Backstab currently cost too much mana to use effectively.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "You are required to maintain hide (3 mana), Stalker in the shadows (26 mana) and Speed (20 mana) in order to backstab which uses 12 mana in itself.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "The thief has a smaller casting pool than other casters",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "it's nearly impossible to use it and still be able to maintain your other spell casting abilities (shadow step, venom, recalls, dark, speed, etc) without a sack of mrp.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "Backstab is an end-game ability and should be quite powerful.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "It uses 12 mana (32 mana if you venom both daggers) and does significantly less damage than other abilities available to the other casters for a similar cost.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "An average backstab attack without venom is about 70 damage for 12 mana, compared to a level 16 Ice spear which does over 200, or death that does at least 160.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "the MA jumpkick ability which does over 100 damage for 1 stamina point, and backstab can't be used 1 hex away.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "Make Backstab (and any future thief special attacks) cost stamina instead of mana.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "If the above isn't possible, it needs to be cheaper to use or have its damage increased significantly.. i.e. maybe 100% crit chance?",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "when the spell was broken initially and had no mana cost it was an absolute blast to play with.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "I was able to quickly move and dispatch ranged and archers before they caused harm to the party.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "if it's going to have its current damage output it needs to have very low mana/stam requirements in order to be fun/useful.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        },
+        {
+          "quote": "Currently a backstab won't kill any (appropriate level) mob in 1 shot, so typically follow on attacks are required.",
+          "url": "https://github.com/jkachhad/Stormhalter/issues/1482",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "A .NET/C# developer (likely solo or small team) building internal developer tooling \u2014 specifically a source-code analyzer feeding automated QA test generation \u2014 who needs cross-language structural extraction without external dependencies.",
+      "pain": "No existing single-runtime .NET solution lets the author structurally analyze multi-language source code (C#, TypeScript, Python) without external runtimes, per-language parsers, or fragile/cheap-but-unreliable approaches; every evaluated option violates at least one hard constraint.",
+      "pain_id": "f8f85ddf7b7ddb2ebeee57c78ad094f0f8de6d3eb2e0dc067878a724879a2b72",
+      "quotes": [
+        {
+          "quote": "I\u2019m building a code analyzer in .NET (C#) that extracts structural information (classes, methods, attributes, routes, DTOs) from source files across multiple languages: C#, TypeScript, and Python (more later).",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "The goal is to generate structured JSON representing the API surface (routes, parameters, DTOs) for automated QA test generation.",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Pure .NET / C# (prefer System.* only)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "No external runtimes (no Node.js for TypeScript, no Python runtime for .py)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Source-level analysis only (not compiled code)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Same approach across all languages (no mixing Roslyn with regex, etc.)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Minimal or no AI usage (cost doesn\u2019t scale for large projects)",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Roslyn \u2013 works only for C#",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Tree-sitter bindings \u2013 not very stable in .NET",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "LSPs (OmniSharp, tsserver, pyright) \u2013 require subprocess per language",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "ANTLR \u2013 too much effort per language",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Regex or line parsing \u2013 too fragile",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "LLM parsing \u2013 too expensive",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "I\u2019m considering building a character-by-character state machine scanner.",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Same core logic for all languages",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Is a state-machine scanner viable long-term, or does it become too complex with edge cases?",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Are there any open-source projects that do lightweight cross-language structural analysis (not full parsing)?",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "For extracting things like classes, methods, and attributes, how accurate does parsing need to be to stay reliable?",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        },
+        {
+          "quote": "Looking for architectural guidance from anyone who has built something similar.",
+          "url": "https://stackoverflow.com/questions/79930111/strategy-for-multi-language-source-code-structural-analysis-in-net-without-per",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Platform/infrastructure engineers at mid-to-large organizations who need to serve many services across deep subdomain trees (e.g., service.dev.company.tld, whatever.project.company.tld) and want to delegate subtree management to individual teams.",
+      "pain": "No publicly-trusted certificate solution supports arbitrarily deep multi-level subdomains with delegated per-team issuance; wildcard/SAN certs are limited to one wildcard layer and require paid reissuance on every change, while a name-constrained private intermediate CA lacks public trust.",
+      "pain_id": "facefc1a1a89c648fc5ffde103c21a4400936ef47d6b55c8c4212434a8d5eaab",
+      "quotes": [
+        {
+          "quote": "I am looking to expose different services at different subdomains, while also encoding several stages in the host name.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "This is particularly nice, because I might even delegate management of these trees via NS/SOA records.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "I've done some research and found some solutions, however none really seems to fully capture what I want.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "allows max. 1 deep layer. That severly hampers how teams can work with it downstream.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "needs to be regenerated/re-requested whenever anything changes.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "is private, so I would need to ask everyone to trust said Root CA.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "this cannot be expected of everybody, in particular not external parties I deal with",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "does not (?) allow me to stick additional info on the cert/ go for OV level certificates",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "Unfortunately I cannot seem to find a Root CA that is willing to dole out intermediates with the given permissions, specifically the combination of name constraints and CA=true (why is that, actually?).",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "I already implemented that solution for internal systems.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "I somehow consider Let's Encrypt to be more of a \"a real certificate would be too expensive\" option.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "If I demonstrate ownership of the second level domain and pay once, I would expect to be able to (re)request said certificate as often as I like.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        },
+        {
+          "quote": "However, I cannot pay a hundred bucks every single time I need to add a new SAN.",
+          "url": "https://stackoverflow.com/questions/77461915/options-for-multi-level-tls-certificates",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Maintainer/developer of a baseball (MLB Statcast-based) hitter ranking tool that runs on a cron schedule and delivers rankings to subscribers via SMS; a technical solo or small-team dev responsible for both the data pipeline and the notification path.",
+      "pain": "The Model column is too computationally expensive to run on the scheduled cron path because Statcast frames are cached per-day, forcing roughly 80 cold pulls (over an hour) on the first tick of each day against a 15-minute cron cadence, so the model has to be disabled on scheduled runs and is lost from the subscriber-facing SMS output.",
+      "pain_id": "fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb",
+      "quotes": [
+        {
+          "quote": "The `Model` column runs the full calculator pipeline per hitter, and that needs two Statcast frames: the hitter's season and the opposing starter's.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Full 108-key evaluation, both frames already cached | **1.9s**",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Same evaluation, cold | **~78s**",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "The frames are cached on disk per player, per season, **per day**, so the cost recurs every calendar day rather than once per season.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "A full slate is up to 50 hitters (`MAX_PLAYERS`) plus up to 30 distinct starters. On the first tick of a day that is roughly **80 cold pulls, over an hour**, against a 15-minute cron cadence in `sms-notify.yml`.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "`--model` / `--no-model` defaults to **on for a manual run and off with `--scheduled`**, so the cron is not silently regressed. That makes the model unavailable to the SMS path, which is the path a subscriber actually reads.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Widen the cache key from day to season.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "The frame is refetched daily only to pick up yesterday's games. An incremental pull of the missing dates would be far cheaper than a whole-season refetch, and `statcast_batter` takes a date range.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Rank on the cheap column, model the top N.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "The table already shows only the top `n*2` and bottom `n`. Evaluating the model for 15 hitters rather than 50 cuts it by two thirds without changing what is displayed.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Option 2 looks like the best value: it attacks the actual cause, and a one-day incremental pull is seconds rather than a minute.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        },
+        {
+          "quote": "Roughly 8 of the 27 `p_hit`-scale keys need no Statcast.",
+          "url": "https://github.com/ncarsner/beat-the-streak/issues/50",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Not applicable as a customer profile; author is a politically engaged, fact-checking forum commenter (critical of Trump yet defending accurate attribution) following US energy policy and the CARES Act debate.",
+      "pain": "Frustration over a misattributed quote: a prior commenter claimed the Trump administration loudly championed the oil reserve purchase as a 'bailout for big oil', but the author's research found no such direct quote from Trump, only from Chuck Schumer and Senate Democrats. Secondary pain: belief that refilling the strategic oil reserve was blocked by politicians for partisan advantage, harming US citizens.",
+      "pain_id": "fe00f96498422ec644a7646d7e41d6d9e09547885e261855d82be7849ab369bc",
+      "quotes": [
+        {
+          "quote": "For all I hate about him and his admin, the trump admin didn't call it a \"bailout\" once that I can find (even with the help of AI). The only quotes I can find are Chuck Schumer / Democrats calling it that and no direct quote of Trump saying it.",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "On March 13, 2020, Trump described it as purchasing crude oil \u201cat a very good price.\u201d He said filling the reserve would save taxpayers money while also \u201chelping our oil industry.\u201d",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "On April 3, a reporter directly asked Trump whether oil executives had requested a bailout. Trump answered: \u201cNo, they didn\u2019t ask for a bailout. No.\u201d",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "The \u201cbailout for big oil\u201d wording came from Chuck Schumer and Senate Democrats, not Trump. Schumer\u2019s official March 25 press release claimed that the final CARES Act had: \u201cEliminated $3 billion bailout for big oil.\u201d",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "Would love to be proven wrong here.",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        },
+        {
+          "quote": "Either way it's filling the reserve for instances exactly like this, and was blocked by politicians to try and \"win\" for their party at the expense of every US citizen.",
+          "url": "https://news.ycombinator.com/item?id=49320623",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Handwritten note-takers using Rnote on Linux with multi-button styluses like the HP Slim Rechargeable Pen",
+      "pain": "Rnote only supports fixed pre-set pen/stylus button actions with no way to add custom bindings (e.g., map a button to 'z' for undo) or mouse clicks; both buttons on the HP Slim Rechargeable Pen appear to erase",
+      "pain_id": "ffa7a0fcbca92cccde8a1893c927ea120265b872be5c40b7eb79f71dc17be27d",
+      "quotes": [
+        {
+          "quote": "There are only pre-set keys and actions that Rnote understands, eg: primary and secondary stylus button actions, mouse secondary button action, or two finger long press action.",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        },
+        {
+          "quote": "These pre-set keys are nice, but i wish there was the ability to add custom ones and rebind by pressing the button in the menu, like using the \"z\" key to undo, ect, and making it understand mouse clicks too so i can use my pen.",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        },
+        {
+          "quote": "Krita. super good, but significantly overkill. Krita has those re-bindable buttons i was talking about, but its quite slow and takes up so much space for unfinished drawings, and overall isn't meant for notes like Rnote is.",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        },
+        {
+          "quote": "both buttons on the pen erase?",
+          "url": "https://github.com/flxzt/rnote/issues/1818",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "schema_version": "1",
+  "theses": []
+}
