@@ -1,10 +1,13 @@
+import json
 from datetime import datetime, timezone
+from types import SimpleNamespace
 
 import pytest
 
 from radar.db import Database
 from radar.models import Pain, Score
 from radar.run_cycle import deep_validate
+from radar.validate import validate_cluster
 
 
 class FakeSearch:
@@ -74,3 +77,44 @@ def test_deep_is_silent_when_no_cluster_clears_score_bar(tmp_path):
 
     assert deep_validate(db, None, FakeLLM("Build this for pain-1."), FakeSearch()) is None
     assert db.connection.execute("SELECT COUNT(*) FROM theses").fetchone()[0] == 0
+
+
+class BulkSearch:
+    """Real adapters return up to 60 long items; the prompt must not carry them all."""
+    def collect(self, query):
+        return [{"url": f"https://evidence.test/{i}", "title": "T" * 400, "body": "B" * 5000} for i in range(60)]
+
+
+def test_validate_cluster_prompt_caps_items_and_excerpts_bodies():
+    prompts = []
+
+    class RecordingLLM:
+        def classify(self, content, schema=None):
+            prompts.append(content)
+            return {"competitors": [{"url": "https://evidence.test/0", "quote": "cited", "confidence": "A"}]}
+
+    output = validate_cluster(SimpleNamespace(key_terms="manual work"), BulkSearch(), RecordingLLM())
+
+    assert prompts[0].count("https://evidence.test/") <= 15
+    assert len(prompts[0]) < 8000
+    assert "B" * 400 not in prompts[0]
+    assert output["competitors"] == [{"url": "https://evidence.test/0", "quote": "cited", "confidence": "A"}]
+
+
+def test_deep_thesis_prompt_is_bounded_and_json_serialisable(tmp_path):
+    db = Database(tmp_path / "radar.db")
+    seed_pain(db)
+    prompts = []
+
+    class RecordingLLM(FakeLLM):
+        def classify(self, content, schema=None):
+            prompts.append(content)
+            return super().classify(content, schema)
+
+    thesis = deep_validate(db, None, RecordingLLM("Build this for pain-1 using https://evidence.test/0."), BulkSearch())
+
+    assert thesis is not None and thesis.confidence == "A"
+    payload = json.loads(prompts[-1].split("(DATA): ", 1)[1])
+    assert len(payload["evidence"]) <= 20
+    assert all(len(item["body"]) <= 200 for item in payload["evidence"])
+    assert len(prompts[-1]) < 12000

@@ -1,4 +1,6 @@
-from radar.classify_llm import GLMClient
+import pytest
+
+from radar.classify_llm import ClassificationError, GLMClient
 from radar.db import Database
 from radar.mine import mine, mine_signal
 from radar.models import RawSignal
@@ -36,6 +38,21 @@ def test_glm_payload_allows_text_after_thinking_budget():
     client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda _,__,payload: (payloads.append(payload) or {"content":[{"type":"text","text":"{}"}]}))
     assert client.classify("BODY:\\nexample") == {}
     assert payloads[0]["max_tokens"] >= 4000
+
+
+def test_glm_retries_when_thinking_leaves_the_text_block_empty():
+    responses=[{"content":[{"type":"thinking","thinking":"long deliberation"}]},{"content":[{"type":"text","text":"   "}]},{"content":[{"type":"text","text":"{\"ok\":true}"}]}]
+    calls=[]
+    client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda *_: (calls.append(1) or responses[len(calls)-1]))
+    assert client.classify("BODY") == {"ok":True}
+    assert len(calls) == 3
+
+
+def test_glm_reports_empty_text_and_honours_max_tokens_argument():
+    payloads=[]
+    client=GLMClient(api_key="fake",sleep=lambda _:None,max_tokens=12000,transport=lambda _,__,payload: (payloads.append(payload) or {"content":[{"type":"thinking","thinking":"no answer"}]}))
+    with pytest.raises(ClassificationError,match="empty text"): client.classify("BODY")
+    assert len(payloads) == 3 and payloads[0]["max_tokens"] == 12000
 
 
 def test_mine_skips_classified_and_normalized_duplicate_bodies(tmp_path):

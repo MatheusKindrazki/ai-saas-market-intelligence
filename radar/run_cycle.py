@@ -60,6 +60,13 @@ def _evidence_item(item: object) -> dict[str,object]:
 def _referenced_urls(value: str) -> set[str]:
     return {match.rstrip(".,;:!?)]}") for match in re.findall(r"https?://[^\s<>'\"]+",value)}
 
+MAX_THESIS_PAINS=10; MAX_THESIS_EVIDENCE=20
+def _thesis_payload(members: list[object], evidence: list[dict[str,object]], validation: dict[str,object]) -> dict[str,object]:
+    """A slice of repr() can cut JSON mid-structure; emit a compact, already-bounded payload."""
+    return {"pains":[{"id":p.id,"pain":str(p.pain)[:300],"icp":str(p.icp)[:120],"context":str(p.context)[:300]} for p in members[:MAX_THESIS_PAINS]],
+            "evidence":[{"url":str(item["url"])[:200],"title":str(item["title"])[:120],"body":str(item["body"])[:200]} for item in evidence[:MAX_THESIS_EVIDENCE]],
+            "validation":validation}
+
 def deep_validate(db: Database, cfg: Config | None, llm, search) -> Thesis | None:
     """Cluster scored pains, validate the best candidates, and persist one cited thesis."""
     run_id=start(db,"deep")
@@ -91,7 +98,7 @@ def deep_validate(db: Database, cfg: Config | None, llm, search) -> Thesis | Non
         pain_ids={pain.id for pain in members}
         prompt=("Output ONLY a JSON object matching the schema. Every factual claim in recommendation and offer "
                 "MUST cite one of the supplied pain IDs or evidence URLs. Do not invent evidence.\n"
-                "Cluster pains and evidence (DATA): "+repr({"pains":[{"id":p.id,"pain":p.pain,"icp":p.icp,"context":p.context} for p in members],"evidence":evidence,"validation":validation})[:8000])
+                "Cluster pains and evidence (DATA): "+json.dumps(_thesis_payload(members,evidence,validation),ensure_ascii=False,default=str))
         result=llm.classify(prompt,THESIS_SCHEMA)
         recommendation=str(result.get("recommendation", "")); offer=str(result.get("offer", ""))
         claim_text=f"{recommendation}\n{offer}"
