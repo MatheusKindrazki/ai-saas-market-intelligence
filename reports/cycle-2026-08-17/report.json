@@ -1,16 +1,107 @@
 {
   "coverage": [
     {
+      "attempted": 6,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "reddit",
+      "notes": "coverage gap: reddit robots.txt denies all crawlers (Public Content Policy)",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "source": "reddit",
+      "ts": "2026-08-17T01:10:09.031181+00:00",
+      "window_end": "2026-08-17T01:10:09.031181+00:00",
+      "window_start": ""
+    },
+    {
       "attempted": 10,
       "collected": 200,
       "error_details": "[]",
       "errors": 0,
       "family": "hackernews",
       "notes": "[]",
-      "run_id": "482f8893-107a-447b-b8cc-71633b8ceaa3",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
       "source": "hackernews",
-      "ts": "2026-08-17T00:33:04.393084+00:00",
-      "window_end": "2026-08-17T00:33:04.393084+00:00",
+      "ts": "2026-08-17T01:10:09.031381+00:00",
+      "window_end": "2026-08-17T01:10:09.031381+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "github",
+      "notes": "[]",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "source": "github",
+      "ts": "2026-08-17T01:10:09.057780+00:00",
+      "window_end": "2026-08-17T01:10:09.057780+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 200,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "stackexchange",
+      "notes": "[]",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "source": "stackexchange",
+      "ts": "2026-08-17T01:10:09.089031+00:00",
+      "window_end": "2026-08-17T01:10:09.089031+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 1,
+      "collected": 20,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "forums",
+      "notes": "[]",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "source": "forums",
+      "ts": "2026-08-17T01:10:09.117309+00:00",
+      "window_end": "2026-08-17T01:10:09.117309+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 2,
+      "collected": 25,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "reviews",
+      "notes": "[]",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "source": "reviews",
+      "ts": "2026-08-17T01:10:09.118912+00:00",
+      "window_end": "2026-08-17T01:10:09.118912+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 10,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "web_search",
+      "notes": "coverage gap: all public search engines blocked or robots-disallowed",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "source": "web_search",
+      "ts": "2026-08-17T01:10:09.122512+00:00",
+      "window_end": "2026-08-17T01:10:09.122512+00:00",
+      "window_start": ""
+    },
+    {
+      "attempted": 1,
+      "collected": 0,
+      "error_details": "[]",
+      "errors": 0,
+      "family": "x_curated",
+      "notes": "coverage gap: X access not configured",
+      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "source": "x_curated",
+      "ts": "2026-08-17T01:10:09.122565+00:00",
+      "window_end": "2026-08-17T01:10:09.122565+00:00",
       "window_start": ""
     }
   ],
@@ -169,6 +260,202 @@
     },
     {
       "confidence": "A",
+      "icp": "React Native mobile developers (solo or team) building production apps with map-based live tracking or location features, targeting both iOS and Android, who need custom animated markers with high performance (50+ markers at 60fps).",
+      "pain": "react-native-maps custom markers are unreliable: image-based markers render inconsistently across formats and sources, the Animated API has no effect inside markers, and react-native-reanimated causes markers to disappear entirely, blocking animated marker features like pulsing, bouncing, scaling, and smooth point-to-point movement.",
+      "pain_id": "3e1a98d9ec393c539e98e78c0595fd9999c1ca04e5cb277a933b647e330d8ab5",
+      "quotes": [
+        {
+          "quote": "I'm building a React Native app with react-native-maps and facing issues with custom markers.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Custom marker images (PNG, SVG) display inconsistently  - sometimes they render, sometimes they don't.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "I've tried local images with  require() , remote images with  {uri: '...'} , and different image formats.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Can't animate custom markers",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Animated  API does nothing,  react-native-reanimated  makes markers disappear entirely.",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Images show up randomly or not at all",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Animations either do nothing or break marker rendering entirely",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Smooth marker movement (point A to B like live tracking)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Pulsing rings, bouncing, and scaling effects",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Custom animated marker components (SVG/View with gradient)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Smooth press interactions with transitions",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Support for 50+ markers with 60fps performance",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Are these reliable alternatives? Any others I should consider?",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-leaflet-kit  - Has built-in pulse animation and custom icons",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-nitro-location-tracking  - Has LocationSmoother for smooth marker movement and bearing calculation",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-map-supercluster  - Handles clustering with animations enabled by default",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Local images with  require()",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Remote images with  {uri: '...'}",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Different image formats (PNG, JPG, SVG)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Animated  API with View wrapper",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-reanimated with shared values",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Different marker positioning approaches",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Platform: iOS and Android (both tested)",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "Device: Physical and Emulator",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "React Native: 0.83.4",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "react-native-maps: 1.29.0",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        },
+        {
+          "quote": "If anyone has a working example or GitHub repository, please share!",
+          "url": "https://stackoverflow.com/questions/79972025/react-native-maps-custom-marker-images-display-inconsistently-animations-fail",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Polish-conscious Apple-platform developer (iOS/macOS) using SwiftUI and custom SF Symbols in a shipped app, who cares about pixel-perfect toolbar icon alignment across Dynamic Type sizes.",
+      "pain": "When switching a SwiftUI toolbar SF Symbol between its unbadged and badged variants (e.g., 'tray' to 'tray.badge' or a custom symbol pair), the taller bounding box of the badged variant causes the underlying symbol to pop/jump up and down because toolbar labels ignore the symbol's text guides and lay out by bounding box.",
+      "pain_id": "605e4405e7488059351c9c6b9bd799abd60b24e36d2443edbe0adb65e5c60676",
+      "quotes": [
+        {
+          "quote": "But apparently .toolbar labels ignore your symbol's text guides?",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "they look perfect when I export, but when I switch symbols, they pop up and down",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "the badge makes the symbol taller, so the underlying symbol pops down when it's badged",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I've disabled the .contentTransition because that 1. just makes it fade in and out up and down rather than pop, and 2. leads to other hilarity as all the other attributes change at random intervals.",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "Every AI tool suggests that I wrap it in a frame, but that only prevents my icon changing size from bothering the other parts of the toolbar",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I want my symbol to be laid out according to its text guides, not it's bounding box, and the frame doesn't fix that at all",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "If there is no \"correct\" answer, I can make it mostly work with custom .offset(y: activeFilterCount > 0 ? -3.5 : 0) And eyeballing an offset at every text size, but that seems deeply stupid.",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I wish there was a way to use .alignmentGuide() and/or .firstTextBaseline to actually lock it down, but I don't think those work in toolbars",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        },
+        {
+          "quote": "I'm also pushing along trying to make it work with .badge() but that's not going to be the ideal appearance.",
+          "url": "https://stackoverflow.com/questions/79906382/swiftui-toolbar-symbol-change-without-popping",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
       "icp": "Observers/evaluators of non-thesis M.S. program quality, including returning students who finished undergraduate 5-15 years ago",
       "pain": "Perceived low quality of non-thesis M.S. programs: revenue-driven, lacking ABET accreditation, and with large class sizes",
       "pain_id": "674dd84fae371b7442556ea540dfb2928bf0d221473640fc7ea8a81f6ede965d",
@@ -249,6 +536,74 @@
         {
           "quote": "thanks for this app, if possible and time permits please consider these things",
           "url": "https://github.com/alpha-liu-01/SpeedyNote/issues/330",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "",
+      "pain": "Cannot get their Google Apps Script calendar-event automation to fire automatically and reliably; the final blocker is that the script must be manually run, and available installable triggers either create duplicate events or constrain the workflow.",
+      "pain_id": "a9821bb4718547d8ec5e642fbcc73e57a81f3ea54fc69f2d15238878a933396e",
+      "quotes": [
+        {
+          "quote": "Formatting inconsistencies, typos, lack of necessary information, and even straight up wrong details make my job (creating a program around, and then organizing the talent for each booking) nearly impossible.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "Due to things well beyond my current knowledge, I am unable to create a dummy proof way for the event to \"Trigger\".",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "the thing blocking me in the end is that I have to actively go to my Script and hit \"Run\" for it to properly function.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "The first is a \"Create\" script which takes all the information, creates an event, and then pulls the EventID # which it pastes in a safe cell on a different tab. The second is an \"Edit\" script which searches for the previously created event by ID, and then makes the changes as needed.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "It is a frequent need for our Reps to go in and edit the gig (people get sick, availabilities change, or mistakes were made the first time, etc.)",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I can do it by \"Edit\" or by \"Change\", but again this just creates a whole new Event every time.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I wish they could do onEdit of specific Cell, because THAT would be useful.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I could create a macro that notifies ME whenever changes are made, and then I could go in and manually hit the button. But..... Is that REALLY the best solution?",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I'm more looking for creative coding ways to solve a general problem, rather than a specific fix to a single string.",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "we also use Monday.com and have a Zappier account. But I'd rather avoid either of those if possible",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "I'd rather not have this whole thing come crashing down because one minor part of it depended on Zappier, which our next ED cut from the budget",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
+          "verified": true
+        },
+        {
+          "quote": "Anything that could make what I want happen, without making me do annoying extra steps, or without requiring me to trust others with a keyboard, I am open to suggestions!",
+          "url": "https://stackoverflow.com/questions/75406712/looking-for-solution-to-automate-calendar-event-creation-from-google-sheets",
           "verified": true
         }
       ]
@@ -389,6 +744,54 @@
         {
           "quote": "Is migrating to a managed service like AWS ElastiCache the only way to avoid this completely?",
           "url": "https://stackoverflow.com/questions/79971927/seeking-advice-true-zero-downtime-redis-sentinel-on-kubernetes-node-js",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Small-to-mid independent operators of holiday parks, vacation rentals, and campgrounds (e.g., a ~50-unit holiday park), specifically the receptionist or park manager, primarily in the Netherlands/Europe.",
+      "pain": "Legacy park management software is too expensive and too complex for small independent holiday parks, campgrounds, and vacation rentals; operators must stitch together many tools (PMS, channel manager, payments, owner portal, guest app, accounting) plus manual labor, costing \u20ac15K-70K/year for a 50-unit park. Secondary pains: Dutch tourist tax rules are municipality-level, change frequently, and are inconsistently explained; municipality night-register compliance is required.",
+      "pain_id": "efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656",
+      "quotes": [
+        {
+          "quote": "Most park management software was built 10+ years ago, designed for enterprise procurement, not for the receptionist or park manager who might not need all the bells and whistles.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "A 50-unit holiday park ends up paying \u20ac15K-70K/year across their PMS, channel manager, payment processing, owner portal, guest app, accounting integrations, and the manual labor of making it all work together.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Small parks just eat the cost or cobble together spreadsheets.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "The result is that no PMS wants to help the little guys, and you end up with a package that is too expensive for them.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "It's a headless-first tool that's built specifically for the small-to-mid independent operators that legacy PMS vendors ignore.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Tourist tax rules are municipality-level, change frequently, and nobody can explain them consistently.",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Night register export for Dutch municipality compliance",
+          "url": "https://news.ycombinator.com/item?id=48376362",
+          "verified": true
+        },
+        {
+          "quote": "Currently that wall is a lack of testers :)",
+          "url": "https://news.ycombinator.com/item?id=48376362",
           "verified": true
         }
       ]
@@ -785,20 +1188,20 @@
   "schema_version": "1",
   "theses": [
     {
-      "concierge": "Do it by hand first: run the pre-warm for the beat-the-streak maintainer's next three game days and deliver the frames, or open a PR adding the API-backed cache behind the existing cache interface with before/after timing screenshots, anchored to the open issue (https://github.com/ncarsner/beat-the-streak/issues/50; tracked in the maintainer's outstanding-issues index https://github.com/ncarsner/beat-the-streak/issues/59).",
+      "concierge": "Run the operator's stack for them for 4 weeks: they grant read access to their Booking.com/Airbnb listings; you reconcile reservations daily by hand, process Mollie/Stripe refunds on request, send a morning summary, and deliver a correct weekly night register export and municipality-level tourist tax figures [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. This tests whether an operator will pay a fraction of the EUR 15K-70K/year they currently spend on stitched-together tools and manual labor [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656] before any integration code is written.",
       "confidence": "A",
-      "created_at": "2026-08-17T00:27:47.624141+00:00",
+      "created_at": "2026-08-17T01:32:35.993613+00:00",
       "cycle_date": "2026-08-17",
-      "cycle_id": "9f7cd5a7-560c-4128-8173-fc678cfa021d",
-      "evidence_ids_json": "[\"fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb\", \"https://github.com/cbwinslow/retrosheet/pull/138\", \"https://github.com/cskerritt/MLB_ML/pull/1\", \"https://github.com/kenxw10/HOMERUN/pull/16\", \"https://github.com/msantoria/mlb-prediction-app/issues/1316\", \"https://github.com/ncarsner/beat-the-streak/issues/50\", \"https://github.com/ncarsner/beat-the-streak/issues/59\"]",
-      "icp": "Solo maintainers/developers of scheduled MLB Statcast-based ranking or prediction tools (CLI or app) that compute a per-hitter model column on a 15-minute cron and currently disable the model on scheduled runs because of cold Statcast pulls; e.g., the beat-the-streak maintainer (pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb).",
-      "id": "85025cc5611dfc9b",
-      "kill_criteria_json": "[\"Maintainer solves it in-repo cheaply (e.g., per-season instead of per-day frame caching, or moving the model to a separate daily job) \\u2014 it is only one open item in their tracker (https://github.com/ncarsner/beat-the-streak/issues/59).\", \"Fewer than 3 of 10 contacted MLB-tool maintainers reply or accept the free trial within 2 weeks.\", \"No willingness to pay >= $20/month after 5 concierge demos \\u2014 hobbyist OSS maintainers treat this as a $0 fix.\", \"Upstream Statcast rate-limits or blocks the pre-warm volume, making the hosted cache uneconomical.\", \"Remote API latency or data staleness fails the 15-minute cron cadence in MVP testing.\"]",
-      "mvp_48h": "Day 1: FastAPI service wrapping Statcast queries (pybaseball), a 03:00 pre-warm job for all hitters and probable starters on the day's slate, and GET /frame?player_id&season&as_of. Day 2: a Python client shim matching the existing on-disk cache interface described in the pain (per-player/per-season/per-day frames, 15-minute cron, --model/--scheduled flags; pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb), run the calculator pipeline against it, and record before/after timing for the first daily tick.",
-      "offer": "StatcastFrame: a hosted, pre-warmed frame cache. Each morning before the first cron tick we pre-pull and cache the day's slate \u2014 every hitter's season frame plus each opposing starter's season frame \u2014 and serve them via a REST API keyed by player/season/as-of date, with a drop-in Python client shim that mirrors the existing on-disk per-player/per-season/per-day cache interface so the Model column can be enabled on scheduled runs without the roughly 80 cold pulls and 1+ hour first-tick stall (pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb; https://github.com/ncarsner/beat-the-streak/issues/50).",
-      "outreach_msgs_json": "[\"Hi \\u2014 saw issue #50 (https://github.com/ncarsner/beat-the-streak/issues/50): the Model column has to stay off scheduled runs because per-day Statcast caching means ~80 cold pulls and 1+ hour on the first daily tick against your 15-minute cron. I run a nightly pre-warmed frame cache (hitter season + opposing starter frames for the day's slate, REST lookup). Want me to run it free for your next 3 game days so the Model column can ship on schedule?\", \"Hi \\u2014 your issue re-wiring probable-pitcher and lineup refresh into fast homepage snapshots (https://github.com/msantoria/mlb-prediction-app/issues/1316) is the same refresh-cost wall we solve: pre-warmed frames behind a fast API so scheduled refreshes don't pay cold-pull costs. Interested in a free trial week?\", \"Hi \\u2014 HOMERUN's move to make the MLB Stats API the primary ingestion source (https://github.com/kenxw10/HOMERUN/pull/16) still leaves cold-pull costs on your side for scheduled runs. We pre-warm per-day frames (hitter + opposing pitcher) and serve them over REST; happy to run a free 3-day pilot against your slate.\"]",
-      "price": "$49/month per project for the hosted frame API with daily slate pre-warm; $150 one-time concierge integration; free 7-day trial during validation.",
-      "recommendation": "Pursue a micro-SaaS: a pre-warmed Statcast frame cache API. The validated pain is precise and costly: the Model column needs two Statcast frames per hitter (hitter's season + opposing starter's season), and per-day frame caching forces roughly 80 cold pulls taking over an hour on the first tick of each day against a 15-minute cron cadence, so the model must be disabled on scheduled runs (pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb; https://github.com/ncarsner/beat-the-streak/issues/50). The same data-refresh cost surface appears in adjacent MLB tools \u2014 a prediction app re-wiring probable-pitcher and lineup refresh into fast homepage snapshots (https://github.com/msantoria/mlb-prediction-app/issues/1316) and a prediction repo making MLB Stats API the primary ingestion source for schedules/probables (https://github.com/kenxw10/HOMERUN/pull/16) \u2014 so sell the nightly pre-warm + fast frame lookup to the beat-the-streak maintainer first, then to those adjacent builders."
+      "cycle_id": "bb8f3e3a-2518-459b-972e-27ca06cabb3e",
+      "evidence_ids_json": "[\"efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656\", \"https://github.com/Morningstar88/kalki-search/issues/223\", \"https://news.ycombinator.com/item?id=48376362\"]",
+      "icp": "Small-to-mid independent operators of holiday parks, vacation rentals and campgrounds, exemplified by a ~50-unit holiday park [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]; initial focus on the Netherlands, where the pain context includes night register export and municipality-level tourist tax [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656] and where the comparable Show HN launcher is based in Zeeland [https://news.ycombinator.com/item?id=48376362].",
+      "id": "5b9ba660730f51e4",
+      "kill_criteria_json": "[\"Fewer than 5 completed discovery calls with small-park operators within the first 2 weeks.\", \"No operator commits to a paid pilot (at least EUR 99/month) within 30 days of concierge delivery.\", \"Booking.com/Airbnb channel-manager API access (certification, cost, timeline) is not achievable within 90 days, blocking the sync use case from the pain context [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].\", \"Dutch night register and per-municipality tourist tax rules prove too fragmented across municipalities to productize as a wedge [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].\", \"The competing entrant in this space \\u2014 the Show HN Odeva launch targeting holiday parks and campgrounds [https://news.ycombinator.com/item?id=48376362] \\u2014 gains visible traction with small parks before you reach 5 paying customers.\", \"Pilot parks churn or decline to convert, saying spreadsheets or their existing setup are good enough relative to the perceived pain [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].\"]",
+      "mvp_48h": "Skip channel-manager integrations in the first 48 hours. Ship a focused web app: drag-and-drop availability board for ~50 units, booking entry with group reservations, guest check-in/out links, and the compliance wedge \u2014 automated night register export and municipality-level tourist tax calculation [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. Seed it with one pilot park's real bookings via CSV import. Everything else (channel sync, payments) is done manually behind the scenes; charge from day one.",
+      "offer": "A single affordable park system for small independent operators that replaces the stitched-together PMS, channel manager, payments, owner portal, guest app and accounting stack [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. V1 scope drawn directly from the stated daily operations: drag-and-drop planning, group reservations, channel sync with Booking.com and Airbnb, Mollie/Stripe payments with refunds, owner revenue reporting, guest portal check-in/out, plus the Dutch compliance wedge of night register export and municipality-level tourist tax [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. Positioning: one tool and one price instead of the many-tools-plus-manual-labor setup operators run today [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].",
+      "outreach_msgs_json": "[\"Hi {name} \\u2014 I'm talking to small park and campground operators in the Netherlands about how they handle night register exports and municipality-level tourist tax today. Is that done inside your booking system or by hand at the end of each month? 15 minutes and I'll share what other ~50-unit parks have told me so far.\", \"Hi {name} \\u2014 quick question: how many separate tools do you run today for bookings, Booking.com/Airbnb sync, payments and owner payouts? I'm building a single system for small parks and would value hearing what your current stack costs per year and where the manual work hurts most. Worth a short call next week?\", \"Hi {name} \\u2014 I help small holiday-park operators replace their pile of tools with one system. If you're a ~50-unit park, I'll run your calendar, exports and owner reports for free for two weeks so you can judge the output before paying anything. Interested in being pilot park #1?\"]",
+      "price": "Anchor against the EUR 15K-70K/year legacy stack reported for a 50-unit park [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]: EUR 149/month for up to 50 units, EUR 249/month up to 100 units, free data migration during the first 3 months. Payments continue to run through the Mollie/Stripe rails already used in daily operations [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656] with no markup on processing. Target: deliver a 5-10x cost reduction versus the stated annual stack cost [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].",
+      "recommendation": "BUILD, but narrow to Dutch small parks first and validate fast. The pain is concrete and quantified: small independent operators of ~50-unit holiday parks pay EUR 15K-70K/year stitching together PMS, channel manager, payments, owner portal, guest app and accounting plus manual labor [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. Caveats: the evidence base is thin \u2014 one Show HN launch post by a solo developer in Zeeland building Odeva, a property management system for the exact same segment (holiday parks, vacation rentals, campgrounds), which both validates demand and confirms direct competition [https://news.ycombinator.com/item?id=48376362]; the second evidence item is a GitHub issue about Khmer language learning and provides no support for this cluster [https://github.com/Morningstar88/kalki-search/issues/223]. Differentiate on Dutch compliance \u2014 night register export and municipality-level tourist tax \u2014 which is explicitly part of daily operations in the pain [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]."
     }
   ]
 }
