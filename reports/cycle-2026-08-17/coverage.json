@@ -6,10 +6,10 @@
     "errors": 0,
     "family": "reddit",
     "notes": "coverage gap: reddit robots.txt denies all crawlers (Public Content Policy)",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "reddit",
-    "ts": "2026-08-17T01:10:09.031181+00:00",
-    "window_end": "2026-08-17T01:10:09.031181+00:00",
+    "ts": "2026-08-17T05:12:51.658743+00:00",
+    "window_end": "2026-08-17T05:12:51.658743+00:00",
     "window_start": ""
   },
   {
@@ -19,10 +19,10 @@
     "errors": 0,
     "family": "hackernews",
     "notes": "[]",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "hackernews",
-    "ts": "2026-08-17T01:10:09.031381+00:00",
-    "window_end": "2026-08-17T01:10:09.031381+00:00",
+    "ts": "2026-08-17T05:12:51.658824+00:00",
+    "window_end": "2026-08-17T05:12:51.658824+00:00",
     "window_start": ""
   },
   {
@@ -32,10 +32,10 @@
     "errors": 0,
     "family": "github",
     "notes": "[]",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "github",
-    "ts": "2026-08-17T01:10:09.057780+00:00",
-    "window_end": "2026-08-17T01:10:09.057780+00:00",
+    "ts": "2026-08-17T05:13:06.936871+00:00",
+    "window_end": "2026-08-17T05:13:06.936871+00:00",
     "window_start": ""
   },
   {
@@ -45,10 +45,10 @@
     "errors": 0,
     "family": "stackexchange",
     "notes": "[]",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "stackexchange",
-    "ts": "2026-08-17T01:10:09.089031+00:00",
-    "window_end": "2026-08-17T01:10:09.089031+00:00",
+    "ts": "2026-08-17T05:13:22.550015+00:00",
+    "window_end": "2026-08-17T05:13:22.550015+00:00",
     "window_start": ""
   },
   {
@@ -58,23 +58,23 @@
     "errors": 0,
     "family": "forums",
     "notes": "[]",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "forums",
-    "ts": "2026-08-17T01:10:09.117309+00:00",
-    "window_end": "2026-08-17T01:10:09.117309+00:00",
+    "ts": "2026-08-17T05:13:37.629042+00:00",
+    "window_end": "2026-08-17T05:13:37.629042+00:00",
     "window_start": ""
   },
   {
     "attempted": 2,
-    "collected": 25,
+    "collected": 28,
     "error_details": "[]",
     "errors": 0,
     "family": "reviews",
     "notes": "[]",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "reviews",
-    "ts": "2026-08-17T01:10:09.118912+00:00",
-    "window_end": "2026-08-17T01:10:09.118912+00:00",
+    "ts": "2026-08-17T05:13:37.709932+00:00",
+    "window_end": "2026-08-17T05:13:37.709932+00:00",
     "window_start": ""
   },
   {
@@ -84,10 +84,10 @@
     "errors": 0,
     "family": "web_search",
     "notes": "coverage gap: all public search engines blocked or robots-disallowed",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "web_search",
-    "ts": "2026-08-17T01:10:09.122512+00:00",
-    "window_end": "2026-08-17T01:10:09.122512+00:00",
+    "ts": "2026-08-17T05:13:48.105057+00:00",
+    "window_end": "2026-08-17T05:13:48.105057+00:00",
     "window_start": ""
   },
   {
@@ -97,10 +97,10 @@
     "errors": 0,
     "family": "x_curated",
     "notes": "coverage gap: X access not configured",
-    "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+    "run_id": "493bcb1b-2037-4726-af16-74980694121d",
     "source": "x_curated",
-    "ts": "2026-08-17T01:10:09.122565+00:00",
-    "window_end": "2026-08-17T01:10:09.122565+00:00",
+    "ts": "2026-08-17T05:13:48.105146+00:00",
+    "window_end": "2026-08-17T05:13:48.105146+00:00",
     "window_start": ""
   }
 ]

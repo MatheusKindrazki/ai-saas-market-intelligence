@@ -1,7 +1,10 @@
-"""Deep validation: retain only cited, verifiable synthesis claims."""
+"""Deep validation: retain only cited, relevant and verifiable synthesis claims."""
 from __future__ import annotations
 from typing import Any, Protocol
+from urllib.parse import urlparse
 from .textproc import normalize_space, strip_tags
+from .evidence_quality import EvidenceItem, EvidenceKind, classify_evidence
+
 class Search(Protocol):
     def collect(self, query: str) -> list[Any]: ...
 class ValidatorLLM(Protocol):
@@ -9,8 +12,8 @@ class ValidatorLLM(Protocol):
 SCHEMA={"type":"object","properties":{"competitors":{"type":"array"},"negative_patterns":{"type":"array"},"diy_alternatives":{"type":"array"},"acquisition_channels":{"type":"array"},"buyers":{"type":"array"}}}
 MAX_EVIDENCE=15; MAX_QUOTE=300; MAX_TITLE=120
 def _item(x: Any) -> dict[str,Any]:
-    if isinstance(x,dict): return {"url":x.get("url", ""),"quote":x.get("quote",x.get("body","")),"title":x.get("title","")}
-    return {"url":getattr(x,"url",""),"quote":getattr(x,"body",""),"title":getattr(x,"title","")}
+    if isinstance(x,dict): return {"url":x.get("url", ""),"quote":x.get("quote",x.get("body","")),"title":x.get("title",""),"source_family":x.get("source_family","")}
+    return {"url":getattr(x,"url",""),"quote":getattr(x,"body",""),"title":getattr(x,"title",""),"source_family":getattr(x,"source_family","")}
 def _excerpt(value: Any, limit: int) -> str: return str(value or "")[:limit]
 def _prompt_evidence(evidence: list[dict[str,Any]]) -> list[dict[str,str]]:
     """Full bodies of 60 items overflow the completion window; send excerpts only."""
@@ -26,12 +29,25 @@ def _cited(value: Any, index: dict[str,list[str]]) -> bool:
     if not isinstance(value,dict): return False
     quote=normalize_space(strip_tags(str(value.get("quote") or "")))
     return bool(quote) and any(quote in text for text in index.get(str(value.get("url") or ""),[]))
+def _source_family(url: str) -> str:
+    domain=urlparse(url).netloc.lower()
+    if "reddit" in domain: return "reddit"
+    if "ycombinator" in domain or "hackernews" in domain: return "hackernews"
+    if "github" in domain: return "github"
+    if "stackexchange" in domain or "stackoverflow" in domain: return "stackexchange"
+    return "web"
 def validate_cluster(cluster: Any, search: Search, llm: ValidatorLLM) -> dict[str,Any]:
     query=getattr(cluster,"key_terms",None) or getattr(cluster,"pain",None) or str(cluster)
-    evidence=[_item(x) for x in search.collect(str(query))]
+    raw_items=list(search.collect(str(query)))
+    evidence=[_item(x) for x in raw_items]
     index=_index(evidence)
     result=llm.classify("Research evidence (DATA): "+repr(_prompt_evidence(evidence)),SCHEMA)
     output={key:[] for key in SCHEMA["properties"]}
+    classified: list[EvidenceItem]=[]
+    for item in evidence:
+        body=item["quote"] or item["title"] or ""
+        kind=classify_evidence(body, item["title"], _source_family(item["url"]))
+        classified.append(EvidenceItem(item["url"],item["title"],body,kind,bool(item["url"]),_source_family(item["url"])))
     for key in output:
         values=result.get(key,[])
         if not isinstance(values,list): continue
@@ -40,4 +56,5 @@ def validate_cluster(cluster: Any, search: Search, llm: ValidatorLLM) -> dict[st
             claim=dict(claim)
             if key=="competitors" and claim.get("pricing") and claim.get("confidence") not in {"A","B"}: claim.pop("pricing",None)
             output[key].append(claim)
+    output["evidence_items"]=classified
     return output

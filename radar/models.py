@@ -43,6 +43,9 @@ class Thesis:
     id: str; cycle_id: str; recommendation: str; icp: str; offer: str; price: str
     mvp_48h: str; concierge: str; outreach_msgs: tuple[str, ...]; kill_criteria: tuple[str, ...]
     evidence_ids: tuple[str, ...]; confidence: str; created_at: str; cycle_date: str
+    evidence_matrix: tuple[dict[str, Any], ...] = ()
+    confidence_reason: str = ""
+    recommendation_kind: str = ""
 
 
 @dataclass(frozen=True)

@@ -7,10 +7,10 @@
       "errors": 0,
       "family": "reddit",
       "notes": "coverage gap: reddit robots.txt denies all crawlers (Public Content Policy)",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "reddit",
-      "ts": "2026-08-17T01:10:09.031181+00:00",
-      "window_end": "2026-08-17T01:10:09.031181+00:00",
+      "ts": "2026-08-17T05:12:51.658743+00:00",
+      "window_end": "2026-08-17T05:12:51.658743+00:00",
       "window_start": ""
     },
     {
@@ -20,10 +20,10 @@
       "errors": 0,
       "family": "hackernews",
       "notes": "[]",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "hackernews",
-      "ts": "2026-08-17T01:10:09.031381+00:00",
-      "window_end": "2026-08-17T01:10:09.031381+00:00",
+      "ts": "2026-08-17T05:12:51.658824+00:00",
+      "window_end": "2026-08-17T05:12:51.658824+00:00",
       "window_start": ""
     },
     {
@@ -33,10 +33,10 @@
       "errors": 0,
       "family": "github",
       "notes": "[]",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "github",
-      "ts": "2026-08-17T01:10:09.057780+00:00",
-      "window_end": "2026-08-17T01:10:09.057780+00:00",
+      "ts": "2026-08-17T05:13:06.936871+00:00",
+      "window_end": "2026-08-17T05:13:06.936871+00:00",
       "window_start": ""
     },
     {
@@ -46,10 +46,10 @@
       "errors": 0,
       "family": "stackexchange",
       "notes": "[]",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "stackexchange",
-      "ts": "2026-08-17T01:10:09.089031+00:00",
-      "window_end": "2026-08-17T01:10:09.089031+00:00",
+      "ts": "2026-08-17T05:13:22.550015+00:00",
+      "window_end": "2026-08-17T05:13:22.550015+00:00",
       "window_start": ""
     },
     {
@@ -59,23 +59,23 @@
       "errors": 0,
       "family": "forums",
       "notes": "[]",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "forums",
-      "ts": "2026-08-17T01:10:09.117309+00:00",
-      "window_end": "2026-08-17T01:10:09.117309+00:00",
+      "ts": "2026-08-17T05:13:37.629042+00:00",
+      "window_end": "2026-08-17T05:13:37.629042+00:00",
       "window_start": ""
     },
     {
       "attempted": 2,
-      "collected": 25,
+      "collected": 28,
       "error_details": "[]",
       "errors": 0,
       "family": "reviews",
       "notes": "[]",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "reviews",
-      "ts": "2026-08-17T01:10:09.118912+00:00",
-      "window_end": "2026-08-17T01:10:09.118912+00:00",
+      "ts": "2026-08-17T05:13:37.709932+00:00",
+      "window_end": "2026-08-17T05:13:37.709932+00:00",
       "window_start": ""
     },
     {
@@ -85,10 +85,10 @@
       "errors": 0,
       "family": "web_search",
       "notes": "coverage gap: all public search engines blocked or robots-disallowed",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "web_search",
-      "ts": "2026-08-17T01:10:09.122512+00:00",
-      "window_end": "2026-08-17T01:10:09.122512+00:00",
+      "ts": "2026-08-17T05:13:48.105057+00:00",
+      "window_end": "2026-08-17T05:13:48.105057+00:00",
       "window_start": ""
     },
     {
@@ -98,52 +98,14 @@
       "errors": 0,
       "family": "x_curated",
       "notes": "coverage gap: X access not configured",
-      "run_id": "47f6131c-8fd6-4ca8-b2d6-1cfa8d1ca4d5",
+      "run_id": "493bcb1b-2037-4726-af16-74980694121d",
       "source": "x_curated",
-      "ts": "2026-08-17T01:10:09.122565+00:00",
-      "window_end": "2026-08-17T01:10:09.122565+00:00",
+      "ts": "2026-08-17T05:13:48.105146+00:00",
+      "window_end": "2026-08-17T05:13:48.105146+00:00",
       "window_start": ""
     }
   ],
   "evidence": [
-    {
-      "confidence": "A",
-      "icp": "Vulnerability management and security operations professionals (especially those working with or inside US government entities) and vulnerability management tool vendors.",
-      "pain": "Risk-based vulnerability prioritization is fragmented: government directives and tool vendors rely on the KEV list, proprietary severity scores, and manual spreadsheets instead of a unified severity model like CVSS 4.0, leading to upsells, lock-in, and stalled modernization.",
-      "pain_id": "0301749a12e444fb5cebc51a2c1ef4d8446c7f3cd45db65e690d5a2ddfeee376",
-      "quotes": [
-        {
-          "quote": "It's the wrong strategy.",
-          "url": "https://news.ycombinator.com/item?id=48529894",
-          "verified": true
-        },
-        {
-          "quote": "What what they should do instead is push both US gov entities and vulnerability management tool vendors to properly embrace CVSS 4.0.",
-          "url": "https://news.ycombinator.com/item?id=48529894",
-          "verified": true
-        },
-        {
-          "quote": "The environmental, threat, and supplemental metrics[0] should be sufficient to express all of this (even the KEV status).",
-          "url": "https://news.ycombinator.com/item?id=48529894",
-          "verified": true
-        },
-        {
-          "quote": "In fact, the KEV list should really just be a CVSS 4.0 overlay on top of the base score.",
-          "url": "https://news.ycombinator.com/item?id=48529894",
-          "verified": true
-        },
-        {
-          "quote": "Instead, we have vulnerability management tool vendors upselling CISA KEV add-ons and pushing customers to use various proprietary severity scores.",
-          "url": "https://news.ycombinator.com/item?id=48529894",
-          "verified": true
-        },
-        {
-          "quote": "The US gov is stuck \"managing\" vulnerabilities with manual spreadsheets today and it will stay that way until <i>they</i> make a real effort to evolve severity scoring.",
-          "url": "https://news.ycombinator.com/item?id=48529894",
-          "verified": true
-        }
-      ]
-    },
     {
       "confidence": "A",
       "icp": "A developer or product data/catalog manager at an e-commerce retailer or marketplace selling hardware/ironmongery sourced from multiple suppliers, who relies on faceted search for discovery.",
@@ -216,6 +178,82 @@
         {
           "quote": "Have you faced such cases before?",
           "url": "https://github.com/Linkd-TaxID/kra-etims-sdk/issues/31",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "E-commerce/catalog data engineer or product data manager at a cabinet furniture (handles, knobs, pulls, catches) retailer/distributor",
+      "pain": "Supplier finish naming is inconsistent for the same finish ('Brushed Satin', 'Satin Chrome', 'Chrome Satin'), and products with mixed finishes don't fit a single-value finish attribute",
+      "pain_id": "166f442058427cb8062d6b2f0eaa167915095c0e2494fd5b5732fa3d14fcfcb3",
+      "quotes": [
+        {
+          "quote": "The main issue is finish consistency: suppliers use 'Brushed Satin', 'Satin Chrome', and 'Chrome Satin' for the same thing.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "Built a normalization script that uses a reference table of known finishes and applies fuzzy matching to map incoming data.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "This improved our Schema.org Product.material and Product.color attributes significantly.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "Challenge: products with mixed finishes (e.g., a handle with a brass body and chrome accents).",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "We store the dominant finish and list secondary finishes in a separate attribute.",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        },
+        {
+          "quote": "Anyone dealing with multi-finish products in their taxonomy?",
+          "url": "https://github.com/bobdenotter/seo/issues/149",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Do-it-yourself (Bogleheads-style) investors who rebalance portfolios across multiple account types (brokerage, IRA, 401K, HSA) and previously relied on manual spreadsheets",
+      "pain": "I got tired of fiddling with a manual spreadsheets",
+      "pain_id": "2ba66314cf4e1ea5ae0388b218009abff8c1887a77500682114f9b765e8a2fc1",
+      "quotes": [
+        {
+          "quote": "Whenever I do Bogleheads-style investment rebalancing across multiple accounts (brokerage, IRA, 401K, HSA)",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "I got tired of fiddling with a manual spreadsheets",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "There is maybe a paid product out there that does this but I couldn\u2019t find a DIY solver that met all my needs.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "I wanted to enable the most generic scenarios (e.g. expressing limited fund options in 401Ks; supporting blended funds like VT or target date funds; allowing user-specified fund preferences within accounts) but a naive greedy algorithms can\u2019t always find a possible solution.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "my old spreadsheet workflow sometimes led to dead ends where I\u2019d have to backtrack try different fund placement choices before it all worked.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
+          "verified": true
+        },
+        {
+          "quote": "This tool is free, open-source, and requires no signup or registration to use.",
+          "url": "https://news.ycombinator.com/item?id=49155364",
           "verified": true
         }
       ]
@@ -403,6 +441,102 @@
     },
     {
       "confidence": "A",
+      "icp": "Cost-conscious driving-automation enthusiasts / DIY advanced driver-assistance users who want lane-keeping autonomy at a fraction of incumbent pricing, and who value hardware durability in hot climates.",
+      "pain": "Hardware reliability failure in hot weather due to a cheap non-automotive-grade fuse, plus a product that has stagnated at SAE Level 2 lane keeping while costing $1,000+, making it feel overpriced for its limitations.",
+      "pain_id": "4e5c9438db520ee6b743d18287824de7bf056c1a5e273826cc9c952dc093134d",
+      "quotes": [
+        {
+          "quote": "they have a cheap fuse (cents on the dollar) that\u2019s not automotive-grade so your windshield mounted device fails in hot weather and doesn\u2019t last past the hardware warranty.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "Known issue, doubt they ever fixed it.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "1B parameter model to stay between two lines. Why. Waste of time.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "Their product hasn\u2019t actually changed in several years because they will never advance past lane keeping SAE Level 2.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "I suspect for what they\u2019re selling for $1,000+ these days, could you find a way to do for half? Less than that?",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "it still runs off a Snapdragon 845.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "Nice tech, disappointing limitations and too expensive.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        },
+        {
+          "quote": "The world moved on, Tesla is bad but a Waymo competitor would be more serious than this.",
+          "url": "https://news.ycombinator.com/item?id=49319793",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Data analyst / developer working with PostgreSQL who needs to automate creation of derived tables and views from existing database tables",
+      "pain": "Manually writing scripts to create tables/views in PostgreSQL is time-consuming when columns have many unique values, while a Python extract-transform-load approach feels too costly in time and resources as the source table grows",
+      "pain_id": "5fb4534b040393bfcd15076fde8fef3c7707ec7d7621dc5051d9ded5a47abe8b",
+      "quotes": [
+        {
+          "quote": "Is it \u201cappropriate\u201d to use Python to automate the creation of certain tables/views in PostgreSQL?",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "The thing is, some columns have too many unique values, and writing the script becomes time-consuming compared to the value it provides.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Besides, Excel could do it faster and more simply.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Since Python is more \u201cefficient\u201d\u2014particularly thanks to loops, for example\u2014it would save time and easily cover all possible scenarios.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "However, the task involves creating a table or view from an existing table in the database.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Which, in the case of using a Python script, would amount to \u201cextracting\u201d the source table from the database, transforming it, and writing the result back to the database.",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "So, this solution seems unnecessarily \u201ccostly\u201d to me\u2014especially in terms of time and resources\u2014as the source table grows, doesn\u2019t it?",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        },
+        {
+          "quote": "Is it acceptable in terms of \u201cbest practices,\u201d \u201cmaintainability,\u201d and performance?",
+          "url": "https://stackoverflow.com/questions/79956975/is-python-an-efficient-way-to-automate-view-table-construction-for-database",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
       "icp": "Polish-conscious Apple-platform developer (iOS/macOS) using SwiftUI and custom SF Symbols in a shipped app, who cares about pixel-perfect toolbar icon alignment across Dynamic Type sizes.",
       "pain": "When switching a SwiftUI toolbar SF Symbol between its unbadged and badged variants (e.g., 'tray' to 'tray.badge' or a custom symbol pair), the taller bounding box of the badged variant causes the underlying symbol to pop/jump up and down because toolbar labels ignore the symbol's text guides and lay out by bounding box.",
       "pain_id": "605e4405e7488059351c9c6b9bd799abd60b24e36d2443edbe0adb65e5c60676",
@@ -542,6 +676,49 @@
     },
     {
       "confidence": "A",
+      "icp": "Senior, high-ownership engineers/professionals at large tech companies (FAANG-scale) who act beyond their role scope and feel structurally unrewarded for it.",
+      "pain": "Misalignment between intrinsic, high-ownership motivation (doing what is strategically right for the business) and corporate reward structures at large companies that only recognize work fitting the formal role profile.",
+      "pain_id": "782008987954d360d970f8c9d341d3bbbcffe1dc900167c57acaf7d9c4f20b3f",
+      "quotes": [
+        {
+          "quote": "First I completely agree with the author that you have to \"bring your own incentives\" instead of trying to discern them from the environment.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "I bring a high-ownership perspective to my job - which basically means I try to do what's actually most existential or strategic for the business.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "I just wrapped up 4 years in a FAANG where the incentives were aligned very much  away  from that, to the point where a VP had to tell me that she could only reward me for things that aligned specifically to my role profile, not for reaching out beyond the role to actually move the needle",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "(btw totally understandable why big companies have to operate that way - but an example where \"good\" and \"incentive\" were not aligned.)",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "So I was faced with a choice - \"die on the hill\" for what I know is right, or follow the incentive structure.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "Bail for a smaller company where I routinely work with the CEO and senior leadership directly and there's no gap between \"what's right for the business\" and \"what I should be doing\"",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        },
+        {
+          "quote": "you (a) want to be in a place whose incentives reflect what you think is right already and (b) create such an environment for the kind of people you want to be and work with.",
+          "url": "https://news.ycombinator.com/item?id=49230733",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
       "icp": "",
       "pain": "Cannot get their Google Apps Script calendar-event automation to fire automatically and reliably; the final blocker is that the script must be manually run, and available installable triggers either create duplicate events or constrain the workflow.",
       "pain_id": "a9821bb4718547d8ec5e642fbcc73e57a81f3ea54fc69f2d15238878a933396e",
@@ -623,6 +800,44 @@
     },
     {
       "confidence": "A",
+      "icp": "Self-hosted / open-weight LLM users and developers (e.g., people running Qwen-class models locally) who care about inference efficiency, compute cost, and model reasoning behavior.",
+      "pain": "The model performs massive amounts of hidden 'thinking' computation for every single output token, which the user perceives as wasted compute that cannot be seen, controlled, or optimized away under the current architecture.",
+      "pain_id": "ca9ef0a13149cb1b1cc87940660fd857e2ad6185ee5d1b4ba893bec6fdc4503b",
+      "quotes": [
+        {
+          "quote": "I hated it at first too...",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "all the hidden \"thinking\" in the models layers that happens for  each token output",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "It is a wild amount of waste!",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "We just can't see it.",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "This kind of stupid excessive computation is fundamentally how these models are so good.",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        },
+        {
+          "quote": "someone smart or a foundation model will come up with a more efficient architecture",
+          "url": "https://news.ycombinator.com/item?id=49326540",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
       "icp": "Flutter Web developers shipping performance-critical apps compiled with `dart2wasm`, particularly those profiling and optimizing framework layout loops on Wasm engines.",
       "pain": "Performance: `.runtimeType` lookups compiled by dart2wasm into `_getMasqueradedRuntimeType` produce O(N) linear if-else branch chains in Wasm, becoming a top CPU hotspot during heavy Flutter layout.",
       "pain_id": "cf609db1682e9c24ed1df0d28f2334c8b8bd9ce8fb0439effbb7b07d72314f51",
@@ -683,6 +898,49 @@
         {
           "quote": "For example 16x16 16 colors, 16x16 256 colors, and then for 32x32 and 48x48, 4 bpp (bits per pixel), 8-bpp, 24-bpp, and for 128x128 and 256x256, 24-bpp.",
           "url": "https://github.com/Ortham/svg_to_ico/issues/1",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "confidence": "A",
+      "icp": "Price-sensitive consumers of staple foods (e.g., hard bread in Newfoundland) facing supply shortages",
+      "pain": "During a shortage of an essential staple, price increases make the item unaffordable for most people, leaving them without food regardless of whether shelves are stocked.",
+      "pain_id": "e3b84a6c4ac2996ffcc985bf486d0f78c375fe1048fc57b1c1acb59dc4d68b9e",
+      "quotes": [
+        {
+          "quote": "it slows down how fast the supply sells out",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "This is not the goal.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "The only mitigation that could make sense is to impose limits per person or household to avoid someone hugging all the supply.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "By the very few who can afford it, by definition of raising the prices until the products barely sell.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "If you have 100 items and 1000 people you guarantee that at least 90% of people won't get an item.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "It doesn't matter if it's because there is none left, or because it's too expensive.",
+          "url": "https://news.ycombinator.com/item?id=49271103",
+          "verified": true
+        },
+        {
+          "quote": "If you're hungry because the shelf is empty, or the shelf is full but you can't afford it, what's the practical difference for your stomach?",
+          "url": "https://news.ycombinator.com/item?id=49271103",
           "verified": true
         }
       ]
@@ -1186,22 +1444,5 @@
     }
   ],
   "schema_version": "1",
-  "theses": [
-    {
-      "concierge": "Run the operator's stack for them for 4 weeks: they grant read access to their Booking.com/Airbnb listings; you reconcile reservations daily by hand, process Mollie/Stripe refunds on request, send a morning summary, and deliver a correct weekly night register export and municipality-level tourist tax figures [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. This tests whether an operator will pay a fraction of the EUR 15K-70K/year they currently spend on stitched-together tools and manual labor [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656] before any integration code is written.",
-      "confidence": "A",
-      "created_at": "2026-08-17T01:32:35.993613+00:00",
-      "cycle_date": "2026-08-17",
-      "cycle_id": "bb8f3e3a-2518-459b-972e-27ca06cabb3e",
-      "evidence_ids_json": "[\"efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656\", \"https://github.com/Morningstar88/kalki-search/issues/223\", \"https://news.ycombinator.com/item?id=48376362\"]",
-      "icp": "Small-to-mid independent operators of holiday parks, vacation rentals and campgrounds, exemplified by a ~50-unit holiday park [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]; initial focus on the Netherlands, where the pain context includes night register export and municipality-level tourist tax [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656] and where the comparable Show HN launcher is based in Zeeland [https://news.ycombinator.com/item?id=48376362].",
-      "id": "5b9ba660730f51e4",
-      "kill_criteria_json": "[\"Fewer than 5 completed discovery calls with small-park operators within the first 2 weeks.\", \"No operator commits to a paid pilot (at least EUR 99/month) within 30 days of concierge delivery.\", \"Booking.com/Airbnb channel-manager API access (certification, cost, timeline) is not achievable within 90 days, blocking the sync use case from the pain context [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].\", \"Dutch night register and per-municipality tourist tax rules prove too fragmented across municipalities to productize as a wedge [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].\", \"The competing entrant in this space \\u2014 the Show HN Odeva launch targeting holiday parks and campgrounds [https://news.ycombinator.com/item?id=48376362] \\u2014 gains visible traction with small parks before you reach 5 paying customers.\", \"Pilot parks churn or decline to convert, saying spreadsheets or their existing setup are good enough relative to the perceived pain [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].\"]",
-      "mvp_48h": "Skip channel-manager integrations in the first 48 hours. Ship a focused web app: drag-and-drop availability board for ~50 units, booking entry with group reservations, guest check-in/out links, and the compliance wedge \u2014 automated night register export and municipality-level tourist tax calculation [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. Seed it with one pilot park's real bookings via CSV import. Everything else (channel sync, payments) is done manually behind the scenes; charge from day one.",
-      "offer": "A single affordable park system for small independent operators that replaces the stitched-together PMS, channel manager, payments, owner portal, guest app and accounting stack [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. V1 scope drawn directly from the stated daily operations: drag-and-drop planning, group reservations, channel sync with Booking.com and Airbnb, Mollie/Stripe payments with refunds, owner revenue reporting, guest portal check-in/out, plus the Dutch compliance wedge of night register export and municipality-level tourist tax [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. Positioning: one tool and one price instead of the many-tools-plus-manual-labor setup operators run today [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].",
-      "outreach_msgs_json": "[\"Hi {name} \\u2014 I'm talking to small park and campground operators in the Netherlands about how they handle night register exports and municipality-level tourist tax today. Is that done inside your booking system or by hand at the end of each month? 15 minutes and I'll share what other ~50-unit parks have told me so far.\", \"Hi {name} \\u2014 quick question: how many separate tools do you run today for bookings, Booking.com/Airbnb sync, payments and owner payouts? I'm building a single system for small parks and would value hearing what your current stack costs per year and where the manual work hurts most. Worth a short call next week?\", \"Hi {name} \\u2014 I help small holiday-park operators replace their pile of tools with one system. If you're a ~50-unit park, I'll run your calendar, exports and owner reports for free for two weeks so you can judge the output before paying anything. Interested in being pilot park #1?\"]",
-      "price": "Anchor against the EUR 15K-70K/year legacy stack reported for a 50-unit park [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]: EUR 149/month for up to 50 units, EUR 249/month up to 100 units, free data migration during the first 3 months. Payments continue to run through the Mollie/Stripe rails already used in daily operations [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656] with no markup on processing. Target: deliver a 5-10x cost reduction versus the stated annual stack cost [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].",
-      "recommendation": "BUILD, but narrow to Dutch small parks first and validate fast. The pain is concrete and quantified: small independent operators of ~50-unit holiday parks pay EUR 15K-70K/year stitching together PMS, channel manager, payments, owner portal, guest app and accounting plus manual labor [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. Caveats: the evidence base is thin \u2014 one Show HN launch post by a solo developer in Zeeland building Odeva, a property management system for the exact same segment (holiday parks, vacation rentals, campgrounds), which both validates demand and confirms direct competition [https://news.ycombinator.com/item?id=48376362]; the second evidence item is a GitHub issue about Khmer language learning and provides no support for this cluster [https://github.com/Morningstar88/kalki-search/issues/223]. Differentiate on Dutch compliance \u2014 night register export and municipality-level tourist tax \u2014 which is explicitly part of daily operations in the pain [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]."
-    }
-  ]
+  "theses": []
 }

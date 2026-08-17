@@ -14,6 +14,19 @@ def is_candidate(title: str, body: str) -> bool:
 def validate_observed(body: str, observed: list[str]) -> bool:
     return bool(observed) and all(normalized_contains(body,q) for q in observed)
 
+def quotes_still_verbatim(pain: object, bodies: dict[str,str]) -> bool:
+    """Re-apply this module's verbatim gate to an already-persisted pain, against the body stored now.
+
+    Content changes invalidate their derived pains at upsert time, so this is the defensive read
+    path for rows a database was already holding: quotes mined from text the source has since
+    edited must never be republished. Fail-closed — a pain with no quotes, an empty quote, or a
+    signal row that cannot be found is unverifiable, and unverifiable is not evidence.
+    """
+    body=bodies.get(getattr(pain,"signal_id",""))
+    if body is None: return False
+    quotes=[str(quote.get("quote","")).strip() for quote in getattr(pain,"quotes",()) if isinstance(quote,dict)]
+    return all(quotes) and validate_observed(strip_tags(body),quotes)
+
 FIELDS=("pain","icp","jtbd","context","frequency","impact","workaround","wtp_evidence","current_solution","dissatisfaction_reason")
 class LLM(Protocol):
     def classify(self, content: str, schema: dict[str,Any]|None=None) -> dict[str,Any]: ...

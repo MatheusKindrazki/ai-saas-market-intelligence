@@ -21,8 +21,11 @@ with embedded fabricated claims. It will be REMOVED (kept in git history only).
 2. **Public evidence vs commercial inference explicitly separated** in every artifact:
    fields `observed` (what the source literally says) vs `inference` (our reasoning),
    each inference keyed to the observations it rests on.
-3. **Confidence grades**: `A` (verified: URL fetched + quote matched verbatim),
-   `B` (official: vendor/source official page), `C` (marketing claim), `D` (unverified).
+3. **Confidence grades**: `A` requires claim-level verbatim support from at least two
+   independent demand-side sources plus one independent commercial/pricing source; `B`
+   requires relevant demand plus commercial evidence but has weaker independence; `C`
+   is only anecdotal demand, a workaround, or one vendor claim; `D` is irrelevant,
+   unsupported, or uncited. Vendor self-promotion alone cannot establish willingness to pay.
 4. **Ethics/legal**: read-only; respect robots.txt and per-source rate limits; identifiable
    User-Agent `DeepOpportunityRadar/1.0 (+https://github.com/MatheusKindrazki/ai-saas-market-intelligence)`;
    exponential backoff; NO login/WAF bypass; NO credential/cookie storage; page content is
@@ -31,8 +34,14 @@ with embedded fabricated claims. It will be REMOVED (kept in git history only).
 5. **Silence when nothing material**: daily synthesis may output "no material change"
    instead of recycled ideas. Deep cycles must produce exactly ONE recommended thesis
    (or an honest "no thesis clears the bar this cycle" with scores shown).
-6. **Idempotency**: second run on identical input inserts zero new rows.
-7. **Fail-closed**: any source failure is an explicit per-source error record in the
+6. **Idempotency**: second run on identical input inserts zero new rows, and an unchanged
+   `content_hash` keeps the pains, scores and clusters already derived from that signal.
+7. **Derived rows never outlive their source text**: when a refetch changes a signal's
+   `content_hash`, its pains, their scores and any cluster listing them are deleted before
+   the new body lands, so the signal is re-mined against what the source actually says now.
+   Reports and deep validation re-check every persisted quote against the stored body with
+   mining's own verbatim gate, so rows written before this rule are dropped on read too.
+8. **Fail-closed**: any source failure is an explicit per-source error record in the
    coverage report; LLM classification failure on a signal marks it `unclassified` and
    excludes it from clustering/scoring — never silently invents attributes.
 
@@ -183,16 +192,29 @@ verified working 2026-08-16). Optional `GITHUB_TOKEN` to raise GH quota.
 
 | job_id | name | schedule | script |
 |---|---|---|---|
-| 44171ea28022 | radar-collect-6h | `0 */6 * * *` | radar_collect.sh |
-| db8b8a153960 | radar-daily-08brt | `0 8 * * *` | radar_daily.sh (mine+score+report, silence unless material) |
-| 49ff5ec8efcb | radar-weekly-sun-18brt | `0 18 * * 0` | radar_weekly.sh (deep + thesis + `--window-days 7`) |
-| e49c0a0b8d2d | radar-staleness-6h | `30 */6 * * *` | radar_staleness.sh (alert if collect >12h / daily >36h stale) |
+| 606bb37b451c | radar-collect-6h | `0 */6 * * *` | radar_collect.sh |
+| 52d4c16eb904 | radar-daily-08brt | `0 8 * * *` | radar_daily.sh (full daily cycle, silence unless material/blocker) |
+| d42ab9aa96f2 | radar-weekly-sun-18brt | `0 18 * * 0` | radar_weekly.sh (deep + thesis + `--window-days 7`) |
+| 31dba8a5e01d | radar-staleness-6h | `30 */6 * * *` | radar_staleness.sh (alert if collection is stale or failing) |
 
-Scripts live in `~/.hermes/profiles/personal/scripts/radar_*.sh`; they pin `glm-5.3`
-(in-code) and source `~/.hermes/.env` for `GLM_API_KEY`. Jobs are `no_agent` (no LLM
-in the scheduler); delivery is local-only — reports persist in `reports/`, Telegram
-delivery is a future enhancement once the gateway runs.
-Rollback: pause/remove the four jobs above + delete `radar_runtime/`; reports stay reviewable.
+The live jobs and scripts are in the active default profile (`~/.hermes/cron/jobs.json`
+and `~/.hermes/scripts/radar_*.sh`). The recurring runtime pins `glm-5.3` in
+`radar/classify_llm.py`; scripts source the default profile's `.env` without copying the key.
+Collect is `local` and silent. Daily, weekly, and staleness deliver to the originating
+Telegram chat only when their scripts emit a material thesis or real blocker; empty stdout
+means no delivery. The personal profile has zero duplicate radar jobs.
+
+Live execution receipts (2026-08-17): collect `a64f3019178f4c92b4773aed373f914a`,
+daily `1c2df1be83494dd49d757d202ec7b72e`, weekly
+`3729376b8e18490f82cdd9d4e5faf6bb`, and staleness
+`e5dc0497bf8b40a59c266b3001f112b1`. One-shot delivery test job `6d1cd1cd14f4`
+completed as execution `884ba825f0974d71823a9af9114e44f2`; the gateway log records delivery
+to `telegram:1044339184`. The default gateway was live when these receipts were inspected.
+
+Rollback was exercised before reinstall: pause/remove these four IDs, verify no matching
+active jobs, then recreate them with the schedules/delivery policy above. Runtime data is
+preserved by default; deleting `radar_runtime/` is an optional destructive reset, not needed
+to disable the loop. Reports remain reviewable.
 
 - every 6h: `radar collect` (incremental; GLM not needed)
 - daily 08:00 America/Sao_Paulo: `radar mine + score + daily report` (GLM 5.3 pinned;
@@ -200,8 +222,8 @@ Rollback: pause/remove the four jobs above + delete `radar_runtime/`; reports st
 - Sunday 18:00 America/Sao_Paulo: `radar full deep cycle` incl. validation + thesis —
   run the report with `--window-days 7` so the weekly artifact carries the whole week's
   pains alongside the thesis instead of a thesis with zero evidence
-- Telegram delivery ONLY on: new/material thesis or real blocker (cron job's agent
-  decides by reading the cycle's `thesis.md`/`coverage.json`; deliver='telegram').
+- Telegram delivery ONLY on a new/material `BUILD`/`VALIDATE` thesis or real blocker;
+  no-thesis success is silent even though daily/weekly/staleness use Telegram delivery.
 - Staleness monitor: separate lightweight job checks last successful run age in `runs`
   table; alerts if collect > 12h stale or daily synthesis > 36h stale.
 

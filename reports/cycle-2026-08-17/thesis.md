@@ -1,5 +1,3 @@
 # Recommended thesis
 
-BUILD, but narrow to Dutch small parks first and validate fast. The pain is concrete and quantified: small independent operators of ~50-unit holiday parks pay EUR 15K-70K/year stitching together PMS, channel manager, payments, owner portal, guest app and accounting plus manual labor [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656]. Caveats: the evidence base is thin — one Show HN launch post by a solo developer in Zeeland building Odeva, a property management system for the exact same segment (holiday parks, vacation rentals, campgrounds), which both validates demand and confirms direct competition [https://news.ycombinator.com/item?id=48376362]; the second evidence item is a GitHub issue about Khmer language learning and provides no support for this cluster [https://github.com/Morningstar88/kalki-search/issues/223]. Differentiate on Dutch compliance — night register export and municipality-level tourist tax — which is explicitly part of daily operations in the pain [pain:efd75b6371111ad3be8502ca19b7088df313b7c842e9b5c256d6627b6e440656].
-
-Confidence: A
+No thesis clears the bar this cycle.
