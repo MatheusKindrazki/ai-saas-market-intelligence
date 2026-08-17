@@ -119,6 +119,46 @@ def test_glm_truncation_counts_toward_the_three_attempts():
     assert len(calls) == 6
 
 
+class _CountingLLM:
+    """Fake classifier that records every call so tests can assert on API spend."""
+    def __init__(self): self.calls=[]
+    def classify(self, content, schema=None):
+        self.calls.append(content)
+        return {"is_complaint":True,"pain":"manual work","observed":["manual spreadsheet takes hours"],"inference":[]}
+
+
+def _signal(signal_id, external_id, fetch_status="ok"):
+    body=f"Signal {external_id}: this manual spreadsheet takes hours."
+    return RawSignal(signal_id,"reddit","reddit",external_id,f"https://example.test/{external_id}","manual spreadsheet",body,None,None,"2026-01-01","q","en",signal_id,fetch_status)
+
+
+def test_mine_skips_signals_that_already_failed_the_evidence_gate(tmp_path):
+    """A gate failure is deterministic: re-mining burns 3x120s of retries for the same rejection."""
+    db=Database(tmp_path/"radar.db")
+    db.upsert_signal(_signal("failed","1","unclassified"))
+    llm=_CountingLLM()
+    assert mine(db,llm) == []
+    assert llm.calls == []
+
+
+def test_mine_retry_failed_reattempts_previously_unclassified_signals(tmp_path):
+    db=Database(tmp_path/"radar.db")
+    db.upsert_signal(_signal("failed","1","unclassified"))
+    llm=_CountingLLM()
+    assert len(mine(db,llm,retry_failed=True)) == 1
+    assert len(llm.calls) == 1
+
+
+def test_mine_still_mines_new_ok_signals_alongside_failed_ones(tmp_path):
+    db=Database(tmp_path/"radar.db")
+    db.upsert_signal(_signal("failed","1","unclassified"))
+    db.upsert_signal(_signal("fresh","2"))
+    llm=_CountingLLM()
+    pains=mine(db,llm)
+    assert [pain.signal_id for pain in pains] == ["fresh"]
+    assert len(llm.calls) == 1
+
+
 def test_mine_skips_classified_and_normalized_duplicate_bodies(tmp_path):
     db=Database(tmp_path/"radar.db")
     first=RawSignal("first","reddit","reddit","1","https://example.test/1","manual spreadsheet","Manual spreadsheet takes hours!",None,None,"2026-01-01","q","en","one")

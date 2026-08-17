@@ -36,7 +36,9 @@ def mine_signal(db: Database, signal: RawSignal, llm: LLM, run_id: str|None=None
         db.add_error(SignalError(signal.source,run_id,str(exc),datetime.now(timezone.utc).isoformat()))
         db.connection.execute("UPDATE signals SET fetch_status='unclassified' WHERE id=?",(signal.id,));db.connection.commit()
         return None
-def mine(db: Database, llm: LLM, run_id: str|None=None) -> list[Pain]:
+def mine(db: Database, llm: LLM, run_id: str|None=None, retry_failed: bool=False) -> list[Pain]:
+    """retry_failed re-attempts signals mine_signal already marked 'unclassified'; off by default
+    because the verbatim gate is deterministic — a re-run buys the same rejection for 3x120s of API retries."""
     classified=db.classified_signal_ids()
     def normalize(text: str) -> str: return re.sub(r"[^\w]+", " ", text.casefold()).strip()
     signals=db.signals()
@@ -47,6 +49,7 @@ def mine(db: Database, llm: LLM, run_id: str|None=None) -> list[Pain]:
         # before spending another model request in the same batch.
         normalized=normalize(signal.body)
         if signal.id in classified or normalized in seen: continue
+        if signal.fetch_status=="unclassified" and not retry_failed: continue
         seen.add(normalized)
         if pain:=mine_signal(db,signal,llm,run_id): pains.append(pain)
     return pains
