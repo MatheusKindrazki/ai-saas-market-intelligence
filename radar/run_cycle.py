@@ -168,7 +168,7 @@ def score_pains(db: Database) -> int:
         db.add_score(Score(pain.id,result["dimensions"],float(result["total"]),str(result["verdict"]),tuple(result["reasons"]),datetime.now(timezone.utc).isoformat()));made+=1
     return made
 def main(argv: list[str]|None=None) -> None:
-    p=argparse.ArgumentParser(); p.add_argument("command",choices=("collect","mine","score","deep","report","full"));p.add_argument("--db",required=True);p.add_argument("--since");p.add_argument("--no-cache",action="store_true");p.add_argument("--deep",action="store_true");p.add_argument("--families")
+    p=argparse.ArgumentParser(); p.add_argument("command",choices=("collect","mine","score","deep","report","full"));p.add_argument("--db",required=True);p.add_argument("--since");p.add_argument("--no-cache",action="store_true");p.add_argument("--deep",action="store_true");p.add_argument("--families");p.add_argument("--window-days",type=int,default=1,help="report lookback in days ending at the cycle date; weekly deep cycles use 7")
     a=p.parse_args(argv); db=Database(a.db); details={}
     cfg=replace(Config.from_env(), db_path=Path(a.db), cache_dir=Path(a.db).parent / "cache", salt_path=Path(a.db).parent / "secretsalt", use_cache=not a.no_cache)
     try:
@@ -187,7 +187,7 @@ def main(argv: list[str]|None=None) -> None:
                 print("GLM_API_KEY is required for classification")
                 raise SystemExit(2)
             thesis=deep_validate(db,cfg,client,_AdapterSearch(cfg)); details["deep"]=thesis.id if thesis else None
-        if a.command in {"report","full"}: details["report"]=str(emit_cycle(__import__('pathlib').Path("reports"),db))
+        if a.command in {"report","full"}: details["report"]=str(emit_cycle(Path("reports"),db,window_days=a.window_days))
     except Exception as exc:
         print(f"hard failure: {exc}"); raise SystemExit(1)
     if "collect" in details:

@@ -182,8 +182,11 @@ verified working 2026-08-16). Optional `GITHUB_TOKEN` to raise GH quota.
 ## Operational loop (installed ONLY after gates pass; cron via Hermes `cronjob` tool)
 
 - every 6h: `radar collect` (incremental; GLM not needed)
-- daily 08:00 America/Sao_Paulo: `radar mine + score + daily report` (GLM 5.3 pinned)
-- Sunday 18:00 America/Sao_Paulo: `radar full deep cycle` incl. validation + thesis
+- daily 08:00 America/Sao_Paulo: `radar mine + score + daily report` (GLM 5.3 pinned;
+  report uses the default `--window-days 1`, so the artifact holds that day's evidence)
+- Sunday 18:00 America/Sao_Paulo: `radar full deep cycle` incl. validation + thesis —
+  run the report with `--window-days 7` so the weekly artifact carries the whole week's
+  pains alongside the thesis instead of a thesis with zero evidence
 - Telegram delivery ONLY on: new/material thesis or real blocker (cron job's agent
   decides by reading the cycle's `thesis.md`/`coverage.json`; deliver='telegram').
 - Staleness monitor: separate lightweight job checks last successful run age in `runs`
