@@ -179,7 +179,20 @@ LLM: `GLM_API_KEY` env (required for mine/validate steps; collect works without)
 Endpoint: `https://api.z.ai/api/anthropic/v1/messages`, model `glm-5.3` (anthropic-compatible;
 verified working 2026-08-16). Optional `GITHUB_TOKEN` to raise GH quota.
 
-## Operational loop (installed ONLY after gates pass; cron via Hermes `cronjob` tool)
+## Operational loop (INSTALLED 2026-08-17 — Hermes cron, script-only jobs)
+
+| job_id | name | schedule | script |
+|---|---|---|---|
+| 44171ea28022 | radar-collect-6h | `0 */6 * * *` | radar_collect.sh |
+| db8b8a153960 | radar-daily-08brt | `0 8 * * *` | radar_daily.sh (mine+score+report, silence unless material) |
+| 49ff5ec8efcb | radar-weekly-sun-18brt | `0 18 * * 0` | radar_weekly.sh (deep + thesis + `--window-days 7`) |
+| e49c0a0b8d2d | radar-staleness-6h | `30 */6 * * *` | radar_staleness.sh (alert if collect >12h / daily >36h stale) |
+
+Scripts live in `~/.hermes/profiles/personal/scripts/radar_*.sh`; they pin `glm-5.3`
+(in-code) and source `~/.hermes/.env` for `GLM_API_KEY`. Jobs are `no_agent` (no LLM
+in the scheduler); delivery is local-only — reports persist in `reports/`, Telegram
+delivery is a future enhancement once the gateway runs.
+Rollback: pause/remove the four jobs above + delete `radar_runtime/`; reports stay reviewable.
 
 - every 6h: `radar collect` (incremental; GLM not needed)
 - daily 08:00 America/Sao_Paulo: `radar mine + score + daily report` (GLM 5.3 pinned;
