@@ -96,23 +96,61 @@ def test_deep_is_silent_when_no_cluster_clears_score_bar(tmp_path):
 class BulkSearch:
     """Real adapters return up to 60 long items; the prompt must not carry them all."""
     def collect(self, query):
-        return [{"url": f"https://evidence.test/{i}", "title": "T" * 400, "body": "B" * 5000} for i in range(60)]
+        return [{"url": f"https://evidence.test/{i}", "title": "T" * 400, "body": "Manual intake is cited here. " + "B" * 5000} for i in range(60)]
 
 
 def test_validate_cluster_prompt_caps_items_and_excerpts_bodies():
     prompts = []
+    claim = {"url": "https://evidence.test/0", "quote": "Manual intake is cited here.", "confidence": "A"}
 
     class RecordingLLM:
         def classify(self, content, schema=None):
             prompts.append(content)
-            return {"competitors": [{"url": "https://evidence.test/0", "quote": "cited", "confidence": "A"}]}
+            return {"competitors": [claim]}
 
     output = validate_cluster(SimpleNamespace(key_terms="manual work"), BulkSearch(), RecordingLLM())
 
     assert prompts[0].count("https://evidence.test/") <= 15
     assert len(prompts[0]) < 8000
     assert "B" * 400 not in prompts[0]
-    assert output["competitors"] == [{"url": "https://evidence.test/0", "quote": "cited", "confidence": "A"}]
+    assert output["competitors"] == [claim]
+
+
+class CitationLLM:
+    def __init__(self, claims):
+        self.claims = claims
+
+    def classify(self, content, schema=None):
+        return {"competitors": self.claims}
+
+
+class TaggedSearch:
+    def collect(self, query):
+        return [{"url": "https://evidence.test/one", "title": "Weekly intake", "body": "Our <b>manual</b> intake   takes hours every week."}]
+
+
+def test_validate_cluster_drops_claims_citing_urls_outside_the_evidence():
+    """The model invents plausible URLs; only collected evidence may back a claim."""
+    output = validate_cluster(SimpleNamespace(key_terms="manual work"), TaggedSearch(),
+                              CitationLLM([{"url": "https://invented.test/report", "quote": "manual intake takes hours every week"}]))
+
+    assert output["competitors"] == []
+
+
+def test_validate_cluster_drops_claims_whose_quote_is_not_in_that_evidence_item():
+    output = validate_cluster(SimpleNamespace(key_terms="manual work"), TaggedSearch(),
+                              CitationLLM([{"url": "https://evidence.test/one", "quote": "priced at $49 per seat"}, {"url": "https://evidence.test/one"}]))
+
+    assert output["competitors"] == []
+
+
+def test_validate_cluster_keeps_quotes_found_in_the_cited_evidence():
+    claims = [{"url": "https://evidence.test/one", "quote": "manual intake takes hours every week"},
+              {"url": "https://evidence.test/one", "quote": "Weekly intake"}]
+
+    output = validate_cluster(SimpleNamespace(key_terms="manual work"), TaggedSearch(), CitationLLM(claims))
+
+    assert output["competitors"] == claims
 
 
 def test_deep_thesis_prompt_is_bounded_and_json_serialisable(tmp_path):

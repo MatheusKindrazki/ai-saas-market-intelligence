@@ -48,8 +48,9 @@ class Database:
         self.connection.commit()
     def add_error(self, error: SignalError) -> None:
         self.connection.execute("INSERT INTO signal_errors VALUES (?,?,?,?)", (error.source,error.run_id,error.error,error.ts)); self.connection.commit()
-    def pains(self) -> list[Pain]:
-        rows=self.connection.execute("SELECT * FROM pains ORDER BY id")
+    def pains(self, since: str|None=None, until: str|None=None) -> list[Pain]:
+        """since/until are inclusive UTC dates (YYYY-MM-DD) matched against classified_at."""
+        rows=self.connection.execute("SELECT * FROM pains WHERE substr(classified_at,1,10) BETWEEN ? AND ? ORDER BY id",(since or "0000-01-01",until or "9999-12-31"))
         return [Pain(r["id"],r["signal_id"],r["pain"],r["icp"],r["jtbd"],r["context"],r["frequency"],r["impact"],r["workaround"],r["wtp_evidence"],r["current_solution"],r["dissatisfaction_reason"],tuple(json.loads(r["quotes_json"])),tuple(json.loads(r["observed_json"])),tuple(json.loads(r["inference_json"])),r["confidence"],r["lang"],r["classified_at"],r["model"]) for r in rows]
     def start_run(self, record: RunRecord) -> None:
         self.connection.execute("INSERT INTO runs VALUES (?,?,?,?,?,?)",(record.id,record.kind,record.started_at,record.ended_at,record.status,json.dumps(record.detail)));self.connection.commit()

@@ -12,6 +12,10 @@ class ReviewsSource(BaseSource):
     wordpress_plugins = ("woocommerce", "jetpack", "contact-form-7", "woocommerce-services", "wordpress-seo")
     amo_addons = ("ublock-origin", "darkreader", "bitwarden-password-manager", "grammarly-1")
 
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.errors: list[tuple[str, str]] = []
+
     @staticmethod
     def _rotated_slug(slugs: tuple[str, ...]) -> str:
         return slugs[date.today().toordinal() % len(slugs)]
@@ -29,7 +33,13 @@ class ReviewsSource(BaseSource):
         wordpress_rows = parse_feed(self.fetch_text(f"https://wordpress.org/support/rss/plugin/{wordpress_slug}/"), "wordpress")
         wordpress = [raw_signal(source="wordpress_reviews", family=self.family, query=query_context, lang=detect_language(row["body"]), cfg=self.cfg, **row) for row in wordpress_rows[:self.limit] if row["body"]]
 
-        amo = self.amo_reviews(self.selected_amo_addon(), query_context)
+        # Two independent providers: an AMO outage must not discard the WordPress signals already in hand.
+        self.errors = []
+        try:
+            amo = self.amo_reviews(self.selected_amo_addon(), query_context)
+        except SourceError as exc:
+            self.errors.append(("amo_reviews", str(exc)))
+            amo = []
         return self.keep_since(wordpress + amo, since)
 
     def amo_reviews(self, addon: str, query_context: str):

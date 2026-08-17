@@ -1,9 +1,22 @@
 """Small, deterministic text processing utilities using only the stdlib."""
 from __future__ import annotations
+import html
 import re
 from dataclasses import dataclass
 from typing import Iterable
 from .models import Signal
+
+_TAG = re.compile(r"<[^>]+>")
+
+def strip_tags(text: str) -> str:
+    """SE/HN/WordPress bodies ship HTML; tags go first so unescaped entities can never become tags."""
+    return html.unescape(_TAG.sub(" ", text or ""))
+
+def normalize_space(text: str) -> str:
+    return " ".join((text or "").casefold().split())
+
+def normalized_contains(body: str, quote: str) -> bool:
+    return normalize_space(quote) in normalize_space(body)
 
 _STOPS = {"en": {"the","and","with","for","this","that","have","hours","manual","too"},
           "pt": {"que","para","com","uma","não","muito","planilha","horas","manual"},

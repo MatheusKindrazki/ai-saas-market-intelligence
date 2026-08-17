@@ -1,8 +1,10 @@
+import json
+
 import pytest
 
 from radar.classify_llm import ClassificationError, GLMClient
 from radar.db import Database
-from radar.mine import mine, mine_signal
+from radar.mine import is_candidate, mine, mine_signal
 from radar.models import RawSignal
 
 def test_glm_skips_thinking_and_mine_rejects_bad_quotes(tmp_path):
@@ -31,6 +33,42 @@ def test_mine_unescapes_html_entities_before_prompt_and_verbatim_gate(tmp_path):
     client=GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda *_: {"content":[{"type":"text","text":"{\"is_complaint\":true,\"pain\":\"manual work\",\"observed\":[\"I'm using a manual spreadsheet & it takes hours > every week.\"],\"inference\":[]}"}]})
     assert mine_signal(db,signal,client) is not None
     assert db.connection.execute("SELECT body FROM signals WHERE id='entities'").fetchone()[0] == signal.body
+
+
+def _classifier(observed, sink=None):
+    text=json.dumps({"is_complaint":True,"pain":"manual work","observed":observed,"inference":[]})
+    return GLMClient(api_key="fake",sleep=lambda _:None,transport=lambda _,__,payload:((sink.append(payload) if sink is not None else None) or {"content":[{"type":"text","text":text}]}))
+
+
+def test_mine_detects_candidate_phrases_split_by_html_tags(tmp_path):
+    """SE/HN bodies arrive as HTML: 'manual <b>spreadsheet</b>' is still the same complaint."""
+    db=Database(tmp_path/"radar.db")
+    body="Our <em>manual</em> <b>spreadsheet</b> workflow eats the week &amp; nobody owns it."
+    signal=RawSignal("tagged","stackexchange","stackexchange","1","https://example.test","<p>Weekly pain</p>",body,None,None,"2026-01-01","q","en","hash")
+    db.upsert_signal(signal)
+    payloads=[]
+
+    assert is_candidate(signal.title,signal.body)
+    assert mine_signal(db,signal,_classifier(["manual spreadsheet workflow eats the week & nobody owns it"],payloads)) is not None
+    assert "<em>" not in json.dumps(payloads[0]) and "&amp;" not in json.dumps(payloads[0])
+    assert db.connection.execute("SELECT body FROM signals WHERE id='tagged'").fetchone()[0] == body
+
+
+def test_mine_accepts_a_verbatim_quote_spanning_an_html_tag(tmp_path):
+    db=Database(tmp_path/"radar.db")
+    signal=RawSignal("span","hackernews","hackernews","1","https://example.test","manual spreadsheet","The manual spreadsheet takes <em>hours</em> every week.",None,None,"2026-01-01","q","en","hash")
+    db.upsert_signal(signal)
+
+    assert mine_signal(db,signal,_classifier(["takes hours every week"])) is not None
+    assert db.connection.execute("SELECT COUNT(*) FROM signal_errors").fetchone()[0] == 0
+
+
+def test_mine_still_rejects_quotes_absent_from_the_stripped_body(tmp_path):
+    db=Database(tmp_path/"radar.db")
+    signal=RawSignal("span","hackernews","hackernews","1","https://example.test","manual spreadsheet","The manual spreadsheet takes <em>hours</em> every week.",None,None,"2026-01-01","q","en","hash")
+    db.upsert_signal(signal)
+
+    assert mine_signal(db,signal,_classifier(["<em>invented</em> claim"])) is None
 
 
 def test_glm_payload_allows_text_after_thinking_budget():

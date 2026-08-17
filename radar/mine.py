@@ -1,17 +1,16 @@
 """Fail-closed complaint mining with a hard verbatim evidence gate."""
 from __future__ import annotations
 import hashlib
-import html
 import re
 from datetime import datetime, timezone
 from typing import Any, Protocol
 from .db import Database
 from .models import Pain, RawSignal, SignalError
+from .textproc import normalize_space, normalized_contains, strip_tags
 PAIN_PHRASES=("i hate","looking for alternative","manual spreadsheet","takes hours","too expensive","wish there was","how do you handle","cancelled because","is there a tool","paying someone to","ódio","planilha manual","procuro alternativa","caro demais","gastar horas","existe alguma ferramenta","busco alternativa","odio","hoja de cálculo","demasiado caro","existe alguna herramienta")
 def is_candidate(title: str, body: str) -> bool:
-    return any(x in (title+" "+body).casefold() for x in PAIN_PHRASES)
-def normalized_contains(body: str, quote: str) -> bool:
-    return " ".join(quote.casefold().split()) in " ".join(body.casefold().split())
+    # "manual <b>spreadsheet</b>" is the same complaint as "manual spreadsheet": match the stripped text.
+    return any(x in normalize_space(strip_tags(title+" "+body)) for x in PAIN_PHRASES)
 def validate_observed(body: str, observed: list[str]) -> bool:
     return bool(observed) and all(normalized_contains(body,q) for q in observed)
 
@@ -23,8 +22,9 @@ def _value(data: dict[str,Any], field: str) -> str: return str(data.get(field) o
 def mine_signal(db: Database, signal: RawSignal, llm: LLM, run_id: str|None=None) -> Pain | None:
     if not is_candidate(signal.title, signal.body): return None
     try:
-        body=html.unescape(signal.body)
-        content="TITLE:\n"+signal.title+"\nBODY:\n"+body+"\nOutput ONLY a JSON object matching this schema. Quote observed evidence VERBATIM, character-for-character, from the BODY text only."
+        # The model must see — and quote from — the same tag-free text the verbatim gate checks.
+        body=strip_tags(signal.body)
+        content="TITLE:\n"+strip_tags(signal.title)+"\nBODY:\n"+body+"\nOutput ONLY a JSON object matching this schema. Quote observed evidence VERBATIM, character-for-character, from the BODY text only."
         result=llm.classify(content,SCHEMA)
         observed=list(result.get("observed") or [])
         if not result.get("is_complaint") or not validate_observed(body,observed):
