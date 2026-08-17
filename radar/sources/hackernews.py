@@ -16,5 +16,5 @@ class HackerNewsSource(BaseSource):
         result=[]
         for d in data.get("hits",[])[:self.limit]:
             body=d.get("comment_text") or d.get("story_text") or d.get("title") or ""; title=d.get("story_title") or d.get("title") or "HN discussion"
-            if body: result.append(raw_signal(source="hackernews",family=self.family,external_id=str(d.get("objectID")),url=f"https://news.ycombinator.com/item?id={d.get('objectID')}",query=query,title=title,body=body,author=d.get("author"),published_at=d.get("created_at"),lang=detect_language(body)))
+            if body: result.append(raw_signal(source="hackernews",family=self.family,external_id=str(d.get("objectID")),url=f"https://news.ycombinator.com/item?id={d.get('objectID')}",query=query,title=title,body=body,author=d.get("author"),published_at=d.get("created_at"),lang=detect_language(body),cfg=self.cfg))
         return result

@@ -12,4 +12,4 @@ class GitHubSource(BaseSource):
   for phrase in self.queries(q): out.extend(self.parse(self.fetch_json(f"https://api.github.com/search/issues?q={quote_plus(phrase)}&per_page={self.limit}"),phrase))
   return self.keep_since(out,since)
  def parse(self,data:dict,q:str):
-  return [raw_signal(source="github",family=self.family,external_id=str(d["id"]),url=d["html_url"],query=q,title=d["title"],body=d.get("body") or d["title"],author=d.get("user",{}).get("login"),published_at=d.get("created_at"),lang=detect_language(d.get("body") or d["title"])) for d in data.get("items",[])[:self.limit]]
+  return [raw_signal(source="github",family=self.family,external_id=str(d["id"]),url=d["html_url"],query=q,title=d["title"],body=d.get("body") or d["title"],author=d.get("user",{}).get("login"),published_at=d.get("created_at"),lang=detect_language(d.get("body") or d["title"]),cfg=self.cfg) for d in data.get("items",[])[:self.limit]]

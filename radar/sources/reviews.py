@@ -27,7 +27,7 @@ class ReviewsSource(BaseSource):
 
         wordpress_slug = plugin or self.selected_wordpress_plugin()
         wordpress_rows = parse_feed(self.fetch_text(f"https://wordpress.org/support/rss/plugin/{wordpress_slug}/"), "wordpress")
-        wordpress = [raw_signal(source="wordpress_reviews", family=self.family, query=query_context, lang=detect_language(row["body"]), **row) for row in wordpress_rows[:self.limit] if row["body"]]
+        wordpress = [raw_signal(source="wordpress_reviews", family=self.family, query=query_context, lang=detect_language(row["body"]), cfg=self.cfg, **row) for row in wordpress_rows[:self.limit] if row["body"]]
 
         amo = self.amo_reviews(self.selected_amo_addon(), query_context)
         return self.keep_since(wordpress + amo, since)
@@ -62,7 +62,7 @@ class ReviewsSource(BaseSource):
             body = (row.get("body") or "").strip()
             if not body:
                 continue
-            amo.append(raw_signal(source="amo_reviews", family=self.family, external_id=str(row["id"]), url=f"https://addons.mozilla.org/en-US/firefox/addon/{addon}/reviews/", query=query_context, title=f"{addon} review ({row.get('score')} stars)", body=body, author=row.get("userName"), published_at=row.get("created"), lang=detect_language(body)))
+            amo.append(raw_signal(source="amo_reviews", family=self.family, external_id=str(row["id"]), url=f"https://addons.mozilla.org/en-US/firefox/addon/{addon}/reviews/", query=query_context, title=f"{addon} review ({row.get('score')} stars)", body=body, author=row.get("userName"), published_at=row.get("created"), lang=detect_language(body), cfg=self.cfg))
         if not amo:
             raise SourceError(f"AMO reviews {addon}: no review bodies on public page")
         return amo

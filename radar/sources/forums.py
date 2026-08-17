@@ -41,9 +41,9 @@ class ForumsSource(BaseSource):
             if not body:
                 continue
             user = row.get("user") or {}
-            signals.append(raw_signal(source="devto", family=self.family, external_id=str(row["id"]), url=row.get("canonical_url") or row.get("url") or f"https://dev.to/articles/{row['id']}", query=query_context, title=row.get("title") or "untitled", body=body, author=user.get("username") or user.get("name"), published_at=row.get("published_at"), lang=detect_language(body)))
+            signals.append(raw_signal(source="devto", family=self.family, external_id=str(row["id"]), url=row.get("canonical_url") or row.get("url") or f"https://dev.to/articles/{row['id']}", query=query_context, title=row.get("title") or "untitled", body=body, author=user.get("username") or user.get("name"), published_at=row.get("published_at"), lang=detect_language(body), cfg=self.cfg))
         return self.keep_since(signals, since)
 
     def wordpress_plugin(self, slug: str, query_context: str, since: str | None = None):
         data = parse_feed(self.fetch_text(f"https://wordpress.org/support/rss/plugin/{slug}/"), "wordpress")
-        return self.keep_since([raw_signal(source="wordpress", family=self.family, query=query_context, lang=detect_language(row["body"]), **row) for row in data[:self.limit]], since)
+        return self.keep_since([raw_signal(source="wordpress", family=self.family, query=query_context, lang=detect_language(row["body"]), cfg=self.cfg, **row) for row in data[:self.limit]], since)

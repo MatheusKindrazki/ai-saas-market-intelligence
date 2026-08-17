@@ -1,7 +1,8 @@
 """Shared safe HTTP behavior for source adapters."""
 from __future__ import annotations
-import json, time, hashlib
+import json, os, secrets, time, hashlib
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -91,9 +92,52 @@ class BaseSource:
         raise SourceError("unreachable")
     def keep_since(self, signals: list, since: str | None) -> list:
         if not since: return signals
-        cutoff=datetime.fromisoformat(since.replace("Z","+00:00"))
-        return [s for s in signals if not s.published_at or datetime.fromisoformat(s.published_at.replace("Z","+00:00")) >= cutoff]
-def raw_signal(*, source: str, family: str, external_id: str, url: str, title: str, body: str, query: str|None=None, published_at: str|None=None, author: str|None=None, lang: str="unknown"):
+        cutoff=parse_timestamp(since)
+        # An unparseable --since filters nothing rather than killing the family.
+        if cutoff is None: return signals
+        return [s for s in signals if not s.published_at or (parse_timestamp(s.published_at) or cutoff) >= cutoff]
+
+_salt_cache: dict[str, bytes] = {}
+
+def parse_timestamp(value: str) -> datetime | None:
+    """Parse ISO-8601 or RFC 2822 (RSS pubDate) timestamps as UTC-aware datetimes."""
+    parsed=None
+    try: parsed=datetime.fromisoformat(value.strip().replace("Z","+00:00"))
+    except (AttributeError, ValueError):
+        try: parsed=parsedate_to_datetime(value)
+        except (AttributeError, TypeError, ValueError): return None
+    if parsed is None: return None
+    return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+
+def _read_salt(path: Path) -> bytes:
+    try: return path.read_bytes().strip()
+    except OSError: return b""
+
+def author_salt(cfg: Config | None = None) -> bytes:
+    """Load — creating on first use — the local salt used for author pseudonyms."""
+    path=(cfg or Config.from_env()).salt_path; key=str(path)
+    cached=_salt_cache.get(key)
+    if cached is not None: return cached
+    salt=_read_salt(path)
+    if not salt:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            descriptor=os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+        except FileExistsError:
+            salt=_read_salt(path)  # a concurrent run created it first
+        else:
+            salt=secrets.token_hex(32).encode()
+            with os.fdopen(descriptor, "wb") as handle: handle.write(salt)
+        # A present-but-empty salt file would silently de-salt every pseudonym.
+        if not salt: raise SourceError(f"empty pseudonymization salt at {path}")
+    _salt_cache[key]=salt
+    return salt
+
+def author_pseudonym(author: str, cfg: Config | None = None) -> str:
+    """Pseudonym contract (docs/ARCHITECTURE.md): sha256(salt + author), salt kept locally."""
+    return hashlib.sha256(author_salt(cfg) + author.encode()).hexdigest()
+
+def raw_signal(*, source: str, family: str, external_id: str, url: str, title: str, body: str, query: str|None=None, published_at: str|None=None, author: str|None=None, lang: str="unknown", cfg: Config|None=None):
     from ..models import RawSignal
     now=datetime.now(timezone.utc).isoformat(); body=body or title
-    return RawSignal(hashlib.sha256(f"{source}|{external_id}".encode()).hexdigest(),source,family,external_id,url,title,body,hashlib.sha256(author.encode()).hexdigest() if author else None,published_at,now,query,lang,hashlib.sha256(body.encode()).hexdigest())
+    return RawSignal(hashlib.sha256(f"{source}|{external_id}".encode()).hexdigest(),source,family,external_id,url,title,body,author_pseudonym(author, cfg) if author else None,published_at,now,query,lang,hashlib.sha256(body.encode()).hexdigest())
