@@ -1,0 +1,5 @@
+# Recommended thesis
+
+Pursue a micro-SaaS: a pre-warmed Statcast frame cache API. The validated pain is precise and costly: the Model column needs two Statcast frames per hitter (hitter's season + opposing starter's season), and per-day frame caching forces roughly 80 cold pulls taking over an hour on the first tick of each day against a 15-minute cron cadence, so the model must be disabled on scheduled runs (pain fb1812848b56fc56b16b57c56a021bcd054b253b0bba106a842d65cd41d7c2fb; https://github.com/ncarsner/beat-the-streak/issues/50). The same data-refresh cost surface appears in adjacent MLB tools — a prediction app re-wiring probable-pitcher and lineup refresh into fast homepage snapshots (https://github.com/msantoria/mlb-prediction-app/issues/1316) and a prediction repo making MLB Stats API the primary ingestion source for schedules/probables (https://github.com/kenxw10/HOMERUN/pull/16) — so sell the nightly pre-warm + fast frame lookup to the beat-the-streak maintainer first, then to those adjacent builders.
+
+Confidence: A
